@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace ekaH_Windows
 {
     public partial class LogInWindow : Form
@@ -74,7 +75,21 @@ namespace ekaH_Windows
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            executeLogin();
+
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(emailText.Text);
+                
+                executeLogin();
+                
+            }
+            catch
+            {
+                MessageBox.Show("Your email address is not in a proper format. \n Please enter it again.");
+
+            }
+
+
         }
     }
 }

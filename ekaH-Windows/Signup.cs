@@ -32,9 +32,44 @@ namespace ekaH_Windows
 
         private void signupButton_Click(object sender, EventArgs e)
         {
-            // Make a REST call here
+            if (verifyAllFields())
+            {
+                // Make a REST call here
+
+            }
+            
         }
 
+        // Verifies that all the fields meet the requirement before sending the data to the server.
+        private bool verifyAllFields()
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(emailText.Text);
+               
+
+                if (password1.Text != password2.Text)
+                {
+                    MessageBox.Show("Your passwords don't match. \n Please enter it again.");
+                    return false;
+                }
+
+                if (firstNameText.Text == "" || lastNameText.Text == "" || extraInfoText.Text == "")
+                {
+                    MessageBox.Show("Please fill in your first and last name info.");
+                    return false;
+                }
+
+            }
+            catch
+            {
+                MessageBox.Show("Your email address is not in a proper format. \n Please enter it again.");
+                return false;
+            }
+            return true;
+        }
+
+        // Changes the label text when when student tab is clicked so that graduation year is captured.
         private void student_Click(object sender, EventArgs e)
         {
             isStudent = true;
@@ -44,6 +79,7 @@ namespace ekaH_Windows
             extraInfoText.Text = "Graduation year";
         }
 
+        // Changes the label text when faculty tab is clicked so that department info is captured.
         private void faculty_Click(object sender, EventArgs e)
         {
             isStudent = false;
