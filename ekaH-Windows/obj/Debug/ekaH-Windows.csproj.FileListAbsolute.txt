@@ -10,3 +10,9 @@ C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\Microsoft.Visual
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.loginWindow.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Signup.resources
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\Newtonsoft.Json.dll
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\Newtonsoft.Json.xml
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.FacultyProfile.resources
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.StudentProfile.resources

@@ -25,7 +25,7 @@ namespace ekaH_Windows
             this.Hide();
 
             LogInWindow loginWindow = new LogInWindow();
-            loginWindow.Show();
+            loginWindow.ShowDialog();
 
             this.Close(); 
         }
