@@ -1,9 +1,11 @@
-﻿using System;
+﻿using ekaH_Windows.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,8 +36,36 @@ namespace ekaH_Windows
         {
             if (verifyAllFields())
             {
-                // Make a REST call here
+                // Makes a REST call here
+                ClientUserRegisterModel registerInfo = new ClientUserRegisterModel();
+                registerInfo.userEmail = emailText.Text;
+                registerInfo.pswd = password1.Text;
+                registerInfo.isStudent = isStudent;
+                registerInfo.extraInfo = extraInfoText.Text;
+                registerInfo.firstName = firstNameText.Text;
+                registerInfo.lastName = lastNameText.Text;
 
+                HttpClient client = NetworkClient.getInstance().getHttpClient();
+
+                HttpResponseMessage responseReceived = client.PostAsJsonAsync(BaseConnection.registerPostString, registerInfo).Result;
+
+                if (responseReceived.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Your account has been registered. Please log in.");
+
+                    // Opens the log in window here.
+
+                    this.Hide();
+
+                    LogInWindow login = new LogInWindow();
+                    login.ShowDialog();
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(responseReceived.Content.ReadAsAsync<string>().Result);
+                }
             }
             
         }

@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Model\BaseConnection.cs" />
     <Compile Include="Model\ClientUserAuthModel.cs" />
+    <Compile Include="Model\NetworkClient.cs" />
     <Compile Include="Profiles\FacultyProfile.cs">
       <SubType>Form</SubType>
     </Compile>

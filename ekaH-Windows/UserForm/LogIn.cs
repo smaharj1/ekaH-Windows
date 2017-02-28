@@ -44,13 +44,8 @@ namespace ekaH_Windows
             loginInfo.userEmail = emailText.Text;
             loginInfo.isStudent = this.isStudent;
 
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(BaseConnection.URI);
-
-            // Add an Accept header for JSON format.
-            client.DefaultRequestHeaders.Accept.Add(
-            new MediaTypeWithQualityHeaderValue("application/json"));
-
+            HttpClient client = NetworkClient.getInstance().getHttpClient();
+           
             // List data response. This is the blocking call.
             HttpResponseMessage response = client.PostAsJsonAsync(BaseConnection.loginPostString, loginInfo).Result; 
 
@@ -58,6 +53,7 @@ namespace ekaH_Windows
             {
                 // Here, open the new relevant form according to student or professor.
                 this.Hide();
+
                 if (loginInfo.isStudent)
                 {
                     StudentProfile studentProfile = new StudentProfile(loginInfo.userEmail);
