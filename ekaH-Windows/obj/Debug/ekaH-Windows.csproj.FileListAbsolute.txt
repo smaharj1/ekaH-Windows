@@ -19,5 +19,6 @@ C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\MetroFramework.D
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\MetroFramework.dll
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\MetroFramework.Fonts.dll
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH-Windows.csprojResolveAssemblyReference.cache
-C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.Dashboard.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.FacultyCourseUC.resources
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.DashboardUC.resources
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.AppointmentControl.resources

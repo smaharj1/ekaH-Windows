@@ -15,8 +15,9 @@ namespace ekaH_Windows.Profiles
     {
         private string userEmail;
 
-        private Dashboard ucDashboard;
+        private DashboardUC ucDashboard;
         private FacultyCourseUC ucCourse;
+        private AppointmentControl ucAppointment;
 
         public FacultyProfile(string email)
         {
@@ -37,18 +38,43 @@ namespace ekaH_Windows.Profiles
         {
             if (ucDashboard == null)
             {
-                ucDashboard = new Dashboard();
+                ucDashboard = new DashboardUC();
                 ucDashboard.Dock = DockStyle.Fill;
 
                 contentPanel.Controls.Add(ucDashboard);
             }
-            else
-            {
-                contentPanel.Controls["Dashboard"].BringToFront();
-            }
+            
+            
+            contentPanel.Controls["Dashboard"].BringToFront();
+            
         }
 
+        private void viewAppointments()
+        {
+            if (ucAppointment == null)
+            {
+                ucAppointment = new AppointmentControl();
+                ucAppointment.Dock = DockStyle.Fill;
 
+                contentPanel.Controls.Add(ucAppointment);
+            }
+
+            contentPanel.Controls["AppointmentControl"].BringToFront();
+        }
+
+        private void viewCourses()
+        {
+            if (ucCourse == null)
+            {
+                ucCourse = new FacultyCourseUC();
+                ucCourse.Dock = DockStyle.Fill;
+
+                contentPanel.Controls.Add(ucCourse);
+            }
+
+            //contentPanel.Controls["FacultyCourseUC"].BringToFront();
+            ucCourse.BringToFront();
+        }
 
         private void dashboardControl_Click(object sender, EventArgs e)
         {
@@ -68,20 +94,11 @@ namespace ekaH_Windows.Profiles
             }
             else if (selectedTab == coursesTab)
             {
-                if (ucCourse == null)
-                {
-                    ucCourse = new FacultyCourseUC();
-                    ucCourse.Dock = DockStyle.Fill;
-
-                    contentPanel.Controls.Add(ucCourse);
-                }
-
-                contentPanel.Controls["FacultyCourseUC"].BringToFront();
-                
+                viewCourses();
             }
             else if (selectedTab == appointmentTab)
             {
-
+                viewAppointments();
             }
             else
             {

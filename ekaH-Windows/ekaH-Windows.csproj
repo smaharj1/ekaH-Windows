@@ -84,17 +84,23 @@
     <Compile Include="Profiles\StudentProfile.Designer.cs">
       <DependentUpon>StudentProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profiles\UserControllers\AppointmentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Profiles\UserControllers\AppointmentControl.Designer.cs">
+      <DependentUpon>AppointmentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Profiles\UserControllers\FacultyCourseUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Profiles\UserControllers\FacultyCourseUC.Designer.cs">
       <DependentUpon>FacultyCourseUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profiles\UserControllers\Dashboard.cs">
+    <Compile Include="Profiles\UserControllers\DashboardUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Profiles\UserControllers\Dashboard.Designer.cs">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <Compile Include="Profiles\UserControllers\DashboardUC.Designer.cs">
+      <DependentUpon>DashboardUC.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForm\LogIn.cs">
       <SubType>Form</SubType>
@@ -116,11 +122,14 @@
     <EmbeddedResource Include="Profiles\StudentProfile.resx">
       <DependentUpon>StudentProfile.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\UserControllers\AppointmentControl.resx">
+      <DependentUpon>AppointmentControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Profiles\UserControllers\FacultyCourseUC.resx">
       <DependentUpon>FacultyCourseUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Profiles\UserControllers\Dashboard.resx">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <EmbeddedResource Include="Profiles\UserControllers\DashboardUC.resx">
+      <DependentUpon>DashboardUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForm\LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>

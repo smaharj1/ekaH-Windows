@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ekaH_Windows.Profiles.UserControllers
 {
-    public partial class Dashboard : MetroFramework.Controls.MetroUserControl
+    public partial class DashboardUC : MetroFramework.Controls.MetroUserControl
     {
-        public Dashboard()
+        public DashboardUC()
         {
             InitializeComponent();
 
