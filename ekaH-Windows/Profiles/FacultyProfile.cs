@@ -1,10 +1,12 @@
-﻿using ekaH_Windows.Profiles.UserControllers;
+﻿using ekaH_Windows.Model;
+using ekaH_Windows.Profiles.UserControllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,7 +30,44 @@ namespace ekaH_Windows.Profiles
 
         private void FacultyProfile_Load(object sender, EventArgs e)
         {
+            FacultyInfo responseFaculty;
+
             // Make REST calls here to handle bring up all the information needed.
+            // Gets the faculty information here. 
+            HttpClient client = NetworkClient.getInstance().getHttpClient();
+
+            string requestURI = BaseConnection.facultyString + "/" + userEmail + "/";
+
+            // List data response. This is the blocking call.
+            var response = client.GetAsync(requestURI).Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                responseFaculty = response.Content.ReadAsAsync<FacultyInfo>().Result;
+
+                // Rewrite the information in the labels
+                firstNameLabel.Text = responseFaculty.FirstName;
+                lastNameLabel.Text = responseFaculty.LastName;
+                educationLabel.Text = responseFaculty.Education + " in " + responseFaculty.Concentration;
+
+                departmentLabel.Text = responseFaculty.Department == "" ? "" : "Department of " + responseFaculty.Department;
+
+                addressLabel.Text = responseFaculty.StreetAdd1 == "" ? "" : responseFaculty.StreetAdd1 + "\n";
+                addressLabel.Text += responseFaculty.StreetAdd2 == "" ? "" : responseFaculty.StreetAdd2 + "\n";
+                addressLabel.Text += responseFaculty.State == "" ? "" : responseFaculty.State + ", ";
+                addressLabel.Text += responseFaculty.Zip== "" ? "" : responseFaculty.Zip+ "\n";
+
+                contactLabel.Text = userEmail;
+                
+
+            }
+            else
+            {
+                MessageBox.Show("Could not get the faculty information because of server acting up :)");
+            }
+
+
+
             viewDashboard();
             
 
@@ -107,5 +146,11 @@ namespace ekaH_Windows.Profiles
             }
 
         }
+
+        /*
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }*/
     }
 }

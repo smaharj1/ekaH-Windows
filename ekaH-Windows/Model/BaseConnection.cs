@@ -8,11 +8,13 @@ namespace ekaH_Windows.Model
 {
     class BaseConnection
     {
-        public static string URI = "http://localhost:51147/api/ekaH/";
+        public static string URI = "http://localhost:51147/ekaH/";
 
         public static string registerPostString = "register";
 
         public static string loginPostString = "login";
+
+        public static string facultyString = "faculties";
 
     }
 }
