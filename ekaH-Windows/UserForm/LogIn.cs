@@ -54,6 +54,7 @@ namespace ekaH_Windows
                 // Here, open the new relevant form according to student or professor.
                 this.Hide();
 
+
                 if (loginInfo.isStudent)
                 {
                     StudentProfile studentProfile = new StudentProfile(loginInfo.userEmail);

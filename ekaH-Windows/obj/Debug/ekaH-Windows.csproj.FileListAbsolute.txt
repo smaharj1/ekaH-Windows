@@ -1,7 +1,6 @@
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\ekaH-Windows.exe.config
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\ekaH-Windows.exe
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\ekaH-Windows.pdb
-C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH-Windows.csprojResolveAssemblyReference.cache
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Properties.Resources.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH-Windows.csproj.GenerateResource.Cache
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH-Windows.exe
@@ -16,3 +15,9 @@ C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\Newtonsoft.Json.
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.FacultyProfile.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.StudentProfile.resources
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\MetroFramework.Design.dll
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\MetroFramework.dll
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH-Windows.csprojResolveAssemblyReference.cache
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.Dashboard.resources
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.FacultyCourseUC.resources
