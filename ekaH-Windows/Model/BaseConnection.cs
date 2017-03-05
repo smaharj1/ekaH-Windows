@@ -10,11 +10,13 @@ namespace ekaH_Windows.Model
     {
         public static string URI = "http://localhost:51147/ekaH/";
 
-        public static string registerPostString = "register";
+        public static string registerPostString = "auth/register";
 
-        public static string loginPostString = "login";
+        public static string loginPostString = "auth/login";
 
         public static string facultyString = "faculties";
+
+        public static string coursesString = "courses";
 
     }
 }

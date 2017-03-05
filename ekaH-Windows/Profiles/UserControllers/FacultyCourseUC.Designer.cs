@@ -30,27 +30,32 @@
         {
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("aaa");
             this.courseListView = new MetroFramework.Controls.MetroListView();
-            this.colCourseNum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colCourseName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colYear = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colSemester = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colDescription = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.days = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.startTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.endTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.addCourse = new MetroFramework.Controls.MetroTile();
+            this.removeCourse = new MetroFramework.Controls.MetroTile();
+            this.modifyCourse = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // courseListView
             // 
             this.courseListView.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.courseListView.Alignment = System.Windows.Forms.ListViewAlignment.Left;
             this.courseListView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.courseListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.courseListView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.courseListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colCourseNum,
             this.colCourseName,
             this.colYear,
             this.colSemester,
-            this.colDescription});
+            this.days,
+            this.startTime,
+            this.endTime});
             this.courseListView.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.courseListView.FullRowSelect = true;
             this.courseListView.GridLines = true;
@@ -58,18 +63,15 @@
             this.courseListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
             this.courseListView.Location = new System.Drawing.Point(0, 84);
+            this.courseListView.MultiSelect = false;
             this.courseListView.Name = "courseListView";
             this.courseListView.OwnerDraw = true;
-            this.courseListView.Size = new System.Drawing.Size(901, 453);
+            this.courseListView.Size = new System.Drawing.Size(768, 453);
             this.courseListView.TabIndex = 0;
             this.courseListView.UseCompatibleStateImageBehavior = false;
             this.courseListView.UseSelectable = true;
             this.courseListView.View = System.Windows.Forms.View.Details;
-            // 
-            // colCourseNum
-            // 
-            this.colCourseNum.Text = "Course Code";
-            this.colCourseNum.Width = 150;
+            this.courseListView.ItemActivate += new System.EventHandler(this.onListItemClicked);
             // 
             // colCourseName
             // 
@@ -85,10 +87,20 @@
             this.colSemester.Text = "Semester";
             this.colSemester.Width = 150;
             // 
-            // colDescription
+            // days
             // 
-            this.colDescription.Text = "Description";
-            this.colDescription.Width = 290;
+            this.days.Text = "Days";
+            this.days.Width = 100;
+            // 
+            // startTime
+            // 
+            this.startTime.Text = "Start";
+            this.startTime.Width = 100;
+            // 
+            // endTime
+            // 
+            this.endTime.Text = "End";
+            this.endTime.Width = 100;
             // 
             // metroLabel1
             // 
@@ -112,11 +124,42 @@
             this.addCourse.Text = "Add a course";
             this.addCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.addCourse.UseSelectable = true;
+            this.addCourse.Click += new System.EventHandler(this.addCourse_Click);
+            // 
+            // removeCourse
+            // 
+            this.removeCourse.ActiveControl = null;
+            this.removeCourse.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.removeCourse.AutoSize = true;
+            this.removeCourse.Location = new System.Drawing.Point(488, 19);
+            this.removeCourse.Name = "removeCourse";
+            this.removeCourse.Size = new System.Drawing.Size(147, 47);
+            this.removeCourse.TabIndex = 2;
+            this.removeCourse.Text = "Remove a course";
+            this.removeCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.removeCourse.UseSelectable = true;
+            this.removeCourse.Click += new System.EventHandler(this.removeCourse_Click);
+            // 
+            // modifyCourse
+            // 
+            this.modifyCourse.ActiveControl = null;
+            this.modifyCourse.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.modifyCourse.AutoSize = true;
+            this.modifyCourse.Location = new System.Drawing.Point(656, 19);
+            this.modifyCourse.Name = "modifyCourse";
+            this.modifyCourse.Size = new System.Drawing.Size(147, 47);
+            this.modifyCourse.TabIndex = 2;
+            this.modifyCourse.Text = "Modify Course";
+            this.modifyCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.modifyCourse.UseSelectable = true;
+            this.modifyCourse.Click += new System.EventHandler(this.modifyCourse_Click);
             // 
             // FacultyCourseUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.modifyCourse);
+            this.Controls.Add(this.removeCourse);
             this.Controls.Add(this.addCourse);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.courseListView);
@@ -133,10 +176,13 @@
         private MetroFramework.Controls.MetroListView courseListView;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTile addCourse;
-        private System.Windows.Forms.ColumnHeader colCourseNum;
         private System.Windows.Forms.ColumnHeader colCourseName;
         private System.Windows.Forms.ColumnHeader colYear;
         private System.Windows.Forms.ColumnHeader colSemester;
-        private System.Windows.Forms.ColumnHeader colDescription;
+        private System.Windows.Forms.ColumnHeader days;
+        private System.Windows.Forms.ColumnHeader startTime;
+        private System.Windows.Forms.ColumnHeader endTime;
+        private MetroFramework.Controls.MetroTile removeCourse;
+        private MetroFramework.Controls.MetroTile modifyCourse;
     }
 }

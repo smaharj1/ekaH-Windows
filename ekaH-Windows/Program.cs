@@ -18,7 +18,8 @@ namespace ekaH_Windows
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LogInWindow());
-            Application.Run(new FacultyProfile("vmiller@ramapo.edu"));
+            Application.Run(new FacultyProfile("amruth@ramapo.edu"));
+            //Application.Run(new CourseModification());
         }
     }
 }

@@ -64,6 +64,7 @@
             this.courseTile.Text = "Add/Drop course";
             this.courseTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.courseTile.UseSelectable = true;
+            this.courseTile.Click += new System.EventHandler(this.courseTile_Click);
             // 
             // appointmentTile
             // 
@@ -76,7 +77,7 @@
             this.appointmentTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.appointmentTile.UseSelectable = true;
             // 
-            // Dashboard
+            // DashboardUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -84,7 +85,7 @@
             this.Controls.Add(this.appointmentTile);
             this.Controls.Add(this.courseTile);
             this.Controls.Add(this.updateInfoTile);
-            this.Name = "Dashboard";
+            this.Name = "DashboardUC";
             this.Size = new System.Drawing.Size(843, 557);
             this.ResumeLayout(false);
             this.PerformLayout();

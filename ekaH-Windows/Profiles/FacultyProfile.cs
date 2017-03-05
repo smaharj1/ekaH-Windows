@@ -72,19 +72,21 @@ namespace ekaH_Windows.Profiles
             
 
         }
+        
 
         private void viewDashboard()
         {
             if (ucDashboard == null)
             {
-                ucDashboard = new DashboardUC();
+                ucDashboard = new DashboardUC(userEmail);
                 ucDashboard.Dock = DockStyle.Fill;
 
                 contentPanel.Controls.Add(ucDashboard);
             }
-            
-            
-            contentPanel.Controls["Dashboard"].BringToFront();
+
+
+            //contentPanel.Controls["Dashboard"].BringToFront();
+            ucDashboard.BringToFront();
             
         }
 
@@ -105,7 +107,7 @@ namespace ekaH_Windows.Profiles
         {
             if (ucCourse == null)
             {
-                ucCourse = new FacultyCourseUC();
+                ucCourse = new FacultyCourseUC(userEmail);
                 ucCourse.Dock = DockStyle.Fill;
 
                 contentPanel.Controls.Add(ucCourse);

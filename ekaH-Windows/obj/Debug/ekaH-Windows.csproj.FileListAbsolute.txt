@@ -22,3 +22,4 @@ C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH-Windows.csp
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.FacultyCourseUC.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.DashboardUC.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.AppointmentControl.resources
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.CourseModification.resources
