@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ekaH_Windows.Profiles.Forms;
 
 namespace ekaH_Windows.Profiles.UserControllers
 {
@@ -39,6 +40,16 @@ namespace ekaH_Windows.Profiles.UserControllers
         {
             CourseModification addCourse = new CourseModification(emailID);
             addCourse.ShowDialog();
+
+        }
+        
+        private void updateInfoTile_Click(object sender, EventArgs e)
+        {
+            FacultyProfile profile = FacultyProfile.getInstance(emailID);
+
+            UpdateInfo update = new UpdateInfo(profile.Faculty);
+            update.ShowDialog();
+
 
         }
     }

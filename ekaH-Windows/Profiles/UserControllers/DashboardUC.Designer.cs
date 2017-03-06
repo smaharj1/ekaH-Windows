@@ -44,6 +44,7 @@
             this.updateInfoTile.Text = "Update your information";
             this.updateInfoTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.updateInfoTile.UseSelectable = true;
+            this.updateInfoTile.Click += new System.EventHandler(this.updateInfoTile_Click);
             // 
             // welcomeLabel
             // 

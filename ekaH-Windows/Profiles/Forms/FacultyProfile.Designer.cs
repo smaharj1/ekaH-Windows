@@ -221,12 +221,12 @@
             this.coursesTab.HorizontalScrollbarSize = 10;
             this.coursesTab.Location = new System.Drawing.Point(4, 38);
             this.coursesTab.Name = "coursesTab";
-            this.coursesTab.Size = new System.Drawing.Size(633, 11);
+            this.coursesTab.Size = new System.Drawing.Size(677, 11);
             this.coursesTab.TabIndex = 1;
             this.coursesTab.Text = "Courses";
             this.coursesTab.VerticalScrollbarBarColor = true;
             this.coursesTab.VerticalScrollbarHighlightOnWheel = false;
-            this.coursesTab.VerticalScrollbarSize = 4;
+            this.coursesTab.VerticalScrollbarSize = 3;
             this.coursesTab.Click += new System.EventHandler(this.coursesControl_Click);
             // 
             // appointmentTab
@@ -236,12 +236,12 @@
             this.appointmentTab.HorizontalScrollbarSize = 10;
             this.appointmentTab.Location = new System.Drawing.Point(4, 38);
             this.appointmentTab.Name = "appointmentTab";
-            this.appointmentTab.Size = new System.Drawing.Size(633, 11);
+            this.appointmentTab.Size = new System.Drawing.Size(677, 11);
             this.appointmentTab.TabIndex = 2;
             this.appointmentTab.Text = "Appointments";
             this.appointmentTab.VerticalScrollbarBarColor = true;
             this.appointmentTab.VerticalScrollbarHighlightOnWheel = false;
-            this.appointmentTab.VerticalScrollbarSize = 4;
+            this.appointmentTab.VerticalScrollbarSize = 3;
             // 
             // onlineChatTab
             // 
@@ -250,12 +250,12 @@
             this.onlineChatTab.HorizontalScrollbarSize = 10;
             this.onlineChatTab.Location = new System.Drawing.Point(4, 38);
             this.onlineChatTab.Name = "onlineChatTab";
-            this.onlineChatTab.Size = new System.Drawing.Size(633, 11);
+            this.onlineChatTab.Size = new System.Drawing.Size(677, 11);
             this.onlineChatTab.TabIndex = 3;
             this.onlineChatTab.Text = "Go Online";
             this.onlineChatTab.VerticalScrollbarBarColor = true;
             this.onlineChatTab.VerticalScrollbarHighlightOnWheel = false;
-            this.onlineChatTab.VerticalScrollbarSize = 4;
+            this.onlineChatTab.VerticalScrollbarSize = 3;
             // 
             // FacultyProfile
             // 

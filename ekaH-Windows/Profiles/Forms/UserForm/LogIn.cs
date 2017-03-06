@@ -63,7 +63,7 @@ namespace ekaH_Windows
                 }
                 else
                 {
-                    FacultyProfile studentProfile = new FacultyProfile(loginInfo.userEmail);
+                    FacultyProfile studentProfile = FacultyProfile.getInstance(loginInfo.userEmail);
                     studentProfile.ShowDialog();
                 }
                 this.Close();

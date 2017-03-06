@@ -1,4 +1,5 @@
 ﻿using ekaH_Windows.Profiles;
+using ekaH_Windows.Profiles.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,9 @@ namespace ekaH_Windows
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LogInWindow());
-            Application.Run(new FacultyProfile("amruth@ramapo.edu"));
+            Application.Run(FacultyProfile.getInstance("vmiller@ramapo.edu"));
             //Application.Run(new CourseModification());
+            //Application.Run(new UpdateInfo);
         }
     }
 }

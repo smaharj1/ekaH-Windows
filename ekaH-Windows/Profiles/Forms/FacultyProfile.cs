@@ -21,18 +21,43 @@ namespace ekaH_Windows.Profiles
         private FacultyCourseUC ucCourse;
         private AppointmentControl ucAppointment;
 
-        public FacultyProfile(string email)
+        public FacultyInfo Faculty;
+
+
+        private static FacultyProfile facultyProfile;
+
+        private FacultyProfile(string email)
         {
             InitializeComponent();
 
             userEmail = email;
         }
 
+        public static FacultyProfile getInstance(string email)
+        {
+            if (facultyProfile == null)
+            {
+                facultyProfile = new FacultyProfile(email);
+            }
+
+            return facultyProfile;
+        }
+
         private void FacultyProfile_Load(object sender, EventArgs e)
+        {
+            
+
+            // Make REST calls here to handle bring up all the information needed.
+            getFacultyInfo();
+
+            viewDashboard();
+
+        }
+
+        public void getFacultyInfo()
         {
             FacultyInfo responseFaculty;
 
-            // Make REST calls here to handle bring up all the information needed.
             // Gets the faculty information here. 
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
@@ -50,27 +75,25 @@ namespace ekaH_Windows.Profiles
                 lastNameLabel.Text = responseFaculty.LastName;
                 educationLabel.Text = responseFaculty.Education + " in " + responseFaculty.Concentration;
 
+                Address address = responseFaculty.Address;
+
                 departmentLabel.Text = responseFaculty.Department == "" ? "" : "Department of " + responseFaculty.Department;
 
-                addressLabel.Text = responseFaculty.StreetAdd1 == "" ? "" : responseFaculty.StreetAdd1 + "\n";
-                addressLabel.Text += responseFaculty.StreetAdd2 == "" ? "" : responseFaculty.StreetAdd2 + "\n";
-                addressLabel.Text += responseFaculty.State == "" ? "" : responseFaculty.State + ", ";
-                addressLabel.Text += responseFaculty.Zip== "" ? "" : responseFaculty.Zip+ "\n";
+                addressLabel.Text = address.StreetAdd1 == "" ? "" : address.StreetAdd1 + "\n";
+                addressLabel.Text += address.StreetAdd2 == "" ? "" : address.StreetAdd2 + "\n";
+                addressLabel.Text += address.State == "" ? "" : address.State + ", ";
+                addressLabel.Text += address.Zip == "" ? "" : address.Zip + "\n";
 
-                contactLabel.Text = userEmail;
-                
+                contactLabel.Text = userEmail + " " + responseFaculty.Phone;
+
+                Faculty = responseFaculty;
 
             }
             else
             {
+                Faculty = null;
                 MessageBox.Show("Could not get the faculty information because of server acting up :)");
             }
-
-
-
-            viewDashboard();
-            
-
         }
         
 
