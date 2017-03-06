@@ -77,7 +77,19 @@ namespace ekaH_Windows.Profiles
 
 
             course.Days = daysText.Text;
+            int hour = startTimeText.Value.Hour;
+            if (startTimeText.Value.ToString("tt") == "PM")
+            {
+                hour += 12;
+            }
+
             course.StartTime = new TimeSpan(startTimeText.Value.Hour, startTimeText.Value.Minute, 0);
+
+            hour = endTimeText.Value.Hour;
+            if (endTimeText.Value.ToString("tt") == "PM")
+            {
+                hour += 12;
+            }
             course.EndTime = new TimeSpan(endTimeText.Value.Hour, endTimeText.Value.Minute, 0);
         }
 

@@ -286,7 +286,7 @@
             this.daysText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.daysText.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.daysText.ForeColor = System.Drawing.Color.Gray;
-            this.daysText.Location = new System.Drawing.Point(234, 280);
+            this.daysText.Location = new System.Drawing.Point(234, 278);
             this.daysText.Name = "daysText";
             this.daysText.Size = new System.Drawing.Size(270, 25);
             this.daysText.TabIndex = 18;
