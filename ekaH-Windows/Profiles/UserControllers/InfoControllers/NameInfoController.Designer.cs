@@ -82,7 +82,7 @@
             this.rectangleShape2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rectangleShape2.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
             this.rectangleShape2.BorderColor = System.Drawing.Color.Transparent;
-            this.rectangleShape2.Location = new System.Drawing.Point(47, 388);
+            this.rectangleShape2.Location = new System.Drawing.Point(46, 388);
             this.rectangleShape2.Name = "rectangleShape2";
             this.rectangleShape2.SelectionColor = System.Drawing.Color.White;
             this.rectangleShape2.Size = new System.Drawing.Size(300, 40);

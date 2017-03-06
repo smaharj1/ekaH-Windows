@@ -32,6 +32,10 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.rectangleShape6 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape4 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.address2Text = new System.Windows.Forms.TextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -40,14 +44,11 @@
             this.stateText = new System.Windows.Forms.TextBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.zipCodeText = new System.Windows.Forms.TextBox();
-            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.rectangleShape3 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.rectangleShape4 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.SuspendLayout();
             // 
             // address1Text
             // 
+            this.address1Text.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.address1Text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.address1Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.address1Text.Font = new System.Drawing.Font("Segoe UI", 14F);
@@ -60,6 +61,7 @@
             // 
             // metroLabel1
             // 
+            this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
@@ -71,10 +73,11 @@
             // 
             // rectangleShape6
             // 
+            this.rectangleShape6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rectangleShape6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rectangleShape6.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
             this.rectangleShape6.BorderColor = System.Drawing.Color.Transparent;
-            this.rectangleShape6.Location = new System.Drawing.Point(50, 88);
+            this.rectangleShape6.Location = new System.Drawing.Point(46, 88);
             this.rectangleShape6.Name = "rectangleShape6";
             this.rectangleShape6.SelectionColor = System.Drawing.Color.White;
             this.rectangleShape6.Size = new System.Drawing.Size(300, 40);
@@ -94,8 +97,53 @@
             this.shapeContainer1.TabIndex = 8;
             this.shapeContainer1.TabStop = false;
             // 
+            // rectangleShape4
+            // 
+            this.rectangleShape4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rectangleShape4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.rectangleShape4.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape4.BorderColor = System.Drawing.Color.Transparent;
+            this.rectangleShape4.Location = new System.Drawing.Point(46, 400);
+            this.rectangleShape4.Name = "rectangleShape4";
+            this.rectangleShape4.SelectionColor = System.Drawing.Color.White;
+            this.rectangleShape4.Size = new System.Drawing.Size(300, 40);
+            // 
+            // rectangleShape3
+            // 
+            this.rectangleShape3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rectangleShape3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.rectangleShape3.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape3.BorderColor = System.Drawing.Color.Transparent;
+            this.rectangleShape3.Location = new System.Drawing.Point(46, 324);
+            this.rectangleShape3.Name = "rectangleShape3";
+            this.rectangleShape3.SelectionColor = System.Drawing.Color.White;
+            this.rectangleShape3.Size = new System.Drawing.Size(300, 40);
+            // 
+            // rectangleShape2
+            // 
+            this.rectangleShape2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rectangleShape2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.rectangleShape2.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape2.BorderColor = System.Drawing.Color.Transparent;
+            this.rectangleShape2.Location = new System.Drawing.Point(46, 246);
+            this.rectangleShape2.Name = "rectangleShape2";
+            this.rectangleShape2.SelectionColor = System.Drawing.Color.White;
+            this.rectangleShape2.Size = new System.Drawing.Size(300, 40);
+            // 
+            // rectangleShape1
+            // 
+            this.rectangleShape1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rectangleShape1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.rectangleShape1.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape1.BorderColor = System.Drawing.Color.Transparent;
+            this.rectangleShape1.Location = new System.Drawing.Point(46, 168);
+            this.rectangleShape1.Name = "rectangleShape1";
+            this.rectangleShape1.SelectionColor = System.Drawing.Color.White;
+            this.rectangleShape1.Size = new System.Drawing.Size(300, 40);
+            // 
             // metroLabel2
             // 
+            this.metroLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
@@ -107,6 +155,7 @@
             // 
             // address2Text
             // 
+            this.address2Text.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.address2Text.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.address2Text.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.address2Text.Font = new System.Drawing.Font("Segoe UI", 14F);
@@ -119,6 +168,7 @@
             // 
             // metroLabel3
             // 
+            this.metroLabel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
@@ -130,6 +180,7 @@
             // 
             // cityText
             // 
+            this.cityText.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cityText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cityText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.cityText.Font = new System.Drawing.Font("Segoe UI", 14F);
@@ -142,6 +193,7 @@
             // 
             // metroLabel4
             // 
+            this.metroLabel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.metroLabel4.AutoSize = true;
             this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
@@ -153,6 +205,7 @@
             // 
             // stateText
             // 
+            this.stateText.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.stateText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.stateText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.stateText.Font = new System.Drawing.Font("Segoe UI", 14F);
@@ -165,6 +218,7 @@
             // 
             // metroLabel5
             // 
+            this.metroLabel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
@@ -176,6 +230,7 @@
             // 
             // zipCodeText
             // 
+            this.zipCodeText.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.zipCodeText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.zipCodeText.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.zipCodeText.Font = new System.Drawing.Font("Segoe UI", 14F);
@@ -185,46 +240,6 @@
             this.zipCodeText.Size = new System.Drawing.Size(270, 25);
             this.zipCodeText.TabIndex = 7;
             this.zipCodeText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // rectangleShape1
-            // 
-            this.rectangleShape1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rectangleShape1.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape1.BorderColor = System.Drawing.Color.Transparent;
-            this.rectangleShape1.Location = new System.Drawing.Point(51, 168);
-            this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.SelectionColor = System.Drawing.Color.White;
-            this.rectangleShape1.Size = new System.Drawing.Size(300, 40);
-            // 
-            // rectangleShape2
-            // 
-            this.rectangleShape2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rectangleShape2.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape2.BorderColor = System.Drawing.Color.Transparent;
-            this.rectangleShape2.Location = new System.Drawing.Point(51, 246);
-            this.rectangleShape2.Name = "rectangleShape2";
-            this.rectangleShape2.SelectionColor = System.Drawing.Color.White;
-            this.rectangleShape2.Size = new System.Drawing.Size(300, 40);
-            // 
-            // rectangleShape3
-            // 
-            this.rectangleShape3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rectangleShape3.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape3.BorderColor = System.Drawing.Color.Transparent;
-            this.rectangleShape3.Location = new System.Drawing.Point(52, 324);
-            this.rectangleShape3.Name = "rectangleShape3";
-            this.rectangleShape3.SelectionColor = System.Drawing.Color.White;
-            this.rectangleShape3.Size = new System.Drawing.Size(300, 40);
-            // 
-            // rectangleShape4
-            // 
-            this.rectangleShape4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rectangleShape4.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape4.BorderColor = System.Drawing.Color.Transparent;
-            this.rectangleShape4.Location = new System.Drawing.Point(52, 400);
-            this.rectangleShape4.Name = "rectangleShape4";
-            this.rectangleShape4.SelectionColor = System.Drawing.Color.White;
-            this.rectangleShape4.Size = new System.Drawing.Size(300, 40);
             // 
             // AddressInfoController
             // 

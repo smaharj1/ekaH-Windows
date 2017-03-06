@@ -50,7 +50,7 @@ namespace ekaH_Windows.Profiles.UserControllers
             UpdateInfo update = new UpdateInfo(profile.Faculty);
             update.ShowDialog();
 
-
+            FacultyProfile.getInstance(emailID).getFacultyInfo();
         }
     }
 }

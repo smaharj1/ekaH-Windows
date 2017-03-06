@@ -23,7 +23,6 @@ namespace ekaH_Windows.Profiles
 
         public FacultyInfo Faculty;
 
-
         private static FacultyProfile facultyProfile;
 
         private FacultyProfile(string email)
@@ -45,8 +44,6 @@ namespace ekaH_Windows.Profiles
 
         private void FacultyProfile_Load(object sender, EventArgs e)
         {
-            
-
             // Make REST calls here to handle bring up all the information needed.
             getFacultyInfo();
 

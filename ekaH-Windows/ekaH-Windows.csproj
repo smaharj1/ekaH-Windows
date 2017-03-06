@@ -124,11 +124,11 @@
     <Compile Include="Profiles\UserControllers\InfoControllers\AddressInfoController.Designer.cs">
       <DependentUpon>AddressInfoController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profiles\UserControllers\InfoControllers\ContactController.cs">
+    <Compile Include="Profiles\UserControllers\InfoControllers\ExtraInfoController.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Profiles\UserControllers\InfoControllers\ContactController.Designer.cs">
-      <DependentUpon>ContactController.cs</DependentUpon>
+    <Compile Include="Profiles\UserControllers\InfoControllers\ExtraInfoController.Designer.cs">
+      <DependentUpon>ExtraInfoController.cs</DependentUpon>
     </Compile>
     <Compile Include="Profiles\UserControllers\InfoControllers\NameInfoController.cs">
       <SubType>UserControl</SubType>
@@ -174,8 +174,8 @@
     <EmbeddedResource Include="Profiles\UserControllers\InfoControllers\AddressInfoController.resx">
       <DependentUpon>AddressInfoController.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Profiles\UserControllers\InfoControllers\ContactController.resx">
-      <DependentUpon>ContactController.cs</DependentUpon>
+    <EmbeddedResource Include="Profiles\UserControllers\InfoControllers\ExtraInfoController.resx">
+      <DependentUpon>ExtraInfoController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\UserControllers\InfoControllers\NameInfoController.resx">
       <DependentUpon>NameInfoController.cs</DependentUpon>
