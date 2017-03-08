@@ -11,18 +11,18 @@ using ekaH_Windows.Profiles.Forms;
 
 namespace ekaH_Windows.Profiles.UserControllers
 {
-    public partial class DashboardUC : MetroFramework.Controls.MetroUserControl
+    public partial class FacultyDashboardUC : MetroFramework.Controls.MetroUserControl
     {
         public string emailID;
 
-        public DashboardUC()
+        public FacultyDashboardUC()
         {
             InitializeComponent();
 
             fillWelcome();
         }
 
-        public DashboardUC(string email)
+        public FacultyDashboardUC(string email)
         {
             emailID = email;
             InitializeComponent();

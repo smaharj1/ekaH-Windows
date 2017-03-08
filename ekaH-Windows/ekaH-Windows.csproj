@@ -110,17 +110,17 @@
     <Compile Include="Profiles\UserControllers\AppointmentControl.Designer.cs">
       <DependentUpon>AppointmentControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profiles\UserControllers\FacultyCourseUC.cs">
+    <Compile Include="Profiles\UserControllers\Faculty\FacultyCourseUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Profiles\UserControllers\FacultyCourseUC.Designer.cs">
+    <Compile Include="Profiles\UserControllers\Faculty\FacultyCourseUC.Designer.cs">
       <DependentUpon>FacultyCourseUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profiles\UserControllers\DashboardUC.cs">
+    <Compile Include="Profiles\UserControllers\Faculty\FacultyDashboardUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Profiles\UserControllers\DashboardUC.Designer.cs">
-      <DependentUpon>DashboardUC.cs</DependentUpon>
+    <Compile Include="Profiles\UserControllers\Faculty\FacultyDashboardUC.Designer.cs">
+      <DependentUpon>FacultyDashboardUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Profiles\UserControllers\InfoControllers\AddressInfoController.cs">
       <SubType>UserControl</SubType>
@@ -146,6 +146,12 @@
     <Compile Include="Profiles\Forms\UserForm\LogIn.Designer.cs">
       <DependentUpon>LogIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profiles\UserControllers\Student\StudentDashboardUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Profiles\UserControllers\Student\StudentDashboardUC.Designer.cs">
+      <DependentUpon>StudentDashboardUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Profiles\Forms\UserForm\Signup.cs">
@@ -169,11 +175,11 @@
     <EmbeddedResource Include="Profiles\UserControllers\AppointmentControl.resx">
       <DependentUpon>AppointmentControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Profiles\UserControllers\FacultyCourseUC.resx">
+    <EmbeddedResource Include="Profiles\UserControllers\Faculty\FacultyCourseUC.resx">
       <DependentUpon>FacultyCourseUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Profiles\UserControllers\DashboardUC.resx">
-      <DependentUpon>DashboardUC.cs</DependentUpon>
+    <EmbeddedResource Include="Profiles\UserControllers\Faculty\FacultyDashboardUC.resx">
+      <DependentUpon>FacultyDashboardUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\UserControllers\InfoControllers\AddressInfoController.resx">
       <DependentUpon>AddressInfoController.cs</DependentUpon>
@@ -186,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\Forms\UserForm\LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\UserControllers\Student\StudentDashboardUC.resx">
+      <DependentUpon>StudentDashboardUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

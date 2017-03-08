@@ -20,7 +20,6 @@ C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\MetroFramework.d
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\MetroFramework.Fonts.dll
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH-Windows.csprojResolveAssemblyReference.cache
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.FacultyCourseUC.resources
-C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.DashboardUC.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.AppointmentControl.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.CourseModification.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.Forms.UpdateInfo.resources
@@ -28,3 +27,5 @@ C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Pro
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.InfoControllers.AddressInfoController.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.InfoControllers.ExtraInfoController.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\MaterialSkin.dll
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.FacultyDashboardUC.resources
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.Student.StudentDashboardUC.resources

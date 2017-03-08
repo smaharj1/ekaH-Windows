@@ -70,7 +70,7 @@ namespace ekaH_Windows
             student.BackColor = Color.SkyBlue;
             faculty.BackColor = Color.FromArgb(224, 224, 224);
 
-            extraInfoText.Text = "Graduation year";
+            extraInfoText.Hint = "Graduation year";
         }
 
         // Changes the label text when faculty tab is clicked so that department info is captured.
@@ -80,7 +80,7 @@ namespace ekaH_Windows
             faculty.BackColor = Color.SkyBlue;
             student.BackColor = Color.FromArgb(224, 224, 224);
 
-            extraInfoText.Text = "Department";
+            extraInfoText.Hint = "Department";
         }
 
         private void registerTile_Click(object sender, EventArgs e)

@@ -1,6 +1,6 @@
 ﻿namespace ekaH_Windows.Profiles.UserControllers
 {
-    partial class DashboardUC
+    partial class FacultyDashboardUC
     {
         /// <summary> 
         /// Required designer variable.

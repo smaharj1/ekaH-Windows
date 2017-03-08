@@ -57,7 +57,7 @@ namespace ekaH_Windows
 
                 if (loginInfo.isStudent)
                 {
-                    StudentProfile studentProfile = new StudentProfile(loginInfo.userEmail);
+                    StudentProfile studentProfile = StudentProfile.getInstance(loginInfo.userEmail);
                     studentProfile.ShowDialog();
                     
                 }

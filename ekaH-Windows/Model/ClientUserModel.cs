@@ -34,7 +34,18 @@ namespace ekaH_Windows.Model
         public string University { get; set; }
         public string Concentration { get; set; }
         public string Phone { get; set; }
+    }
 
+    public class StudentInfo
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Education { get; set; }
+        public Address Address { get; set; }
+        public string Concentration { get; set; }
+        public string Graduation { get; set; }
+        public string Phone { get; set; }
     }
 
     

@@ -18,5 +18,7 @@ namespace ekaH_Windows.Model
 
         public static string coursesString = "courses";
 
+        public static string studentString = "students";
+
     }
 }

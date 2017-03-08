@@ -28,75 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.rectangleShape6 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.phoneText = new System.Windows.Forms.TextBox();
             this.firstNameText = new System.Windows.Forms.TextBox();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.lastNameText = new System.Windows.Forms.TextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.phoneText = new System.Windows.Forms.TextBox();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape6 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.SuspendLayout();
             // 
-            // metroLabel1
+            // phoneText
             // 
-            this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(148, 120);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(97, 25);
-            this.metroLabel1.TabIndex = 0;
-            this.metroLabel1.Text = "First Name";
-            // 
-            // rectangleShape6
-            // 
-            this.rectangleShape6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.rectangleShape6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rectangleShape6.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape6.BorderColor = System.Drawing.Color.Transparent;
-            this.rectangleShape6.Location = new System.Drawing.Point(46, 158);
-            this.rectangleShape6.Name = "rectangleShape6";
-            this.rectangleShape6.SelectionColor = System.Drawing.Color.White;
-            this.rectangleShape6.Size = new System.Drawing.Size(300, 40);
-            // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.rectangleShape2,
-            this.rectangleShape1,
-            this.rectangleShape6});
-            this.shapeContainer1.Size = new System.Drawing.Size(403, 523);
-            this.shapeContainer1.TabIndex = 1;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // rectangleShape2
-            // 
-            this.rectangleShape2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.rectangleShape2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rectangleShape2.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape2.BorderColor = System.Drawing.Color.Transparent;
-            this.rectangleShape2.Location = new System.Drawing.Point(46, 388);
-            this.rectangleShape2.Name = "rectangleShape2";
-            this.rectangleShape2.SelectionColor = System.Drawing.Color.White;
-            this.rectangleShape2.Size = new System.Drawing.Size(300, 40);
-            // 
-            // rectangleShape1
-            // 
-            this.rectangleShape1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.rectangleShape1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rectangleShape1.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
-            this.rectangleShape1.BorderColor = System.Drawing.Color.Transparent;
-            this.rectangleShape1.Location = new System.Drawing.Point(46, 271);
-            this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.SelectionColor = System.Drawing.Color.White;
-            this.rectangleShape1.Size = new System.Drawing.Size(300, 40);
+            this.phoneText.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.phoneText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.phoneText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.phoneText.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.phoneText.ForeColor = System.Drawing.Color.Gray;
+            this.phoneText.Location = new System.Drawing.Point(62, 396);
+            this.phoneText.Name = "phoneText";
+            this.phoneText.Size = new System.Drawing.Size(270, 25);
+            this.phoneText.TabIndex = 5;
+            this.phoneText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // firstNameText
             // 
@@ -110,18 +65,6 @@
             this.firstNameText.Size = new System.Drawing.Size(270, 25);
             this.firstNameText.TabIndex = 5;
             this.firstNameText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel2.Location = new System.Drawing.Point(148, 237);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(95, 25);
-            this.metroLabel2.TabIndex = 0;
-            this.metroLabel2.Text = "Last Name";
             // 
             // lastNameText
             // 
@@ -148,18 +91,75 @@
             this.metroLabel3.TabIndex = 0;
             this.metroLabel3.Text = "Phone Number";
             // 
-            // phoneText
+            // metroLabel2
             // 
-            this.phoneText.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.phoneText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.phoneText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.phoneText.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.phoneText.ForeColor = System.Drawing.Color.Gray;
-            this.phoneText.Location = new System.Drawing.Point(62, 396);
-            this.phoneText.Name = "phoneText";
-            this.phoneText.Size = new System.Drawing.Size(270, 25);
-            this.phoneText.TabIndex = 5;
-            this.phoneText.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.metroLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel2.Location = new System.Drawing.Point(148, 237);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(95, 25);
+            this.metroLabel2.TabIndex = 0;
+            this.metroLabel2.Text = "Last Name";
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel1.Location = new System.Drawing.Point(148, 120);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(97, 25);
+            this.metroLabel1.TabIndex = 0;
+            this.metroLabel1.Text = "First Name";
+            // 
+            // shapeContainer1
+            // 
+            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.rectangleShape2,
+            this.rectangleShape1,
+            this.rectangleShape6});
+            this.shapeContainer1.Size = new System.Drawing.Size(403, 523);
+            this.shapeContainer1.TabIndex = 1;
+            this.shapeContainer1.TabStop = false;
+            // 
+            // rectangleShape6
+            // 
+            this.rectangleShape6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rectangleShape6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.rectangleShape6.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape6.BorderColor = System.Drawing.Color.Transparent;
+            this.rectangleShape6.Location = new System.Drawing.Point(46, 158);
+            this.rectangleShape6.Name = "rectangleShape6";
+            this.rectangleShape6.SelectionColor = System.Drawing.Color.White;
+            this.rectangleShape6.Size = new System.Drawing.Size(300, 40);
+            // 
+            // rectangleShape1
+            // 
+            this.rectangleShape1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rectangleShape1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.rectangleShape1.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape1.BorderColor = System.Drawing.Color.Transparent;
+            this.rectangleShape1.Location = new System.Drawing.Point(46, 271);
+            this.rectangleShape1.Name = "rectangleShape1";
+            this.rectangleShape1.SelectionColor = System.Drawing.Color.White;
+            this.rectangleShape1.Size = new System.Drawing.Size(300, 40);
+            // 
+            // rectangleShape2
+            // 
+            this.rectangleShape2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rectangleShape2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.rectangleShape2.BackStyle = Microsoft.VisualBasic.PowerPacks.BackStyle.Opaque;
+            this.rectangleShape2.BorderColor = System.Drawing.Color.Transparent;
+            this.rectangleShape2.Location = new System.Drawing.Point(46, 388);
+            this.rectangleShape2.Name = "rectangleShape2";
+            this.rectangleShape2.SelectionColor = System.Drawing.Color.White;
+            this.rectangleShape2.Size = new System.Drawing.Size(300, 40);
             // 
             // NameInfoController
             // 
@@ -181,15 +181,15 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroLabel metroLabel1;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape6;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
-        private System.Windows.Forms.TextBox firstNameText;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
-        private System.Windows.Forms.TextBox lastNameText;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
         private System.Windows.Forms.TextBox phoneText;
+        private System.Windows.Forms.TextBox firstNameText;
+        private System.Windows.Forms.TextBox lastNameText;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape6;
     }
 }

@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework;
 
 namespace ekaH_Windows.Profiles
 {
@@ -17,7 +18,7 @@ namespace ekaH_Windows.Profiles
     {
         private string userEmail;
 
-        private DashboardUC ucDashboard;
+        private FacultyDashboardUC ucDashboard;
         private FacultyCourseUC ucCourse;
         private AppointmentControl ucAppointment;
 
@@ -60,36 +61,45 @@ namespace ekaH_Windows.Profiles
 
             string requestURI = BaseConnection.facultyString + "/" + userEmail + "/";
 
-            // List data response. This is the blocking call.
-            var response = client.GetAsync(requestURI).Result;
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                responseFaculty = response.Content.ReadAsAsync<FacultyInfo>().Result;
+                // List data response. This is the blocking call.
+                var response = client.GetAsync(requestURI).Result;
 
-                // Rewrite the information in the labels
-                firstNameLabel.Text = responseFaculty.FirstName;
-                lastNameLabel.Text = responseFaculty.LastName;
-                educationLabel.Text = responseFaculty.Education + " in " + responseFaculty.Concentration;
+                if (response.IsSuccessStatusCode)
+                {
+                    responseFaculty = response.Content.ReadAsAsync<FacultyInfo>().Result;
 
-                Address address = responseFaculty.Address;
+                    // Rewrite the information in the labels
+                    firstNameLabel.Text = responseFaculty.FirstName;
+                    lastNameLabel.Text = responseFaculty.LastName;
+                    educationLabel.Text = responseFaculty.Education + " in " + responseFaculty.Concentration;
 
-                departmentLabel.Text = responseFaculty.Department == "" ? "" : "Department of " + responseFaculty.Department;
+                    Address address = responseFaculty.Address;
 
-                addressLabel.Text = address.StreetAdd1 == "" ? "" : address.StreetAdd1 + "\n";
-                addressLabel.Text += address.StreetAdd2 == "" ? "" : address.StreetAdd2 + "\n";
-                addressLabel.Text += address.State == "" ? "" : address.State + ", ";
-                addressLabel.Text += address.Zip == "" ? "" : address.Zip + "\n";
+                    departmentLabel.Text = responseFaculty.Department == "" ? "" : "Department of " + responseFaculty.Department;
 
-                contactLabel.Text = userEmail + " " + responseFaculty.Phone;
+                    addressLabel.Text = address.StreetAdd1 == "" ? "" : address.StreetAdd1 + "\n";
+                    addressLabel.Text += address.StreetAdd2 == "" ? "" : address.StreetAdd2 + "\n";
+                    addressLabel.Text += address.State == "" ? "" : address.State + ", ";
+                    addressLabel.Text += address.Zip == "" ? "" : address.Zip + "\n";
 
-                Faculty = responseFaculty;
+                    contactLabel.Text = userEmail + " " + responseFaculty.Phone;
 
+                    Faculty = responseFaculty;
+
+                }
+                else
+                {
+                    Faculty = null;
+                    MetroMessageBox.Show(this, "Could not get the faculty information because of server acting up :)", "Server down!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
             }
-            else
+            catch(Exception)
             {
-                Faculty = null;
-                MessageBox.Show("Could not get the faculty information because of server acting up :)");
+                MetroMessageBox.Show(this, "Server might be shut down right now!", "Server down!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
         }
         
@@ -98,7 +108,7 @@ namespace ekaH_Windows.Profiles
         {
             if (ucDashboard == null)
             {
-                ucDashboard = new DashboardUC(userEmail);
+                ucDashboard = new FacultyDashboardUC(userEmail);
                 ucDashboard.Dock = DockStyle.Fill;
 
                 contentPanel.Controls.Add(ucDashboard);
