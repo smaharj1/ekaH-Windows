@@ -27,3 +27,4 @@ C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Pro
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.InfoControllers.NameInfoController.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.InfoControllers.AddressInfoController.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.InfoControllers.ExtraInfoController.resources
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\bin\Debug\MaterialSkin.dll

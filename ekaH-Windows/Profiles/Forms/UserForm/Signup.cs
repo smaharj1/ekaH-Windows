@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ekaH_Windows
 {
-    public partial class Signup : Form
+    public partial class Signup : MetroFramework.Forms.MetroForm
     {
         private Boolean isStudent;
 
@@ -32,43 +32,7 @@ namespace ekaH_Windows
             this.Close(); 
         }
 
-        private void signupButton_Click(object sender, EventArgs e)
-        {
-            if (verifyAllFields())
-            {
-                // Makes a REST call here
-                ClientUserRegisterModel registerInfo = new ClientUserRegisterModel();
-                registerInfo.userEmail = emailText.Text;
-                registerInfo.pswd = password1.Text;
-                registerInfo.isStudent = isStudent;
-                registerInfo.extraInfo = extraInfoText.Text;
-                registerInfo.firstName = firstNameText.Text;
-                registerInfo.lastName = lastNameText.Text;
-
-                HttpClient client = NetworkClient.getInstance().getHttpClient();
-
-                HttpResponseMessage responseReceived = client.PostAsJsonAsync(BaseConnection.registerPostString, registerInfo).Result;
-
-                if (responseReceived.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Your account has been registered. Please log in.");
-
-                    // Opens the log in window here.
-
-                    this.Hide();
-
-                    LogInWindow login = new LogInWindow();
-                    login.ShowDialog();
-
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show(responseReceived.Content.ReadAsAsync<string>().Result);
-                }
-            }
-            
-        }
+      
 
         // Verifies that all the fields meet the requirement before sending the data to the server.
         private bool verifyAllFields()
@@ -117,6 +81,43 @@ namespace ekaH_Windows
             student.BackColor = Color.FromArgb(224, 224, 224);
 
             extraInfoText.Text = "Department";
+        }
+
+        private void registerTile_Click(object sender, EventArgs e)
+        {
+            if (verifyAllFields())
+            {
+                // Makes a REST call here
+                ClientUserRegisterModel registerInfo = new ClientUserRegisterModel();
+                registerInfo.userEmail = emailText.Text;
+                registerInfo.pswd = password1.Text;
+                registerInfo.isStudent = isStudent;
+                registerInfo.extraInfo = extraInfoText.Text;
+                registerInfo.firstName = firstNameText.Text;
+                registerInfo.lastName = lastNameText.Text;
+
+                HttpClient client = NetworkClient.getInstance().getHttpClient();
+
+                HttpResponseMessage responseReceived = client.PostAsJsonAsync(BaseConnection.registerPostString, registerInfo).Result;
+
+                if (responseReceived.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Your account has been registered. Please log in.");
+
+                    // Opens the log in window here.
+
+                    this.Hide();
+
+                    LogInWindow login = new LogInWindow();
+                    login.ShowDialog();
+
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(responseReceived.Content.ReadAsAsync<string>().Result);
+                }
+            }
         }
     }
 }

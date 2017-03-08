@@ -16,7 +16,7 @@ using ekaH_Windows.Profiles;
 
 namespace ekaH_Windows
 {
-    public partial class LogInWindow : Form
+    public partial class LogInWindow : MetroFramework.Forms.MetroForm
     {
         private Boolean isStudent;
 
@@ -107,16 +107,7 @@ namespace ekaH_Windows
             this.Close();
         }
 
-        private void loginButton_Click(object sender, EventArgs e)
-        {
-
-            if (verifyLogin())
-            {
-                executeLogin();
-            }
-
-
-        }
+        
 
         private bool verifyLogin()
         {
@@ -142,6 +133,11 @@ namespace ekaH_Windows
 
             return true;
 
+        }
+
+        private void loginButton_Click_1(object sender, EventArgs e)
+        {
+            if (verifyLogin()) executeLogin();
         }
     }
 }
