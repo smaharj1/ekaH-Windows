@@ -37,11 +37,12 @@
             // updateInfoTile
             // 
             this.updateInfoTile.ActiveControl = null;
-            this.updateInfoTile.Location = new System.Drawing.Point(223, 69);
+            this.updateInfoTile.Location = new System.Drawing.Point(239, 69);
             this.updateInfoTile.Name = "updateInfoTile";
-            this.updateInfoTile.Size = new System.Drawing.Size(192, 196);
+            this.updateInfoTile.Size = new System.Drawing.Size(223, 196);
             this.updateInfoTile.TabIndex = 0;
             this.updateInfoTile.Text = "Update your information";
+            this.updateInfoTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.updateInfoTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.updateInfoTile.UseSelectable = true;
             this.updateInfoTile.Click += new System.EventHandler(this.updateInfoTile_Click);
@@ -60,9 +61,10 @@
             this.courseTile.ActiveControl = null;
             this.courseTile.Location = new System.Drawing.Point(3, 177);
             this.courseTile.Name = "courseTile";
-            this.courseTile.Size = new System.Drawing.Size(192, 88);
+            this.courseTile.Size = new System.Drawing.Size(214, 88);
             this.courseTile.TabIndex = 0;
             this.courseTile.Text = "Add/Drop course";
+            this.courseTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.courseTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.courseTile.UseSelectable = true;
             this.courseTile.Click += new System.EventHandler(this.courseTile_Click);
@@ -72,13 +74,14 @@
             this.appointmentTile.ActiveControl = null;
             this.appointmentTile.Location = new System.Drawing.Point(3, 69);
             this.appointmentTile.Name = "appointmentTile";
-            this.appointmentTile.Size = new System.Drawing.Size(192, 88);
+            this.appointmentTile.Size = new System.Drawing.Size(214, 88);
             this.appointmentTile.TabIndex = 0;
             this.appointmentTile.Text = "Schedule appointments";
+            this.appointmentTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.appointmentTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.appointmentTile.UseSelectable = true;
             // 
-            // DashboardUC
+            // FacultyDashboardUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -86,7 +89,7 @@
             this.Controls.Add(this.appointmentTile);
             this.Controls.Add(this.courseTile);
             this.Controls.Add(this.updateInfoTile);
-            this.Name = "DashboardUC";
+            this.Name = "FacultyDashboardUC";
             this.Size = new System.Drawing.Size(843, 557);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -20,6 +20,7 @@ namespace ekaH_Windows.Profiles
         private StudentInfo currentStudent;
 
         private StudentDashboardUC ucDashboard;
+        private StudentCourseUC ucCourses;
 
 
         private static StudentProfile student;
@@ -29,7 +30,8 @@ namespace ekaH_Windows.Profiles
             InitializeComponent();
 
             userEmail = email;
-            
+            initializeAllTabs();
+
         }
 
         public static StudentProfile getInstance(string email)
@@ -47,6 +49,18 @@ namespace ekaH_Windows.Profiles
             getStudentInfo();
 
             viewDashboard();
+        }
+
+        private void initializeAllTabs()
+        {
+            ucDashboard = new StudentDashboardUC();
+            ucDashboard.Dock = DockStyle.Fill;
+
+            ucCourses = new StudentCourseUC();
+            ucCourses.Dock = DockStyle.Fill;
+
+            contentPanel.Controls.Add(ucDashboard);
+            contentPanel.Controls.Add(ucCourses);
         }
 
         // This returns the student's information from the server.
@@ -111,6 +125,48 @@ namespace ekaH_Windows.Profiles
             }
 
             ucDashboard.BringToFront();
+        }
+
+        private void viewCourses()
+        {
+            if (ucCourses == null)
+            {
+                // DO NOT pass in the email. Since StudentProfile is static class, directly access it from children classes instead.
+                ucCourses = new StudentCourseUC();
+                ucCourses.Dock = DockStyle.Fill;
+
+                contentPanel.Controls.Add(ucCourses);
+            }
+
+            ucCourses.BringToFront();
+        }
+
+        // Handles the tab control situation.
+        public void onClickTabControl(Object sender, EventArgs e)
+        {
+            TabPage selectedTab = tabControl.SelectedTab;
+
+            if (selectedTab == onlineChatTab)
+            {
+                // Handle the function for displaying chat
+            }
+            else if (selectedTab == coursesTab)
+            {
+                viewCourses();
+            }
+            else if (selectedTab == appointmentTab)
+            {
+                //viewAppointments();
+            }
+            else if (selectedTab == assignmentsTabPage)
+            {
+                // view Assignments
+            }
+            else
+            {
+                // This will open the dashboard by default
+                viewDashboard();
+            }
         }
     }
 }

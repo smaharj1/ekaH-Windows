@@ -146,6 +146,12 @@
     <Compile Include="Profiles\Forms\UserForm\LogIn.Designer.cs">
       <DependentUpon>LogIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profiles\UserControllers\Student\StudentCourseUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Profiles\UserControllers\Student\StudentCourseUC.Designer.cs">
+      <DependentUpon>StudentCourseUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Profiles\UserControllers\Student\StudentDashboardUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\Forms\UserForm\LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\UserControllers\Student\StudentCourseUC.resx">
+      <DependentUpon>StudentCourseUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\UserControllers\Student\StudentDashboardUC.resx">
       <DependentUpon>StudentDashboardUC.cs</DependentUpon>

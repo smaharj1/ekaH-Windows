@@ -43,6 +43,7 @@
             this.coursesTab = new MetroFramework.Controls.MetroTabPage();
             this.appointmentTab = new MetroFramework.Controls.MetroTabPage();
             this.onlineChatTab = new MetroFramework.Controls.MetroTabPage();
+            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.metroPanel1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.SuspendLayout();
@@ -257,11 +258,23 @@
             this.onlineChatTab.VerticalScrollbarHighlightOnWheel = false;
             this.onlineChatTab.VerticalScrollbarSize = 3;
             // 
+            // materialDivider1
+            // 
+            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider1.Depth = 0;
+            this.materialDivider1.Location = new System.Drawing.Point(171, 46);
+            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider1.Name = "materialDivider1";
+            this.materialDivider1.Size = new System.Drawing.Size(10, 151);
+            this.materialDivider1.TabIndex = 7;
+            this.materialDivider1.Text = "materialDivider1";
+            // 
             // FacultyProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1031, 702);
+            this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.metroPanel1);
@@ -292,5 +305,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label departmentLabel;
+        private MaterialSkin.Controls.MaterialDivider materialDivider1;
     }
 }

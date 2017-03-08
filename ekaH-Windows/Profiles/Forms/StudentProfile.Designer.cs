@@ -43,6 +43,7 @@
             this.onlineChatTab = new MetroFramework.Controls.MetroTabPage();
             this.contentPanel = new MetroFramework.Controls.MetroPanel();
             this.assignmentsTabPage = new MetroFramework.Controls.MetroTabPage();
+            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.metroPanel1.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.SuspendLayout();
@@ -163,11 +164,12 @@
             this.tabControl.ItemSize = new System.Drawing.Size(150, 34);
             this.tabControl.Location = new System.Drawing.Point(26, 214);
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
+            this.tabControl.SelectedIndex = 1;
             this.tabControl.Size = new System.Drawing.Size(824, 53);
             this.tabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl.TabIndex = 4;
             this.tabControl.UseSelectable = true;
+            this.tabControl.Click += new System.EventHandler(this.onClickTabControl);
             // 
             // dashboardTab
             // 
@@ -261,11 +263,23 @@
             this.assignmentsTabPage.VerticalScrollbarHighlightOnWheel = false;
             this.assignmentsTabPage.VerticalScrollbarSize = 10;
             // 
+            // materialDivider1
+            // 
+            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider1.Depth = 0;
+            this.materialDivider1.Location = new System.Drawing.Point(171, 46);
+            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider1.Name = "materialDivider1";
+            this.materialDivider1.Size = new System.Drawing.Size(10, 151);
+            this.materialDivider1.TabIndex = 6;
+            this.materialDivider1.Text = "materialDivider1";
+            // 
             // StudentProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1031, 702);
+            this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.metroPanel1);
@@ -296,5 +310,6 @@
         private MetroFramework.Controls.MetroTabPage onlineChatTab;
         private MetroFramework.Controls.MetroPanel contentPanel;
         private MetroFramework.Controls.MetroTabPage assignmentsTabPage;
+        private MaterialSkin.Controls.MaterialDivider materialDivider1;
     }
 }
