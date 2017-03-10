@@ -48,7 +48,7 @@ namespace ekaH_Windows.Profiles.UserControllers
             // Make a rest call to get all the courses info
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string requestURI = BaseConnection.coursesString + "/" + this.emailID + "/";
+            string requestURI = BaseConnection.coursesString + "/" + this.emailID + "/" + BaseConnection.singularFaculty;
 
             // List data response. This is the blocking call.
             var response = client.GetAsync(requestURI).Result;
@@ -95,7 +95,7 @@ namespace ekaH_Windows.Profiles.UserControllers
 
                 HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-                string requestURI = BaseConnection.coursesString + "/" + emailID + "/" + courseSelected.CourseID;
+                string requestURI = BaseConnection.coursesString + "/" + courseSelected.CourseID;
                 
                 try
                 {

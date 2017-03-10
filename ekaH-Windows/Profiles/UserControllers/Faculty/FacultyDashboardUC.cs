@@ -47,7 +47,7 @@ namespace ekaH_Windows.Profiles.UserControllers
         {
             FacultyProfile profile = FacultyProfile.getInstance(emailID);
 
-            UpdateInfo update = new UpdateInfo(profile.Faculty);
+            UpdateInfo update = new UpdateInfo(profile.Faculty, false);
             update.ShowDialog();
 
             FacultyProfile.getInstance(emailID).getFacultyInfo();

@@ -32,9 +32,9 @@ namespace ekaH_Windows.Profiles.Forms
             InitializeComponent();
         }
 
-        public UpdateInfo(Object info)
+        public UpdateInfo(Object info, bool isStd)
         {
-            isStudent = false;
+            isStudent = isStd;
             userInfo = info;
             
             InitializeComponent();
@@ -46,12 +46,7 @@ namespace ekaH_Windows.Profiles.Forms
         }
 
 
-        /* This is for the student
-        public UpdateInfo(StudentInfo info)
-        {
-
-        }
-        */
+      
 
         private void initiateControllers()
         {

@@ -25,7 +25,7 @@ namespace ekaH_Windows.Profiles
             this.course = course;
             InitializeComponent();
 
-            CourseModification.ActiveForm.Text = "Modify your course";
+            this.Text = "Modify your course";
             modifyButton.Text = "Modify";
 
             fillData();
@@ -37,7 +37,9 @@ namespace ekaH_Windows.Profiles
             emailID = email;
             InitializeComponent();
 
-            CourseModification.ActiveForm.Text = "Create your course";
+            
+
+            this.Text = "Create your course";
             modifyButton.Text = "Create";
 
         }
@@ -104,7 +106,7 @@ namespace ekaH_Windows.Profiles
                     parseDataFromFields(ref course);
 
                     // Make a REST call to modification.
-                    string requestURI = BaseConnection.coursesString + "/" + course.ProfessorID + "/";
+                    string requestURI = BaseConnection.coursesString  + "/";
 
                     var response = client.PutAsJsonAsync<Course>(requestURI, course).Result;
 
@@ -123,9 +125,10 @@ namespace ekaH_Windows.Profiles
                 {
                     // Make a REST call to creating the course.
                     course = new Course();
+                    course.ProfessorID = emailID;
                     parseDataFromFields(ref course);
 
-                    string requestURI = BaseConnection.coursesString + "/" + emailID + "/";
+                    string requestURI = BaseConnection.coursesString  + "/";
 
                     var response = client.PostAsJsonAsync<Course>(requestURI, course).Result;
 
