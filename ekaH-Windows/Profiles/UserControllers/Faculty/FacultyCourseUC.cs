@@ -11,6 +11,7 @@ using ekaH_Windows.Model;
 using System.Net.Http;
 using System.Collections;
 using System.Web.Script.Serialization;
+using MetroFramework;
 
 namespace ekaH_Windows.Profiles.UserControllers
 {
@@ -67,7 +68,9 @@ namespace ekaH_Windows.Profiles.UserControllers
             }
             else
             {
-                MessageBox.Show("Could not get the courses information because of server acting up :)");
+                MetroMessageBox.Show(this, "Could not get the courses information because of server acting up :)",
+                    "Server error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             }
         }
 
@@ -82,11 +85,13 @@ namespace ekaH_Windows.Profiles.UserControllers
         {
             if (courseListView.SelectedItems.Count < 1)
             {
-                MessageBox.Show("Please select an itemSelected below and then delete it here.");
+                MetroMessageBox.Show(this, "Please select an item below and then delete it here.",
+                    "Select a course first", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 return;
             }
 
-            if (MessageBox.Show("Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MetroMessageBox.Show(this, "Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 // Only one itemSelected can be selected at a time.
                 ListViewItem itemSelected = courseListView.SelectedItems[0];

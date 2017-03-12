@@ -81,5 +81,15 @@ namespace ekaH_Windows.Profiles.UserControllers.InfoControllers
             extraInfoText.Text = extra;
         }
 
+        public ExtraInfoController(string degree, string conc, string extra)
+        {
+            InitializeComponent();
+
+            degreeText.Text = degree;
+            //universityText.Text = unv;
+            concentrationText.Text = conc;
+            extraInfoText.Text = extra;
+        }
+
     }
 }

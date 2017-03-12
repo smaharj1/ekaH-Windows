@@ -16,8 +16,8 @@ namespace ekaH_Windows.Profiles
 {
     public partial class StudentProfile : MetroFramework.Forms.MetroForm
     {
-        private string userEmail;
-        private StudentInfo currentStudent;
+        public string UserEmail { get; set; }
+        public StudentInfo CurrentStudent;
 
         private StudentDashboardUC ucDashboard;
         private StudentCourseUC ucCourses;
@@ -29,7 +29,7 @@ namespace ekaH_Windows.Profiles
         {
             InitializeComponent();
 
-            userEmail = email;
+            UserEmail = email;
             initializeAllTabs();
 
         }
@@ -44,6 +44,8 @@ namespace ekaH_Windows.Profiles
             return student;
         }
 
+        
+
         private void StudentProfile_Load(object sender, EventArgs e)
         {
             getStudentInfo();
@@ -53,10 +55,10 @@ namespace ekaH_Windows.Profiles
 
         private void initializeAllTabs()
         {
-            ucDashboard = new StudentDashboardUC();
+            ucDashboard = new StudentDashboardUC(this);
             ucDashboard.Dock = DockStyle.Fill;
 
-            ucCourses = new StudentCourseUC();
+            ucCourses = new StudentCourseUC(this);
             ucCourses.Dock = DockStyle.Fill;
 
             contentPanel.Controls.Add(ucDashboard);
@@ -64,14 +66,14 @@ namespace ekaH_Windows.Profiles
         }
 
         // This returns the student's information from the server.
-        private void getStudentInfo()
+        public void getStudentInfo()
         {
             StudentInfo responseStudent;
 
             // Gets the faculty information here. 
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string requestURI = BaseConnection.studentString + "/" + userEmail + "/";
+            string requestURI = BaseConnection.studentString + "/" + UserEmail + "/";
 
             try
             {
@@ -94,9 +96,9 @@ namespace ekaH_Windows.Profiles
                     addressLabel.Text += address.State == "" ? "" : address.State + ", ";
                     addressLabel.Text += address.Zip == "" ? "" : address.Zip + "\n";
 
-                    contactLabel.Text = userEmail + " " + responseStudent.Phone;
+                    contactLabel.Text = UserEmail + " " + responseStudent.Phone;
 
-                    currentStudent = responseStudent;
+                    CurrentStudent = responseStudent;
 
                 }
                 else
@@ -118,7 +120,7 @@ namespace ekaH_Windows.Profiles
             if (ucDashboard == null)
             {
                 // DO NOT pass in the email. Since StudentProfile is static class, directly access it from children classes instead.
-                ucDashboard = new StudentDashboardUC();
+                ucDashboard = new StudentDashboardUC(this);
                 ucDashboard.Dock = DockStyle.Fill;
 
                 contentPanel.Controls.Add(ucDashboard);
@@ -132,7 +134,7 @@ namespace ekaH_Windows.Profiles
             if (ucCourses == null)
             {
                 // DO NOT pass in the email. Since StudentProfile is static class, directly access it from children classes instead.
-                ucCourses = new StudentCourseUC();
+                ucCourses = new StudentCourseUC(this);
                 ucCourses.Dock = DockStyle.Fill;
 
                 contentPanel.Controls.Add(ucCourses);

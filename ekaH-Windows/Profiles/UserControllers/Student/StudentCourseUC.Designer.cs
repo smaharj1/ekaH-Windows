@@ -44,7 +44,8 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(0, 47);
+            this.metroLabel1.Location = new System.Drawing.Point(0, 72);
+            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(293, 19);
             this.metroLabel1.TabIndex = 3;
@@ -68,11 +69,12 @@
             this.courseListView.FullRowSelect = true;
             this.courseListView.GridLines = true;
             this.courseListView.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.courseListView.Location = new System.Drawing.Point(1, 84);
+            this.courseListView.Location = new System.Drawing.Point(2, 129);
+            this.courseListView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.courseListView.MultiSelect = false;
             this.courseListView.Name = "courseListView";
             this.courseListView.OwnerDraw = true;
-            this.courseListView.Size = new System.Drawing.Size(768, 453);
+            this.courseListView.Size = new System.Drawing.Size(1152, 697);
             this.courseListView.TabIndex = 2;
             this.courseListView.UseCompatibleStateImageBehavior = false;
             this.courseListView.UseSelectable = true;
@@ -110,39 +112,43 @@
             // addCourse
             // 
             this.addCourse.ActiveControl = null;
-            this.addCourse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.addCourse.AutoSize = true;
-            this.addCourse.Location = new System.Drawing.Point(310, 19);
+            this.addCourse.Location = new System.Drawing.Point(465, 29);
+            this.addCourse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addCourse.Name = "addCourse";
-            this.addCourse.Size = new System.Drawing.Size(147, 47);
+            this.addCourse.Size = new System.Drawing.Size(220, 72);
             this.addCourse.TabIndex = 4;
             this.addCourse.Text = "Add a course";
             this.addCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.addCourse.UseSelectable = true;
+            this.addCourse.Click += new System.EventHandler(this.addCourse_Click);
             // 
             // dropCourse
             // 
             this.dropCourse.ActiveControl = null;
-            this.dropCourse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dropCourse.AutoSize = true;
-            this.dropCourse.Location = new System.Drawing.Point(483, 19);
+            this.dropCourse.Location = new System.Drawing.Point(724, 29);
+            this.dropCourse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dropCourse.Name = "dropCourse";
-            this.dropCourse.Size = new System.Drawing.Size(147, 47);
+            this.dropCourse.Size = new System.Drawing.Size(220, 72);
             this.dropCourse.TabIndex = 4;
             this.dropCourse.Text = "Drop a course";
             this.dropCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.dropCourse.UseSelectable = true;
+            this.dropCourse.Click += new System.EventHandler(this.dropCourse_Click);
             // 
             // StudentCourseUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dropCourse);
             this.Controls.Add(this.addCourse);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.courseListView);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "StudentCourseUC";
-            this.Size = new System.Drawing.Size(901, 537);
+            this.Size = new System.Drawing.Size(1352, 826);
+            this.Load += new System.EventHandler(this.StudentCourseUC_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

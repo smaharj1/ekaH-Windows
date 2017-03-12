@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework;
 
 namespace ekaH_Windows.Profiles.Forms
 {
@@ -81,6 +82,31 @@ namespace ekaH_Windows.Profiles.Forms
             else
             {
                 // Do the same thing for Student. Only difference is that the object we have would be studentinfo
+                StudentInfo student = (StudentInfo)userInfo;
+
+                if (nameController == null)
+                {
+                    nameController = new NameInfoController(student.FirstName, student.LastName, student.Phone);
+                    nameController.Dock = DockStyle.Fill;
+
+                    updateInfoPanel.Controls.Add(nameController);
+                }
+
+                if (addressController == null)
+                {
+                    addressController = new AddressInfoController(student.Address);
+                    addressController.Dock = DockStyle.Fill;
+
+                    updateInfoPanel.Controls.Add(addressController);
+                }
+
+                if (extraInfoController == null)
+                {
+                    extraInfoController = new ExtraInfoController(student.Education, student.Concentration, student.Graduation);
+                    extraInfoController.Dock = DockStyle.Fill;
+
+                    updateInfoPanel.Controls.Add(extraInfoController);
+                }
             }
         }
 
@@ -191,17 +217,42 @@ namespace ekaH_Windows.Profiles.Forms
 
                 if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Amazing! The changes are saved!");
+                    MetroMessageBox.Show(this, "Amazing! The changes are saved!", "Saved!", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     this.Dispose();
                 }
                 else
                 {
-                    MessageBox.Show("Hay wire in the server! Please try again after some time!");
+                    MetroMessageBox.Show(this, "Hay wire in the server! Please try again after some time!", "Server Error!", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
                 }
             }
             else
             {
+                StudentInfo putStudent = (StudentInfo)userInfo;
+                putStudent.FirstName = nameController.FirstName;
+                putStudent.LastName = nameController.LastName;
+                putStudent.Phone = nameController.Phone;
+                putStudent.Address = addressController.inputAddress;
+                putStudent.Education = extraInfoController.Degree;
+                putStudent.Concentration = extraInfoController.Concentration;
+                putStudent.Graduation= extraInfoController.ExtraInfo;
 
+                HttpClient client = NetworkClient.getInstance().getHttpClient();
+
+                string requestURI = BaseConnection.studentString + "/" + putStudent.Email + "/";
+
+                var response = client.PutAsJsonAsync<StudentInfo>(requestURI, putStudent).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MetroMessageBox.Show(this, "Amazing! The changes are saved!", "Saved!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    this.Dispose();
+                }
+                else
+                {
+                    MetroMessageBox.Show(this, "Hay wire in the server! Please try again after some time!", "Server Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
             }
         }
     }
