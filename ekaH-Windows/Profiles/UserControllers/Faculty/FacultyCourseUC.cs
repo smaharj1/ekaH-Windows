@@ -136,6 +136,7 @@ namespace ekaH_Windows.Profiles.UserControllers
             {
                 MessageBox.Show("Please select an item below and then click this button.");
                 return;
+
             }
 
             // Only one itemSelected can be selected at a time.
