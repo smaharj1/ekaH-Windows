@@ -60,6 +60,7 @@
             this.enrollCourseTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.enrollCourseTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.enrollCourseTile.UseSelectable = true;
+            this.enrollCourseTile.Click += new System.EventHandler(this.enrollCourseTile_Click);
             // 
             // updateInfoTile
             // 

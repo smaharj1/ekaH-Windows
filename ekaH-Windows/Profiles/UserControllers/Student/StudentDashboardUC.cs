@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ekaH_Windows.Profiles.Forms;
+using ekaH_Windows.Profiles.Forms.Student;
 
 namespace ekaH_Windows.Profiles.UserControllers.Student
 {
@@ -27,6 +28,12 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
             update.ShowDialog();
 
             parent.getStudentInfo();
+        }
+
+        private void enrollCourseTile_Click(object sender, EventArgs e)
+        {
+            CourseAdd addCourse = new CourseAdd(parent.UserEmail);
+            addCourse.ShowDialog();
         }
     }
 }
