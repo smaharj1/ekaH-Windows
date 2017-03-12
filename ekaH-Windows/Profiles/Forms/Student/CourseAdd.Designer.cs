@@ -57,7 +57,7 @@
             // 
             this.searchTextBox.Depth = 0;
             this.searchTextBox.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.searchTextBox.Hint = "Search by name";
+            this.searchTextBox.Hint = "Search by professor email";
             this.searchTextBox.Location = new System.Drawing.Point(23, 280);
             this.searchTextBox.MouseState = MaterialSkin.MouseState.HOVER;
             this.searchTextBox.Name = "searchTextBox";

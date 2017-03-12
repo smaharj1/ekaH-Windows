@@ -22,5 +22,8 @@ namespace ekaH_Windows.Model
 
         public static string singularFaculty = "faculty";
 
+        public static string singleString = "single";
+
+
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ekaH_Windows.Model;
 using System.Net.Http;
 using MetroFramework;
+using ekaH_Windows.Profiles.Forms.Student;
 
 namespace ekaH_Windows.Profiles.UserControllers.Student
 {
@@ -74,6 +75,10 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
         {
             // Open the new form to get the info of the course.
             // The info would be the courseID.
+            CourseAdd courseAdd = new CourseAdd(ParentProfile.UserEmail);
+            courseAdd.ShowDialog();
+
+            executeGetRequest();
         }
 
         private void dropCourse_Click(object sender, EventArgs e)
@@ -96,7 +101,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
                 HttpClient client = NetworkClient.getInstance().getHttpClient();
 
                 string requestURI = BaseConnection.studentString + "/" + ParentProfile.UserEmail +"/"+ 
-                    BaseConnection.coursesString + courseSelected.CourseID;
+                    BaseConnection.coursesString +"/"+ courseSelected.CourseID;
 
                 try
                 {
