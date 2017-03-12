@@ -86,16 +86,22 @@
     <Compile Include="Profiles\Forms\CourseModification.Designer.cs">
       <DependentUpon>CourseModification.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profiles\Forms\FacultyProfile.cs">
+    <Compile Include="Profiles\Forms\Faculty\FacultyProfile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Profiles\Forms\FacultyProfile.Designer.cs">
+    <Compile Include="Profiles\Forms\Faculty\FacultyProfile.Designer.cs">
       <DependentUpon>FacultyProfile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profiles\Forms\StudentProfile.cs">
+    <Compile Include="Profiles\Forms\Student\CourseAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Profiles\Forms\StudentProfile.Designer.cs">
+    <Compile Include="Profiles\Forms\Student\CourseAdd.Designer.cs">
+      <DependentUpon>CourseAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Forms\Student\StudentProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profiles\Forms\Student\StudentProfile.Designer.cs">
       <DependentUpon>StudentProfile.cs</DependentUpon>
     </Compile>
     <Compile Include="Profiles\Forms\UpdateInfo.cs">
@@ -169,10 +175,13 @@
     <EmbeddedResource Include="Profiles\Forms\CourseModification.resx">
       <DependentUpon>CourseModification.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Profiles\Forms\FacultyProfile.resx">
+    <EmbeddedResource Include="Profiles\Forms\Faculty\FacultyProfile.resx">
       <DependentUpon>FacultyProfile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Profiles\Forms\StudentProfile.resx">
+    <EmbeddedResource Include="Profiles\Forms\Student\CourseAdd.resx">
+      <DependentUpon>CourseAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\Forms\Student\StudentProfile.resx">
       <DependentUpon>StudentProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\Forms\UpdateInfo.resx">
