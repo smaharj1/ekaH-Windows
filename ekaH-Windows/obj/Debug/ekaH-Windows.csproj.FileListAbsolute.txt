@@ -31,3 +31,5 @@ C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Pro
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.Student.StudentDashboardUC.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.Student.StudentCourseUC.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.Forms.Student.CourseAdd.resources
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.Forms.OnlineChat.resources
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.Forms.Chat.SingleChat.resources

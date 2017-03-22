@@ -50,9 +50,5 @@ namespace ekaH_Windows.Profiles.UserControllers.InfoControllers
             lastNameText.Text = lastName;
             phoneText.Text = phone;
         }
-
-        
-
-
     }
 }

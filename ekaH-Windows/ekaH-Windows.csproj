@@ -79,7 +79,14 @@
     <Compile Include="Model\BaseConnection.cs" />
     <Compile Include="Model\ClientUserModel.cs" />
     <Compile Include="Model\Course.cs" />
+    <Compile Include="Model\Drawer.cs" />
     <Compile Include="Model\NetworkClient.cs" />
+    <Compile Include="Profiles\Forms\Chat\SingleChat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profiles\Forms\Chat\SingleChat.Designer.cs">
+      <DependentUpon>SingleChat.cs</DependentUpon>
+    </Compile>
     <Compile Include="Profiles\Forms\CourseModification.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +98,12 @@
     </Compile>
     <Compile Include="Profiles\Forms\Faculty\FacultyProfile.Designer.cs">
       <DependentUpon>FacultyProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Forms\Chat\OnlineChat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profiles\Forms\Chat\OnlineChat.Designer.cs">
+      <DependentUpon>OnlineChat.cs</DependentUpon>
     </Compile>
     <Compile Include="Profiles\Forms\Student\CourseAdd.cs">
       <SubType>Form</SubType>
@@ -172,11 +185,17 @@
     <Compile Include="Profiles\Forms\UserForm\Signup.Designer.cs">
       <DependentUpon>Signup.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Profiles\Forms\Chat\SingleChat.resx">
+      <DependentUpon>SingleChat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Profiles\Forms\CourseModification.resx">
       <DependentUpon>CourseModification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\Forms\Faculty\FacultyProfile.resx">
       <DependentUpon>FacultyProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\Forms\Chat\OnlineChat.resx">
+      <DependentUpon>OnlineChat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\Forms\Student\CourseAdd.resx">
       <DependentUpon>CourseAdd.cs</DependentUpon>
