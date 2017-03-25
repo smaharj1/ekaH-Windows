@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework;
 using ekaH_Windows.Profiles.UserControllers.Student;
+using ekaH_Windows.Profiles.UserControllers;
 
 namespace ekaH_Windows.Profiles
 {
@@ -18,9 +19,11 @@ namespace ekaH_Windows.Profiles
     {
         public string UserEmail { get; set; }
         public StudentInfo CurrentStudent;
+        public bool isStudent = true;
 
         private StudentDashboardUC ucDashboard;
         private StudentCourseUC ucCourses;
+        private AppointmentControl ucAppointments;
 
 
         private static StudentProfile student;
@@ -61,8 +64,13 @@ namespace ekaH_Windows.Profiles
             ucCourses = new StudentCourseUC(this);
             ucCourses.Dock = DockStyle.Fill;
 
+            ucAppointments = new AppointmentControl(this, true);
+            ucAppointments.Dock = DockStyle.Fill;
+
             contentPanel.Controls.Add(ucDashboard);
             contentPanel.Controls.Add(ucCourses);
+            contentPanel.Controls.Add(ucAppointments);
+            
         }
 
         // This returns the student's information from the server.
@@ -129,6 +137,20 @@ namespace ekaH_Windows.Profiles
             ucDashboard.BringToFront();
         }
 
+        private void viewAppointments()
+        {
+            if (ucAppointments == null)
+            {
+                // DO NOT pass in the email. Since StudentProfile is static class, directly access it from children classes instead.
+                ucAppointments = new AppointmentControl(this, true);
+                ucAppointments.Dock = DockStyle.Fill;
+
+                contentPanel.Controls.Add(ucAppointments);
+            }
+
+            ucAppointments.BringToFront();
+        }
+
         private void viewCourses()
         {
             if (ucCourses == null)
@@ -158,7 +180,7 @@ namespace ekaH_Windows.Profiles
             }
             else if (selectedTab == appointmentTab)
             {
-                //viewAppointments();
+                viewAppointments();
             }
             else if (selectedTab == assignmentsTabPage)
             {

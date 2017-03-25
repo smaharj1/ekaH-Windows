@@ -28,9 +28,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
             
         }
-
-
-
+        
         private void executeGetRequest()
         {
             if (courses != null)
@@ -68,7 +66,16 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
         private void StudentCourseUC_Load(object sender, EventArgs e)
         {
-            executeGetRequest();
+            try
+            {
+                executeGetRequest();
+            }
+            catch(Exception)
+            {
+                // This means that the server is not running
+                MetroMessageBox.Show(this.Parent, "Server not running", "The server seems to be acting up. Please try again later",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void addCourse_Click(object sender, EventArgs e)

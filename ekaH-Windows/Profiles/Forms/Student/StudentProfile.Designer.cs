@@ -41,8 +41,8 @@
             this.coursesTab = new MetroFramework.Controls.MetroTabPage();
             this.appointmentTab = new MetroFramework.Controls.MetroTabPage();
             this.onlineChatTab = new MetroFramework.Controls.MetroTabPage();
-            this.contentPanel = new MetroFramework.Controls.MetroPanel();
             this.assignmentsTabPage = new MetroFramework.Controls.MetroTabPage();
+            this.contentPanel = new MetroFramework.Controls.MetroPanel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.metroPanel1.SuspendLayout();
             this.tabControl.SuspendLayout();
@@ -164,7 +164,7 @@
             this.tabControl.ItemSize = new System.Drawing.Size(150, 34);
             this.tabControl.Location = new System.Drawing.Point(26, 214);
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 1;
+            this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(824, 53);
             this.tabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl.TabIndex = 4;
@@ -231,23 +231,6 @@
             this.onlineChatTab.VerticalScrollbarHighlightOnWheel = false;
             this.onlineChatTab.VerticalScrollbarSize = 3;
             // 
-            // contentPanel
-            // 
-            this.contentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.contentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.contentPanel.HorizontalScrollbarBarColor = true;
-            this.contentPanel.HorizontalScrollbarHighlightOnWheel = false;
-            this.contentPanel.HorizontalScrollbarSize = 10;
-            this.contentPanel.Location = new System.Drawing.Point(23, 273);
-            this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(985, 409);
-            this.contentPanel.TabIndex = 5;
-            this.contentPanel.VerticalScrollbarBarColor = true;
-            this.contentPanel.VerticalScrollbarHighlightOnWheel = false;
-            this.contentPanel.VerticalScrollbarSize = 10;
-            // 
             // assignmentsTabPage
             // 
             this.assignmentsTabPage.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -262,6 +245,23 @@
             this.assignmentsTabPage.VerticalScrollbarBarColor = true;
             this.assignmentsTabPage.VerticalScrollbarHighlightOnWheel = false;
             this.assignmentsTabPage.VerticalScrollbarSize = 10;
+            // 
+            // contentPanel
+            // 
+            this.contentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.contentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.contentPanel.HorizontalScrollbarBarColor = true;
+            this.contentPanel.HorizontalScrollbarHighlightOnWheel = false;
+            this.contentPanel.HorizontalScrollbarSize = 10;
+            this.contentPanel.Location = new System.Drawing.Point(23, 273);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Size = new System.Drawing.Size(985, 607);
+            this.contentPanel.TabIndex = 5;
+            this.contentPanel.VerticalScrollbarBarColor = true;
+            this.contentPanel.VerticalScrollbarHighlightOnWheel = false;
+            this.contentPanel.VerticalScrollbarSize = 10;
             // 
             // materialDivider1
             // 
@@ -278,7 +278,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 702);
+            this.ClientSize = new System.Drawing.Size(1031, 900);
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.tabControl);

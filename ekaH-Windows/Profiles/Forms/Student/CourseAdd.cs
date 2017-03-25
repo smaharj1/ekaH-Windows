@@ -18,9 +18,8 @@ namespace ekaH_Windows.Profiles.Forms.Student
 {
     public partial class CourseAdd : MetroFramework.Forms.MetroForm
     {
-        private int tempX = 10;
-        private int tempY = 10;
-        private string  emailID;
+        private string emailID;
+
         public CourseAdd(string email)
         {
             emailID = email;

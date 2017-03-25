@@ -79,8 +79,8 @@
     <Compile Include="Model\BaseConnection.cs" />
     <Compile Include="Model\ClientUserModel.cs" />
     <Compile Include="Model\Course.cs" />
-    <Compile Include="Model\Drawer.cs" />
     <Compile Include="Model\NetworkClient.cs" />
+    <Compile Include="Model\Schedule.cs" />
     <Compile Include="Profiles\Forms\Chat\SingleChat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +165,12 @@
     <Compile Include="Profiles\Forms\UserForm\LogIn.Designer.cs">
       <DependentUpon>LogIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profiles\UserControllers\Student\ScheduleAppUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Profiles\UserControllers\Student\ScheduleAppUC.Designer.cs">
+      <DependentUpon>ScheduleAppUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Profiles\UserControllers\Student\StudentCourseUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\Forms\UserForm\LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\UserControllers\Student\ScheduleAppUC.resx">
+      <DependentUpon>ScheduleAppUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\UserControllers\Student\StudentCourseUC.resx">
       <DependentUpon>StudentCourseUC.cs</DependentUpon>

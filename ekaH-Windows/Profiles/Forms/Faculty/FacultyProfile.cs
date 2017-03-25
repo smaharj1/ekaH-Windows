@@ -16,7 +16,7 @@ namespace ekaH_Windows.Profiles
 {
     public partial class FacultyProfile : MetroFramework.Forms.MetroForm
     {
-        private string userEmail;
+        public string userEmail;
 
         private FacultyDashboardUC ucDashboard;
         private FacultyCourseUC ucCourse;
@@ -124,7 +124,7 @@ namespace ekaH_Windows.Profiles
         {
             if (ucAppointment == null)
             {
-                ucAppointment = new AppointmentControl();
+                ucAppointment = new AppointmentControl(this, false);
                 ucAppointment.Dock = DockStyle.Fill;
 
                 contentPanel.Controls.Add(ucAppointment);

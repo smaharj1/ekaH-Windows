@@ -24,6 +24,13 @@ namespace ekaH_Windows.Model
 
         public static string singleString = "single";
 
+        public static string appointments = "appointments";
+
+        public static string schedule = "schedule";
+        public static string schedules = "schedules";
+
+        public static string app = "app";
+
 
     }
 }
