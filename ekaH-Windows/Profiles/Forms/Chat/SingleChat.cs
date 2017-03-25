@@ -30,10 +30,29 @@ namespace ekaH_Windows.Profiles.Forms.Chat
         // Prints out the received data to the window.
         public void handleReceivedData(string receivedString)
         {
+            string[] user = Receiver.Split('@');
+            messageBox.Select(0, user[0].Length);
+            messageBox.SelectionFont = new Font("Segoe UI", 12, FontStyle.Bold);
+            messageBox.Text += user[0] + ": ";
+
             messageBox.Text += receivedString + "\r\n";
         }
 
         private void sendButton_Click(object sender, EventArgs e)
+        {
+
+            handleSendText();
+        }
+
+        private void messageBox_EnterClicked(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                handleSendText();
+            }
+        }
+
+        private void handleSendText()
         {
             string toSend = Receiver + OnlineChat.CONVO_LOGIC + messageTextBox.Text;
 
@@ -47,7 +66,6 @@ namespace ekaH_Windows.Profiles.Forms.Chat
                 byte[] buff = Encoding.ASCII.GetBytes(toSend);
                 ClientSocket.Send(buff);
             }
-            
         }
 
         public void assignClient(Socket clientSoc)

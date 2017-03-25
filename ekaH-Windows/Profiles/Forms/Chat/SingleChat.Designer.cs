@@ -35,6 +35,7 @@
             // 
             // messageBox
             // 
+            this.messageBox.AutoWordSelection = true;
             this.messageBox.BackColor = System.Drawing.Color.White;
             this.messageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.messageBox.Location = new System.Drawing.Point(34, 71);

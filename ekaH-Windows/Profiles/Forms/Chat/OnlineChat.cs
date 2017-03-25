@@ -86,16 +86,17 @@ namespace ekaH_Windows.Profiles.Forms
                 if (conversations.ContainsKey(email))
                 {
                     conversations[email].handleReceivedData(splitted[1]);
+                    conversations[email].handleReceivedData(splitted[1]);
                     conversations[email].BringToFront();
                 }
                 else
                 {
                     conversations[email] = new SingleChat(CurrentUser, email);
-                    conversations[email].Show();
-                    
+                    conversations[email].handleReceivedData(splitted[1]);
+                    conversations[email].ShowDialog();
                 }
 
-                conversations[email].handleReceivedData(splitted[1]);
+                
             }
             
             clientSocket.BeginReceive(globalBuffer, 0, globalBuffer.Length, SocketFlags.None, new AsyncCallback(ReceiveData), clientSocket);
