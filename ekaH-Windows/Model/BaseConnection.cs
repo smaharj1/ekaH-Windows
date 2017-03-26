@@ -28,6 +28,7 @@ namespace ekaH_Windows.Model
 
         public static string schedule = "schedule";
         public static string schedules = "schedules";
+        public static string facSchedule = "facultySchedule";
 
         public static string app = "app";
 

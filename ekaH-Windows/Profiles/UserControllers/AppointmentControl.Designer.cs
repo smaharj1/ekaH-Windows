@@ -50,6 +50,8 @@
             // 
             // upcomingAppPanel
             // 
+            this.upcomingAppPanel.AutoScroll = true;
+            this.upcomingAppPanel.HorizontalScrollbar = true;
             this.upcomingAppPanel.HorizontalScrollbarBarColor = true;
             this.upcomingAppPanel.HorizontalScrollbarHighlightOnWheel = false;
             this.upcomingAppPanel.HorizontalScrollbarSize = 10;
@@ -57,6 +59,7 @@
             this.upcomingAppPanel.Name = "upcomingAppPanel";
             this.upcomingAppPanel.Size = new System.Drawing.Size(283, 216);
             this.upcomingAppPanel.TabIndex = 3;
+            this.upcomingAppPanel.VerticalScrollbar = true;
             this.upcomingAppPanel.VerticalScrollbarBarColor = true;
             this.upcomingAppPanel.VerticalScrollbarHighlightOnWheel = false;
             this.upcomingAppPanel.VerticalScrollbarSize = 10;
@@ -74,6 +77,8 @@
             // 
             // pendingAppPanel
             // 
+            this.pendingAppPanel.AutoScroll = true;
+            this.pendingAppPanel.HorizontalScrollbar = true;
             this.pendingAppPanel.HorizontalScrollbarBarColor = true;
             this.pendingAppPanel.HorizontalScrollbarHighlightOnWheel = false;
             this.pendingAppPanel.HorizontalScrollbarSize = 10;
@@ -81,6 +86,7 @@
             this.pendingAppPanel.Name = "pendingAppPanel";
             this.pendingAppPanel.Size = new System.Drawing.Size(283, 216);
             this.pendingAppPanel.TabIndex = 3;
+            this.pendingAppPanel.VerticalScrollbar = true;
             this.pendingAppPanel.VerticalScrollbarBarColor = true;
             this.pendingAppPanel.VerticalScrollbarHighlightOnWheel = false;
             this.pendingAppPanel.VerticalScrollbarSize = 10;

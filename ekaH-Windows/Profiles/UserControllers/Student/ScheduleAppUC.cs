@@ -156,7 +156,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
             // Gets the faculty information here. 
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string requestURI = BaseConnection.appointments + "/" + BaseConnection.schedule + "/" + searchTerm+"/";
+            string requestURI = BaseConnection.appointments + "/" + BaseConnection.facSchedule + "/" + searchTerm+"/";
 
             Schedule resSchedule;
             try
