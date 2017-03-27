@@ -8,6 +8,7 @@ using MetroFramework;
 using MetroFramework.Controls;
 using System.Text;
 using System.Drawing;
+using ekaH_Windows.Profiles.Forms;
 
 namespace ekaH_Windows.Profiles.UserControllers
 {
@@ -59,17 +60,27 @@ namespace ekaH_Windows.Profiles.UserControllers
             newTile.Tag = app;
             newTile.Click += new EventHandler(handleAppointmentClick);
             newTile.Size = new Size(upcomingAppPanel.Width - 40, 80);
+            newTile.Cursor = Cursors.Hand;
             
             return newTile;
         }
 
+        // Handles what to do when appointments in upcoming and pending are clicked.
         private void handleAppointmentClick(object sender, EventArgs e)
         {
+            MetroTile tile = (MetroTile)sender;
+            Appointment app = (Appointment)tile.Tag;
 
+            // Opens the appointment action form that takes in the appointment object and 
+            // if it is student or not for appropriate actions.
+            AppointmentAction actionForm = new AppointmentAction(app, isStudent);
+            actionForm.ShowDialog();
+
+            refreshController();
         }
 
         // It refreshes the upcoming and pending panels
-        private void refreshController()
+        public void refreshController()
         {
             List<Appointment> appointments = executeGetAppointments();
 
@@ -87,7 +98,7 @@ namespace ekaH_Windows.Profiles.UserControllers
                 {
                     MetroTile tile = makeAppointmentTile(app, approveX, approveY);
                     tile.UseCustomBackColor = true;
-                    tile.BackColor = Color.DarkGreen;
+                    tile.BackColor = Color.Green;
 
                     upcomingAppPanel.Controls.Add(tile);
                     approveY += 90;

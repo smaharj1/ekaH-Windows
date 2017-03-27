@@ -14,6 +14,13 @@ namespace ekaH_Windows.Model
         public DayInfo[] Days { get; set; }
     }
 
+    public class FullAppointmentInfo
+    {
+        public FacultyInfo Faculty { get; set; }
+        public StudentInfo Student { get; set; }
+        public Appointment Appointment { get; set; }
+    }
+
     public class SingleSchedule
     {
         public int ScheduleID { get; set; }

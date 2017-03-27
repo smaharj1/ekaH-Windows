@@ -69,12 +69,15 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
                 Appointment appointment = (Appointment)selectedTile.Tag;
                 appointment.AttendeeID = email;
 
-                performPostAppointment(appointment);
+                if (performPostAppointment(appointment))
+                {
+                    appControl.refreshController();
+                }
             }
             
         }
 
-        private void performPostAppointment(Appointment appointment)
+        private bool performPostAppointment(Appointment appointment)
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
@@ -96,12 +99,14 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
                     MetroMessageBox.Show(this, "Successfully requested for appointment", "Success!"
                         , MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
                 }
             }
             catch(Exception)
             {
-
+                Worker.printServerError(this);
             }
+            return false;
         }
 
         private void refreshControl()
@@ -130,8 +135,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
             }
             catch(Exception)
             {
-                MetroMessageBox.Show(this, "Server might be shut down right now!", "Server down!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Worker.printServerError(this);
             }
 
             if (availableDates != null)
@@ -185,15 +189,13 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
                 }
                 else
                 {
-                    MetroMessageBox.Show(this, "Could not get the student information because of server acting up :)",
-                        "Server down!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Worker.printServerError(this);
 
                 }
             }
             catch (Exception)
             {
-                MetroMessageBox.Show(this, "Server might be shut down right now!", "Server down!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Worker.printServerError(this);
             }
         }
         

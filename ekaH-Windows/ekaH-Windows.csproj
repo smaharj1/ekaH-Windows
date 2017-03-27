@@ -81,6 +81,13 @@
     <Compile Include="Model\Course.cs" />
     <Compile Include="Model\NetworkClient.cs" />
     <Compile Include="Model\Schedule.cs" />
+    <Compile Include="Model\Worker.cs" />
+    <Compile Include="Profiles\Forms\AppointmentAction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profiles\Forms\AppointmentAction.Designer.cs">
+      <DependentUpon>AppointmentAction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Profiles\Forms\Chat\SingleChat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +198,9 @@
     <Compile Include="Profiles\Forms\UserForm\Signup.Designer.cs">
       <DependentUpon>Signup.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Profiles\Forms\AppointmentAction.resx">
+      <DependentUpon>AppointmentAction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Profiles\Forms\Chat\SingleChat.resx">
       <DependentUpon>SingleChat.cs</DependentUpon>
     </EmbeddedResource>
