@@ -45,6 +45,5 @@ namespace ekaH_Windows.Model
         public TimeSpan startTime { get; set; }
         public TimeSpan endTime { get; set; }
 
-        
     }
 }

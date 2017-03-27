@@ -9,6 +9,7 @@ using MetroFramework.Controls;
 using System.Text;
 using System.Drawing;
 using ekaH_Windows.Profiles.Forms;
+using ekaH_Windows.Profiles.UserControllers.Faculty;
 
 namespace ekaH_Windows.Profiles.UserControllers
 {
@@ -40,7 +41,11 @@ namespace ekaH_Windows.Profiles.UserControllers
             }
             else
             {
-                // Faculty thing is done here.
+                FacultyScheduleUC ucFaculty = new FacultyScheduleUC(this);
+                ucFaculty.Dock = DockStyle.Fill;
+                ucController = ucFaculty;
+
+                contentPanel.Controls.Add((FacultyScheduleUC)ucController);
             }
 
             // Populate the appointments in approved and yet to be confirmed.
@@ -52,8 +57,8 @@ namespace ekaH_Windows.Profiles.UserControllers
             MetroTile newTile = new MetroTile();
             DateTime date = app.StartTime;
             StringBuilder display = new StringBuilder();
-            display.Append(date.ToString("MM/dd/yyyy HH:mm tt") + " - ");
-            display.Append(app.EndTime.ToString("HH:mm tt"));
+            display.Append(date.ToString("MM/dd/yyyy hh:mm tt") + " - ");
+            display.Append(app.EndTime.ToString("hh:mm tt"));
 
             newTile.Text = display.ToString();
             newTile.Location = new Point(x, y);
@@ -107,7 +112,7 @@ namespace ekaH_Windows.Profiles.UserControllers
                 {
                     MetroTile tile = makeAppointmentTile(app, pendingX, pendingY);
                     tile.UseCustomBackColor = true;
-                    tile.BackColor = Color.OrangeRed;
+                    tile.BackColor = Color.DarkOrange;
 
                     pendingAppPanel.Controls.Add(tile);
                     pendingY += 90;

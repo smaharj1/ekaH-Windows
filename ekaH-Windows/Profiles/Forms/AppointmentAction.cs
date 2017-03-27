@@ -90,7 +90,34 @@ namespace ekaH_Windows.Profiles.Forms
 
         private void approveTile_Click(object sender, EventArgs e)
         {
+            if (executePutAppointment())
+            {
+                Dispose();
+            }
+        }
 
+        private bool executePutAppointment()
+        {
+            HttpClient client = NetworkClient.getInstance().getHttpClient();
+            appointment.Confirmed = true;
+            string uri = BaseConnection.appointments + "/" + BaseConnection.app;
+
+            try
+            {
+                var resp = client.PutAsJsonAsync(uri, appointment).Result;
+
+                if (resp.IsSuccessStatusCode)
+                {
+                    MetroMessageBox.Show(this, "Done! The appointment is confirmed", "Success!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return true;
+                }
+            }
+            catch(Exception)
+            {
+                Worker.printServerError(this);
+            }
+            return false;
         }
 
         private void deleteTile_Click(object sender, EventArgs e)

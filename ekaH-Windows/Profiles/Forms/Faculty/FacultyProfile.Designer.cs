@@ -172,7 +172,7 @@
             this.contentPanel.HorizontalScrollbarSize = 10;
             this.contentPanel.Location = new System.Drawing.Point(23, 273);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(985, 409);
+            this.contentPanel.Size = new System.Drawing.Size(985, 607);
             this.contentPanel.TabIndex = 2;
             this.contentPanel.VerticalScrollbarBarColor = true;
             this.contentPanel.VerticalScrollbarHighlightOnWheel = false;
@@ -273,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 702);
+            this.ClientSize = new System.Drawing.Size(1031, 900);
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.contentPanel);

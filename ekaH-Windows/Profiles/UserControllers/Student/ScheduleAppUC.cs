@@ -45,14 +45,15 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
             MetroTile newTile = new MetroTile();
             DateTime date = app.StartTime;
             StringBuilder display = new StringBuilder();
-            display.Append(date.ToString("MM/dd/yyyy HH:mm tt") + " - " );
-            display.Append(app.EndTime.ToString("HH:mm tt"));
+            display.Append(date.ToString("MM/dd/yyyy hh:mm tt") + " - " );
+            display.Append(app.EndTime.ToString("hh:mm tt"));
 
             newTile.Text = display.ToString();
             newTile.Location = new Point(x, y);
             newTile.Tag = app;
             newTile.Click += new EventHandler(scheduleAppointmentTileClicked);
             newTile.Size = new Size(resultPanel.Width - 40, 80);
+            newTile.Cursor = Cursors.Hand;
 
             return newTile;
 
@@ -100,6 +101,10 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
                     MetroMessageBox.Show(this, "Successfully requested for appointment", "Success!"
                         , MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return true;
+                }
+                else
+                {
+                    throw new Exception();
                 }
             }
             catch(Exception)

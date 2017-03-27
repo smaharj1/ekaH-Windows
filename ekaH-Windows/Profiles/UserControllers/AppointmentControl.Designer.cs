@@ -84,7 +84,7 @@
             this.pendingAppPanel.HorizontalScrollbarSize = 10;
             this.pendingAppPanel.Location = new System.Drawing.Point(4, 334);
             this.pendingAppPanel.Name = "pendingAppPanel";
-            this.pendingAppPanel.Size = new System.Drawing.Size(283, 216);
+            this.pendingAppPanel.Size = new System.Drawing.Size(283, 250);
             this.pendingAppPanel.TabIndex = 3;
             this.pendingAppPanel.VerticalScrollbar = true;
             this.pendingAppPanel.VerticalScrollbarBarColor = true;
@@ -109,7 +109,7 @@
             this.materialDivider2.Location = new System.Drawing.Point(294, 53);
             this.materialDivider2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider2.Name = "materialDivider2";
-            this.materialDivider2.Size = new System.Drawing.Size(10, 499);
+            this.materialDivider2.Size = new System.Drawing.Size(10, 531);
             this.materialDivider2.TabIndex = 5;
             this.materialDivider2.Text = "materialDivider2";
             // 
@@ -120,7 +120,7 @@
             this.contentPanel.HorizontalScrollbarSize = 10;
             this.contentPanel.Location = new System.Drawing.Point(310, 3);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(533, 549);
+            this.contentPanel.Size = new System.Drawing.Size(561, 581);
             this.contentPanel.TabIndex = 6;
             this.contentPanel.VerticalScrollbarBarColor = true;
             this.contentPanel.VerticalScrollbarHighlightOnWheel = false;
@@ -138,7 +138,7 @@
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Name = "AppointmentControl";
-            this.Size = new System.Drawing.Size(843, 557);
+            this.Size = new System.Drawing.Size(885, 598);
             this.Load += new System.EventHandler(this.AppointmentControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

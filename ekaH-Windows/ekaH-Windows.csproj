@@ -148,6 +148,12 @@
     <Compile Include="Profiles\UserControllers\Faculty\FacultyDashboardUC.Designer.cs">
       <DependentUpon>FacultyDashboardUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profiles\UserControllers\Faculty\FacultyScheduleUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Profiles\UserControllers\Faculty\FacultyScheduleUC.Designer.cs">
+      <DependentUpon>FacultyScheduleUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Profiles\UserControllers\InfoControllers\AddressInfoController.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -231,6 +237,9 @@
     <EmbeddedResource Include="Profiles\UserControllers\Faculty\FacultyDashboardUC.resx">
       <DependentUpon>FacultyDashboardUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\UserControllers\Faculty\FacultyScheduleUC.resx">
+      <DependentUpon>FacultyScheduleUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Profiles\UserControllers\InfoControllers\AddressInfoController.resx">
       <DependentUpon>AddressInfoController.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,6 +293,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\previousIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1490601027_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1490601027_add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1490601027_add2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\done.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
