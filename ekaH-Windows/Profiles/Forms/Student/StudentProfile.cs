@@ -97,12 +97,12 @@ namespace ekaH_Windows.Profiles
                     lastNameLabel.Text = responseStudent.LastName;
                     educationLabel.Text = responseStudent.Education + " in " + responseStudent.Concentration;
 
-                    Address address = responseStudent.Address;
+                    //Address responseStudent = responseStudent.Address;
 
-                    addressLabel.Text = address.StreetAdd1 == "" ? "" : address.StreetAdd1 + "\n";
-                    addressLabel.Text += address.StreetAdd2 == "" ? "" : address.StreetAdd2 + "\n";
-                    addressLabel.Text += address.State == "" ? "" : address.State + ", ";
-                    addressLabel.Text += address.Zip == "" ? "" : address.Zip + "\n";
+                    addressLabel.Text = responseStudent.StreetAdd1 == "" ? "" : responseStudent.StreetAdd1 + "\n";
+                    addressLabel.Text += responseStudent.StreetAdd2 == "" ? "" : responseStudent.StreetAdd2 + "\n";
+                    addressLabel.Text += responseStudent.State == "" ? "" : responseStudent.State + ", ";
+                    addressLabel.Text += responseStudent.Zip == "" ? "" : responseStudent.Zip + "\n";
 
                     contactLabel.Text = UserEmail + " " + responseStudent.Phone;
 

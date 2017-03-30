@@ -115,7 +115,7 @@ namespace ekaH_Windows
                 }
                 else
                 {
-                    MessageBox.Show(responseReceived.Content.ReadAsAsync<string>().Result);
+                    //MessageBox.Show(responseReceived.Content.ReadAsAsync<string>().Result);
                 }
             }
         }

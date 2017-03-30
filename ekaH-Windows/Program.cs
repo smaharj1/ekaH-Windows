@@ -1,4 +1,5 @@
-﻿using ekaH_Windows.Profiles;
+﻿using ekaH_Windows.Model;
+using ekaH_Windows.Profiles;
 using ekaH_Windows.Profiles.Forms;
 using ekaH_Windows.Profiles.Forms.Chat;
 using ekaH_Windows.Profiles.Forms.Student;
@@ -21,10 +22,12 @@ namespace ekaH_Windows
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LogInWindow());
-            Application.Run(FacultyProfile.getInstance("vmiller@ramapo.edu"));
-            //Application.Run(StudentProfile.getInstance("smaharj1@ramapo.edu"));
+           // Application.Run(FacultyProfile.getInstance("mserban@ramapo.edu"));
+            Application.Run(StudentProfile.getInstance("smaharj1@ramapo.edu"));
             //Application.Run(new OnlineChat("sujil"));
             // Application.Run(new SingleChat("sujil", "vivek"));
+
+            //Application.Run(new test());
 
             //Application.Run(FacultyProfile.getInstance("vmiller@ramapo.edu"));
             //Application.Run(new CourseModification());

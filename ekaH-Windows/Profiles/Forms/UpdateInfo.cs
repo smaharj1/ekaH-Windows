@@ -65,7 +65,7 @@ namespace ekaH_Windows.Profiles.Forms
 
                 if (addressController == null)
                 {
-                    addressController = new AddressInfoController(faculty.Address);
+                    addressController = new AddressInfoController(faculty.StreetAdd1, faculty.StreetAdd2, faculty.City, faculty.State, faculty.Zip);
                     addressController.Dock = DockStyle.Fill;
 
                     updateInfoPanel.Controls.Add(addressController);
@@ -94,7 +94,7 @@ namespace ekaH_Windows.Profiles.Forms
 
                 if (addressController == null)
                 {
-                    addressController = new AddressInfoController(student.Address);
+                    addressController = new AddressInfoController(student.StreetAdd1, student.StreetAdd2, student.City, student.State, student.Zip);
                     addressController.Dock = DockStyle.Fill;
 
                     updateInfoPanel.Controls.Add(addressController);
@@ -203,7 +203,12 @@ namespace ekaH_Windows.Profiles.Forms
                 putFaculty.FirstName = nameController.FirstName;
                 putFaculty.LastName = nameController.LastName;
                 putFaculty.Phone = nameController.Phone;
-                putFaculty.Address = addressController.inputAddress;
+                putFaculty.StreetAdd1 = addressController.Street1;
+                putFaculty.StreetAdd2 = addressController.Street2;
+                putFaculty.City = addressController.City;
+                putFaculty.State = addressController.State;
+                putFaculty.Zip = addressController.Zip;
+
                 putFaculty.Education = extraInfoController.Degree;
                 putFaculty.University = extraInfoController.University;
                 putFaculty.Concentration = extraInfoController.Concentration;
@@ -232,7 +237,11 @@ namespace ekaH_Windows.Profiles.Forms
                 putStudent.FirstName = nameController.FirstName;
                 putStudent.LastName = nameController.LastName;
                 putStudent.Phone = nameController.Phone;
-                putStudent.Address = addressController.inputAddress;
+                putStudent.StreetAdd1 = addressController.Street1;
+                putStudent.StreetAdd2 = addressController.Street2;
+                putStudent.City = addressController.City;
+                putStudent.State = addressController.State;
+                putStudent.Zip = addressController.Zip;
                 putStudent.Education = extraInfoController.Degree;
                 putStudent.Concentration = extraInfoController.Concentration;
                 putStudent.Graduation= extraInfoController.ExtraInfo;

@@ -75,14 +75,12 @@ namespace ekaH_Windows.Profiles
                     lastNameLabel.Text = responseFaculty.LastName;
                     educationLabel.Text = responseFaculty.Education + " in " + responseFaculty.Concentration;
 
-                    Address address = responseFaculty.Address;
-
                     departmentLabel.Text = responseFaculty.Department == "" ? "" : "Department of " + responseFaculty.Department;
 
-                    addressLabel.Text = address.StreetAdd1 == "" ? "" : address.StreetAdd1 + "\n";
-                    addressLabel.Text += address.StreetAdd2 == "" ? "" : address.StreetAdd2 + "\n";
-                    addressLabel.Text += address.State == "" ? "" : address.State + ", ";
-                    addressLabel.Text += address.Zip == "" ? "" : address.Zip + "\n";
+                    addressLabel.Text = responseFaculty.StreetAdd1 == "" ? "" : responseFaculty.StreetAdd1 + "\n";
+                    addressLabel.Text += responseFaculty.StreetAdd2 == "" ? "" : responseFaculty.StreetAdd2 + "\n";
+                    addressLabel.Text += responseFaculty.State == "" ? "" : responseFaculty.State + ", ";
+                    addressLabel.Text += responseFaculty.Zip == "" ? "" : responseFaculty.Zip + "\n";
 
                     contactLabel.Text = userEmail + " " + responseFaculty.Phone;
 

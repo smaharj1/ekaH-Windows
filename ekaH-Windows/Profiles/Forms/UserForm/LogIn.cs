@@ -41,7 +41,7 @@ namespace ekaH_Windows
         {
             ClientUserLoginModel loginInfo = new ClientUserLoginModel();
             loginInfo.pswd = passwordText.Text;
-            loginInfo.userEmail = emailText.Text;
+            loginInfo.email = emailText.Text;
             loginInfo.isStudent = this.isStudent;
 
             HttpClient client = NetworkClient.getInstance().getHttpClient();
@@ -57,13 +57,13 @@ namespace ekaH_Windows
 
                 if (loginInfo.isStudent)
                 {
-                    StudentProfile studentProfile = StudentProfile.getInstance(loginInfo.userEmail);
+                    StudentProfile studentProfile = StudentProfile.getInstance(loginInfo.email);
                     studentProfile.ShowDialog();
                     
                 }
                 else
                 {
-                    FacultyProfile studentProfile = FacultyProfile.getInstance(loginInfo.userEmail);
+                    FacultyProfile studentProfile = FacultyProfile.getInstance(loginInfo.email);
                     studentProfile.ShowDialog();
                 }
                 this.Close();

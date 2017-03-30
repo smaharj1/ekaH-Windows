@@ -31,7 +31,7 @@ namespace ekaH_Windows.Model
 
     public class Appointment
     {
-        public int AppointmentID { get; set; }
+        public int id { get; set; }
         public int ScheduleID { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }

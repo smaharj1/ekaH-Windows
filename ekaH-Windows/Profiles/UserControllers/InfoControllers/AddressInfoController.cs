@@ -13,15 +13,63 @@ namespace ekaH_Windows.Profiles.UserControllers.InfoControllers
 {
     public partial class AddressInfoController : MetroFramework.Controls.MetroUserControl
     {
-        public Address inputAddress
+        public string Street1
         {
-            get {
-                return new Address(address1Text.Text, address2Text.Text, cityText.Text, stateText.Text, zipCodeText.Text);
+            get
+            {
+                return address1Text.Text;
             }
-
             set
             {
-                inputAddress = value;
+                Street1 = value;
+            }
+        }
+
+        public string Street2
+        {
+            get
+            {
+                return address2Text.Text;
+            }
+            set
+            {
+                Street2 = value;
+            }
+        }
+
+        public string City
+        {
+            get
+            {
+                return cityText.Text;
+            }
+            set
+            {
+                City = value;
+            }
+        }
+
+        public string State
+        {
+            get
+            {
+                return stateText.Text;
+            }
+            set
+            {
+                State = value;
+            }
+        }
+
+        public string Zip
+        {
+            get
+            {
+                return zipCodeText.Text;
+            }
+            set
+            {
+                Zip = value;
             }
         }
 
@@ -30,15 +78,15 @@ namespace ekaH_Windows.Profiles.UserControllers.InfoControllers
             InitializeComponent();
         }
 
-        public AddressInfoController(Address addr)
+        public AddressInfoController(string street1, string street2, string city, string state, string zip)
         {
             InitializeComponent();
 
-            address1Text.Text = addr.StreetAdd1;
-            address2Text.Text = addr.StreetAdd2;
-            cityText.Text = addr.City;
-            stateText.Text = addr.State;
-            zipCodeText.Text = addr.Zip;
+            address1Text.Text = street1;
+            address2Text.Text = street2;
+            cityText.Text = city;
+            stateText.Text = state;
+            zipCodeText.Text = zip;
         }
     }
 }

@@ -76,8 +76,7 @@ namespace ekaH_Windows.Profiles
             {
                 course.Semester = "S";
             }
-
-
+            
             course.Days = daysText.Text;
             int hour = startTimeText.Value.Hour;
             if (startTimeText.Value.ToString("tt") == "PM")
@@ -103,10 +102,11 @@ namespace ekaH_Windows.Profiles
                 
                 if (modify)
                 {
+                    string id = course.CourseID;
                     parseDataFromFields(ref course);
 
                     // Make a REST call to modification.
-                    string requestURI = BaseConnection.coursesString  + "/";
+                    string requestURI = BaseConnection.coursesString  + "/" + id + "/";
 
                     var response = client.PutAsJsonAsync<Course>(requestURI, course).Result;
 

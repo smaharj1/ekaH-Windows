@@ -33,7 +33,7 @@ namespace ekaH_Windows.Profiles.Forms
                 approveTile.Enabled = false;
             }
 
-            fullApp = executeGetFullAppointment(appointment.AppointmentID);
+            fullApp = executeGetFullAppointment(appointment.id);
 
             printToForm(fullApp);
         }
@@ -100,7 +100,7 @@ namespace ekaH_Windows.Profiles.Forms
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
             appointment.Confirmed = true;
-            string uri = BaseConnection.appointments + "/" + BaseConnection.app;
+            string uri = BaseConnection.appointments + "/" + BaseConnection.app + "/" + appointment.id; 
 
             try
             {
@@ -138,7 +138,7 @@ namespace ekaH_Windows.Profiles.Forms
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.appointments + "/" + BaseConnection.app + "/" + appointment.AppointmentID;
+            string uri = BaseConnection.appointments + "/" + BaseConnection.app + "/" + appointment.id;
 
             try
             {
