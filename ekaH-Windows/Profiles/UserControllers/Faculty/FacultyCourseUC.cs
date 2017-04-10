@@ -12,6 +12,7 @@ using System.Net.Http;
 using System.Collections;
 using System.Web.Script.Serialization;
 using MetroFramework;
+using ekaH_Windows.Profiles.Forms;
 
 namespace ekaH_Windows.Profiles.UserControllers
 {
@@ -129,14 +130,33 @@ namespace ekaH_Windows.Profiles.UserControllers
             courseListView.Items.Remove(listItem);
         }
 
+        // Opens the new form to view the details of the course selected and handle the assignments feature.
+        public void viewDetails_Click(object sender, EventArgs e)
+        {
+            // Checks if the course is selected first.
+            if (courseListView.SelectedItems.Count < 1)
+            {
+                MetroMessageBox.Show(this, "Please select an item below and then click this button.", "Select Course first", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                return;
+            }
+
+            // Only one itemSelected can be selected at a time.
+            ListViewItem itemSelected = courseListView.SelectedItems[0];
+
+            Course selectedCourse = (Course)itemSelected.Tag;
+
+            CourseDetail courseDetailForm = new CourseDetail(selectedCourse, false);
+            courseDetailForm.Show();
+        }
+
         // Modifies the info once it is clicked. Only few of the details of the course can be modified.
         private void modifyCourse_Click(object sender, EventArgs e)
         {
             if (courseListView.SelectedItems.Count < 1)
             {
-                MessageBox.Show("Please select an item below and then click this button.");
+                MetroMessageBox.Show(this, "Please select an item below and then click this button.", "Select Course first", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                
                 return;
-
             }
 
             // Only one itemSelected can be selected at a time.

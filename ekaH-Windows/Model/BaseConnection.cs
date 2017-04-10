@@ -33,6 +33,8 @@ namespace ekaH_Windows.Model
 
         public static string app = "app";
 
+        public static string assignments = "assignments";
+
 
     }
 }

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("aaa");
             this.courseListView = new MetroFramework.Controls.MetroListView();
             this.colCourseName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colYear = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -40,6 +39,7 @@
             this.addCourse = new MetroFramework.Controls.MetroTile();
             this.removeCourse = new MetroFramework.Controls.MetroTile();
             this.modifyCourse = new MetroFramework.Controls.MetroTile();
+            this.detailsTile = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // courseListView
@@ -60,8 +60,6 @@
             this.courseListView.FullRowSelect = true;
             this.courseListView.GridLines = true;
             this.courseListView.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.courseListView.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
             this.courseListView.Location = new System.Drawing.Point(0, 84);
             this.courseListView.MultiSelect = false;
             this.courseListView.Name = "courseListView";
@@ -119,7 +117,7 @@
             this.addCourse.AutoSize = true;
             this.addCourse.Location = new System.Drawing.Point(321, 19);
             this.addCourse.Name = "addCourse";
-            this.addCourse.Size = new System.Drawing.Size(147, 47);
+            this.addCourse.Size = new System.Drawing.Size(113, 47);
             this.addCourse.TabIndex = 2;
             this.addCourse.Text = "Add a course";
             this.addCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
@@ -131,9 +129,9 @@
             this.removeCourse.ActiveControl = null;
             this.removeCourse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.removeCourse.AutoSize = true;
-            this.removeCourse.Location = new System.Drawing.Point(488, 19);
+            this.removeCourse.Location = new System.Drawing.Point(440, 19);
             this.removeCourse.Name = "removeCourse";
-            this.removeCourse.Size = new System.Drawing.Size(147, 47);
+            this.removeCourse.Size = new System.Drawing.Size(132, 47);
             this.removeCourse.TabIndex = 2;
             this.removeCourse.Text = "Remove a course";
             this.removeCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
@@ -145,19 +143,34 @@
             this.modifyCourse.ActiveControl = null;
             this.modifyCourse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.modifyCourse.AutoSize = true;
-            this.modifyCourse.Location = new System.Drawing.Point(656, 19);
+            this.modifyCourse.Location = new System.Drawing.Point(578, 19);
             this.modifyCourse.Name = "modifyCourse";
-            this.modifyCourse.Size = new System.Drawing.Size(147, 47);
+            this.modifyCourse.Size = new System.Drawing.Size(114, 47);
             this.modifyCourse.TabIndex = 2;
             this.modifyCourse.Text = "Modify Course";
             this.modifyCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.modifyCourse.UseSelectable = true;
             this.modifyCourse.Click += new System.EventHandler(this.modifyCourse_Click);
             // 
+            // detailsTile
+            // 
+            this.detailsTile.ActiveControl = null;
+            this.detailsTile.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.detailsTile.AutoSize = true;
+            this.detailsTile.Location = new System.Drawing.Point(698, 19);
+            this.detailsTile.Name = "detailsTile";
+            this.detailsTile.Size = new System.Drawing.Size(114, 47);
+            this.detailsTile.TabIndex = 2;
+            this.detailsTile.Text = "View Details";
+            this.detailsTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.detailsTile.UseSelectable = true;
+            this.detailsTile.Click += new System.EventHandler(this.viewDetails_Click);
+            // 
             // FacultyCourseUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.detailsTile);
             this.Controls.Add(this.modifyCourse);
             this.Controls.Add(this.removeCourse);
             this.Controls.Add(this.addCourse);
@@ -184,5 +197,6 @@
         private System.Windows.Forms.ColumnHeader endTime;
         private MetroFramework.Controls.MetroTile removeCourse;
         private MetroFramework.Controls.MetroTile modifyCourse;
+        private MetroFramework.Controls.MetroTile detailsTile;
     }
 }
