@@ -22,8 +22,8 @@ namespace ekaH_Windows
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LogInWindow());
-            Application.Run(FacultyProfile.getInstance("vmiller@ramapo.edu"));
-            //Application.Run(StudentProfile.getInstance("smaharj1@ramapo.edu"));
+            //Application.Run(FacultyProfile.getInstance("vmiller@ramapo.edu"));
+            Application.Run(StudentProfile.getInstance("smaharj1@ramapo.edu"));
             //Application.Run(new OnlineChat("sujil"));
             // Application.Run(new SingleChat("sujil", "vivek"));
 

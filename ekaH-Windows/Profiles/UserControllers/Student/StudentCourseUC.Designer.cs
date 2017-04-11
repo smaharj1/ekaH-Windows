@@ -38,14 +38,14 @@
             this.endTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.addCourse = new MetroFramework.Controls.MetroTile();
             this.dropCourse = new MetroFramework.Controls.MetroTile();
+            this.detailsTile = new MetroFramework.Controls.MetroTile();
             this.SuspendLayout();
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(0, 72);
-            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel1.Location = new System.Drawing.Point(0, 47);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(293, 19);
             this.metroLabel1.TabIndex = 3;
@@ -69,12 +69,11 @@
             this.courseListView.FullRowSelect = true;
             this.courseListView.GridLines = true;
             this.courseListView.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.courseListView.Location = new System.Drawing.Point(2, 129);
-            this.courseListView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.courseListView.Location = new System.Drawing.Point(1, 84);
             this.courseListView.MultiSelect = false;
             this.courseListView.Name = "courseListView";
             this.courseListView.OwnerDraw = true;
-            this.courseListView.Size = new System.Drawing.Size(1152, 697);
+            this.courseListView.Size = new System.Drawing.Size(768, 453);
             this.courseListView.TabIndex = 2;
             this.courseListView.UseCompatibleStateImageBehavior = false;
             this.courseListView.UseSelectable = true;
@@ -113,10 +112,9 @@
             // 
             this.addCourse.ActiveControl = null;
             this.addCourse.AutoSize = true;
-            this.addCourse.Location = new System.Drawing.Point(465, 29);
-            this.addCourse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.addCourse.Location = new System.Drawing.Point(310, 19);
             this.addCourse.Name = "addCourse";
-            this.addCourse.Size = new System.Drawing.Size(220, 72);
+            this.addCourse.Size = new System.Drawing.Size(129, 47);
             this.addCourse.TabIndex = 4;
             this.addCourse.Text = "Add a course";
             this.addCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
@@ -127,27 +125,40 @@
             // 
             this.dropCourse.ActiveControl = null;
             this.dropCourse.AutoSize = true;
-            this.dropCourse.Location = new System.Drawing.Point(724, 29);
-            this.dropCourse.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dropCourse.Location = new System.Drawing.Point(460, 19);
             this.dropCourse.Name = "dropCourse";
-            this.dropCourse.Size = new System.Drawing.Size(220, 72);
+            this.dropCourse.Size = new System.Drawing.Size(127, 47);
             this.dropCourse.TabIndex = 4;
             this.dropCourse.Text = "Drop a course";
             this.dropCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.dropCourse.UseSelectable = true;
             this.dropCourse.Click += new System.EventHandler(this.dropCourse_Click);
             // 
+            // detailsTile
+            // 
+            this.detailsTile.ActiveControl = null;
+            this.detailsTile.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.detailsTile.AutoSize = true;
+            this.detailsTile.Location = new System.Drawing.Point(606, 19);
+            this.detailsTile.Name = "detailsTile";
+            this.detailsTile.Size = new System.Drawing.Size(128, 47);
+            this.detailsTile.TabIndex = 5;
+            this.detailsTile.Text = "View Details";
+            this.detailsTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.detailsTile.UseSelectable = true;
+            this.detailsTile.Click += new System.EventHandler(this.detailsTile_Click);
+            // 
             // StudentCourseUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.detailsTile);
             this.Controls.Add(this.dropCourse);
             this.Controls.Add(this.addCourse);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.courseListView);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "StudentCourseUC";
-            this.Size = new System.Drawing.Size(1352, 826);
+            this.Size = new System.Drawing.Size(901, 537);
             this.Load += new System.EventHandler(this.StudentCourseUC_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -166,5 +177,6 @@
         private System.Windows.Forms.ColumnHeader endTime;
         private MetroFramework.Controls.MetroTile addCourse;
         private MetroFramework.Controls.MetroTile dropCourse;
+        private MetroFramework.Controls.MetroTile detailsTile;
     }
 }

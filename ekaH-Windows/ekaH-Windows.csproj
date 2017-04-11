@@ -203,6 +203,12 @@
     <Compile Include="Profiles\UserControllers\Student\ScheduleAppUC.Designer.cs">
       <DependentUpon>ScheduleAppUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profiles\UserControllers\Student\StudentAssignmentUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Profiles\UserControllers\Student\StudentAssignmentUC.Designer.cs">
+      <DependentUpon>StudentAssignmentUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Profiles\UserControllers\Student\StudentCourseUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -279,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\UserControllers\Student\ScheduleAppUC.resx">
       <DependentUpon>ScheduleAppUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\UserControllers\Student\StudentAssignmentUC.resx">
+      <DependentUpon>StudentAssignmentUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\UserControllers\Student\StudentCourseUC.resx">
       <DependentUpon>StudentCourseUC.cs</DependentUpon>

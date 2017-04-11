@@ -38,3 +38,4 @@ C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Pro
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.Faculty.FacultyScheduleUC.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.Forms.CourseDetail.resources
 C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.Faculty.FacultyAssignmentUC.resources
+C:\Users\sujil\Desktop\ekaH\ekaH-Windows\ekaH-Windows\obj\Debug\ekaH_Windows.Profiles.UserControllers.Student.StudentAssignmentUC.resources

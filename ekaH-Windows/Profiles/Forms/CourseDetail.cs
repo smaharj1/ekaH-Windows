@@ -1,5 +1,6 @@
 ﻿using ekaH_Windows.Model;
 using ekaH_Windows.Profiles.UserControllers.Faculty;
+using ekaH_Windows.Profiles.UserControllers.Student;
 using MetroFramework;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,8 @@ namespace ekaH_Windows.Profiles.Forms
         private Course course { get; set; }
         private bool isStudent = false;
 
-        FacultyAssignmentUC ucFacAssignment;
+        private FacultyAssignmentUC ucFacAssignment;
+        private StudentAssignmentUC ucStdAssignment;
 
         public CourseDetail(Course givenCourse, bool isStd)
         {
@@ -36,9 +38,11 @@ namespace ekaH_Windows.Profiles.Forms
             
             // Gets all the projects in the course.
             List<Assignment> assignments = getAssignmentsByCourseID();
-
+            
             // Populate the list
             populateList(assignments);
+
+            addAssignment.Visible = isStudent ? false : true;
         }
 
         private void assignmentList_OnMouseHover(object sender, EventArgs e)
@@ -66,7 +70,16 @@ namespace ekaH_Windows.Profiles.Forms
             }
             else
             {
+                if (ucStdAssignment == null)
+                {
+                    ucStdAssignment = new StudentAssignmentUC();
+                    ucStdAssignment.Dock = DockStyle.Fill;
 
+                    courseDetailPanel.Controls.Add(ucStdAssignment);
+                }
+
+                ucStdAssignment.open(clickedAssignment);
+                ucStdAssignment.BringToFront();
             }
         }
 
@@ -87,7 +100,7 @@ namespace ekaH_Windows.Profiles.Forms
 
                 if (response.StatusCode ==HttpStatusCode.NotFound)
                 {
-                    MetroMessageBox.Show(this, "No assignments exist in this course. Please Add the assignment.",
+                    MetroMessageBox.Show(this, "No assignments exist in this course",
                         "No Assignments exists!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }

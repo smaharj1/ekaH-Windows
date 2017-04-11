@@ -11,6 +11,7 @@ using ekaH_Windows.Model;
 using System.Net.Http;
 using MetroFramework;
 using ekaH_Windows.Profiles.Forms.Student;
+using ekaH_Windows.Profiles.Forms;
 
 namespace ekaH_Windows.Profiles.UserControllers.Student
 {
@@ -130,6 +131,24 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
                     MessageBox.Show("Server acted up.. ");
                 }
             }
+        }
+
+        private void detailsTile_Click(object sender, EventArgs e)
+        {
+            // Checks if the course is selected first.
+            if (courseListView.SelectedItems.Count < 1)
+            {
+                MetroMessageBox.Show(this, "Please select an item below and then click this button.", "Select Course first", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                return;
+            }
+
+            // Only one itemSelected can be selected at a time.
+            ListViewItem itemSelected = courseListView.SelectedItems[0];
+
+            Course selectedCourse = (Course)itemSelected.Tag;
+
+            CourseDetail courseDetailForm = new CourseDetail(selectedCourse, true);
+            courseDetailForm.Show();
         }
     }
 }
