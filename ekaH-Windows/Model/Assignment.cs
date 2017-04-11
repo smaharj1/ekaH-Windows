@@ -18,6 +18,7 @@ namespace ekaH_Windows.Model
         public byte[] attachments { get; set; }
 
         public virtual ICollection<Submission> submissions { get; set; }
+        public virtual Course course { get; set; }
     }
 
     public class Submission

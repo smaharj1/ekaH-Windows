@@ -17,8 +17,8 @@ namespace ekaH_Windows.Profiles.Forms
 {
     public partial class CourseDetail : MetroFramework.Forms.MetroForm
     {
-        Course course;
-        bool isStudent = false;
+        private Course course { get; set; }
+        private bool isStudent = false;
 
         FacultyAssignmentUC ucFacAssignment;
 
@@ -122,5 +122,23 @@ namespace ekaH_Windows.Profiles.Forms
             }
         }
 
+        /// <summary>
+        /// On Click listener for adding the assignment.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void metroTile1_Click(object sender, EventArgs e)
+        {
+            if (ucFacAssignment == null)
+            {
+                ucFacAssignment = new FacultyAssignmentUC();
+                ucFacAssignment.Dock = DockStyle.Fill;
+
+                courseDetailPanel.Controls.Add(ucFacAssignment);
+            }
+
+            ucFacAssignment.makeNew(course, assignmentList.Items.Count+1);
+            ucFacAssignment.BringToFront();
+        }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.addAssignment = new MetroFramework.Controls.MetroTile();
             this.assignmentList = new System.Windows.Forms.ListView();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.courseDetailPanel = new System.Windows.Forms.Panel();
@@ -39,7 +39,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(171)))), ((int)(((byte)(227)))));
-            this.panel1.Controls.Add(this.metroTile1);
+            this.panel1.Controls.Add(this.addAssignment);
             this.panel1.Controls.Add(this.assignmentList);
             this.panel1.Controls.Add(this.metroLabel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -48,19 +48,20 @@
             this.panel1.Size = new System.Drawing.Size(314, 712);
             this.panel1.TabIndex = 0;
             // 
-            // metroTile1
+            // addAssignment
             // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.BackColor = System.Drawing.Color.White;
-            this.metroTile1.Location = new System.Drawing.Point(17, 561);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(281, 48);
-            this.metroTile1.TabIndex = 2;
-            this.metroTile1.Text = "Add an assignment";
-            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile1.UseCustomBackColor = true;
-            this.metroTile1.UseCustomForeColor = true;
-            this.metroTile1.UseSelectable = true;
+            this.addAssignment.ActiveControl = null;
+            this.addAssignment.BackColor = System.Drawing.Color.White;
+            this.addAssignment.Location = new System.Drawing.Point(17, 561);
+            this.addAssignment.Name = "addAssignment";
+            this.addAssignment.Size = new System.Drawing.Size(281, 48);
+            this.addAssignment.TabIndex = 2;
+            this.addAssignment.Text = "Add an assignment";
+            this.addAssignment.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.addAssignment.UseCustomBackColor = true;
+            this.addAssignment.UseCustomForeColor = true;
+            this.addAssignment.UseSelectable = true;
+            this.addAssignment.Click += new System.EventHandler(this.metroTile1_Click);
             // 
             // assignmentList
             // 
@@ -126,7 +127,7 @@
         private System.Windows.Forms.Panel panel1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.ListView assignmentList;
-        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile addAssignment;
         private System.Windows.Forms.Panel courseDetailPanel;
     }
 }

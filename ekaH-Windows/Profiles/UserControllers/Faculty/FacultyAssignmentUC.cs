@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -10,6 +11,9 @@ using System.Windows.Forms;
 
 using ekaH_Windows.Model;
 using System.IO;
+using System.Net.Http;
+using MetroFramework;
+using ekaH_Windows.Profiles.Forms;
 
 namespace ekaH_Windows.Profiles.UserControllers.Faculty
 {
@@ -23,6 +27,12 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
         private Font preferredFont;
         private Color preferredForeColor;
 
+        private Font defaultFont;
+        private Color defaultForeColor;
+
+        private bool isNew = false;
+
+
         public FacultyAssignmentUC()
         {
             openAssignments = new List<Assignment>();
@@ -30,6 +40,24 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
 
             preferredFont = assignmentRTB.Font;
             preferredForeColor = Color.Black;
+
+            defaultFont = assignmentRTB.Font;
+            defaultForeColor = Color.Black;
+        }
+
+        public void makeNew(Course course, int projectNum)
+        {
+            isNew = true;
+            currentAssgn = new Assignment();
+            currentAssgn.courseID = course.CourseID;
+            currentAssgn.deadline = DateTime.Today;
+            currentAssgn.weight = -1;
+            currentAssgn.projectNum = projectNum;
+            currentAssgn.projectTitle = "";
+            currentAssgn.content = "";
+
+            updateView();
+
         }
 
         /// <summary>
@@ -38,6 +66,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
         /// <param name="assgn"></param>
         public void open(Assignment assgn)
         {
+            isNew = false;
             /// Checks if the assignment was previously open to reduce the number of UC objects being formed.
             if (openAssignments.Contains(assgn))
             {
@@ -57,30 +86,134 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
         private void updateView()
         {
             projectName.Text = currentAssgn.projectTitle;
-            
-            // For now, just do the content.
-            assignmentRTB.Text = currentAssgn.content;
+            weightTextBox.Text = currentAssgn.weight.ToString();
+            deadlineBox.Value = currentAssgn.deadline;
+            assignmentRTB.Clear();
 
+            string decodedString = WebUtility.UrlDecode(currentAssgn.content);
+            // For now, just do the content.
+            try
+            {
+                assignmentRTB.Rtf = decodedString;
+            }
+            catch(Exception)
+            {
+                assignmentRTB.Text = currentAssgn.content;
+            }
         }
 
         private void editBox_Click(object sender, EventArgs e)
         {
-            setButtonsVisibility(true);
+            setFieldsEnabled(true);
         }
 
-        private void setButtonsVisibility(bool given)
+        private void setFieldsEnabled(bool given)
         {
             assignmentRTB.Enabled = given;
             saveBox.Visible = given;
             fontBox.Visible = given;
             fontPanel.Visible = given;
+            projectName.Enabled = given;
+            weightTextBox.Enabled = given;
+            deadlineBox.Enabled = given;
         }
 
         private void saveBox_Click(object sender, EventArgs e)
         {
-            setButtonsVisibility(false);
+            setFieldsEnabled(false);
 
             // Make put call to the database.
+            string encodedString = WebUtility.UrlEncode(assignmentRTB.Rtf);
+
+            currentAssgn.content = encodedString;
+
+            DateTime givenDT = deadlineBox.Value;
+            TimeSpan midnight = new TimeSpan(23, 59, 59);
+            givenDT = givenDT.Date + midnight;
+
+            currentAssgn.deadline = givenDT;
+            try
+            {
+                currentAssgn.weight = int.Parse(weightTextBox.Text);
+            }catch(Exception)
+            {
+                MetroMessageBox.Show(this, "Enter a valid number for weight", "Invalid type!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            currentAssgn.projectTitle = projectName.Text;
+
+            if (isNew)
+            {
+                postAssignmentToDB(currentAssgn);
+            }
+            else
+            {
+                putAssignmentToDB(currentAssgn);
+            }
+        }
+
+        private void postAssignmentToDB(Assignment assgn)
+        {
+            HttpClient client = NetworkClient.getInstance().getHttpClient();
+
+            string uri = BaseConnection.assignments + "/" + BaseConnection.coursesString;
+
+            try
+            {
+                var response = client.PostAsJsonAsync(uri, assgn).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MetroMessageBox.Show(this, "Done!", "Change successful!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+                else if (response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    MetroMessageBox.Show(this, "The assignment was not found. I know its weird",
+                        "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                Worker.printServerError(this);
+            }
+        }
+
+        private void putAssignmentToDB(Assignment assgn)
+        {
+            HttpClient client = NetworkClient.getInstance().getHttpClient();
+
+            string uri = BaseConnection.assignments + "/" + BaseConnection.coursesString + "/" + assgn.id;
+
+            try
+            {
+                var response = client.PutAsJsonAsync(uri, assgn).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MetroMessageBox.Show(this, "Done!", "Change successful!", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+                else if (response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    MetroMessageBox.Show(this, "The assignment was not found. I know its weird",
+                        "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch(Exception)
+            {
+                Worker.printServerError(this);
+            }
         }
 
 
@@ -130,5 +263,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
                 setFont(preferredFont, colorDialog1.Color);
             }
         }
+
+        
     }
 }
