@@ -45,6 +45,10 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.label1 = new System.Windows.Forms.Label();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.statusLabel = new MetroFramework.Controls.MetroLabel();
+            this.submittedLabel = new MetroFramework.Controls.MetroLabel();
+            this.feedbackLabel = new MetroFramework.Controls.MetroLabel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -162,7 +166,11 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(171)))), ((int)(((byte)(227)))));
             this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.metroLabel8);
             this.panel2.Controls.Add(this.metroLabel6);
+            this.panel2.Controls.Add(this.feedbackLabel);
+            this.panel2.Controls.Add(this.submittedLabel);
+            this.panel2.Controls.Add(this.statusLabel);
             this.panel2.Controls.Add(this.metroLabel5);
             this.panel2.Location = new System.Drawing.Point(150, 576);
             this.panel2.Name = "panel2";
@@ -243,6 +251,62 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "TBD";
             // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel8.ForeColor = System.Drawing.Color.White;
+            this.metroLabel8.Location = new System.Drawing.Point(3, 50);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(99, 25);
+            this.metroLabel8.TabIndex = 0;
+            this.metroLabel8.Text = "Comments";
+            this.metroLabel8.UseCustomBackColor = true;
+            this.metroLabel8.UseCustomForeColor = true;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.statusLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.statusLabel.ForeColor = System.Drawing.Color.White;
+            this.statusLabel.Location = new System.Drawing.Point(78, 0);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(66, 25);
+            this.statusLabel.TabIndex = 0;
+            this.statusLabel.Text = "Closed";
+            this.statusLabel.UseCustomBackColor = true;
+            this.statusLabel.UseCustomForeColor = true;
+            // 
+            // submittedLabel
+            // 
+            this.submittedLabel.AutoSize = true;
+            this.submittedLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.submittedLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.submittedLabel.ForeColor = System.Drawing.Color.White;
+            this.submittedLabel.Location = new System.Drawing.Point(108, 25);
+            this.submittedLabel.Name = "submittedLabel";
+            this.submittedLabel.Size = new System.Drawing.Size(55, 25);
+            this.submittedLabel.TabIndex = 0;
+            this.submittedLabel.Text = "None";
+            this.submittedLabel.UseCustomBackColor = true;
+            this.submittedLabel.UseCustomForeColor = true;
+            // 
+            // feedbackLabel
+            // 
+            this.feedbackLabel.AutoSize = true;
+            this.feedbackLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.feedbackLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.feedbackLabel.ForeColor = System.Drawing.Color.White;
+            this.feedbackLabel.Location = new System.Drawing.Point(3, 75);
+            this.feedbackLabel.Name = "feedbackLabel";
+            this.feedbackLabel.Size = new System.Drawing.Size(92, 25);
+            this.feedbackLabel.TabIndex = 0;
+            this.feedbackLabel.Text = "Feedback!";
+            this.feedbackLabel.UseCustomBackColor = true;
+            this.feedbackLabel.UseCustomForeColor = true;
+            // 
             // StudentAssignmentUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -291,5 +355,9 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label1;
         private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroLabel feedbackLabel;
+        private MetroFramework.Controls.MetroLabel submittedLabel;
+        private MetroFramework.Controls.MetroLabel statusLabel;
     }
 }
