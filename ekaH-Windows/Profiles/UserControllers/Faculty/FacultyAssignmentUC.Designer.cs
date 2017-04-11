@@ -46,6 +46,7 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.deadlineBox = new MetroFramework.Controls.MetroDateTime();
             this.cancelBox = new System.Windows.Forms.PictureBox();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.fontPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fontBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saveBox)).BeginInit();
@@ -255,11 +256,23 @@
             this.cancelBox.TabStop = false;
             this.cancelBox.Click += new System.EventHandler(this.cancelBox_Click);
             // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel4.Location = new System.Drawing.Point(3, 456);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(116, 25);
+            this.metroLabel4.TabIndex = 11;
+            this.metroLabel4.Text = "Submissions";
+            // 
             // FacultyAssignmentUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(234)))), ((int)(((byte)(200)))));
+            this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.cancelBox);
             this.Controls.Add(this.deadlineBox);
             this.Controls.Add(this.weightTextBox);
@@ -273,7 +286,7 @@
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Name = "FacultyAssignmentUC";
-            this.Size = new System.Drawing.Size(867, 712);
+            this.Size = new System.Drawing.Size(867, 750);
             this.fontPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.fontBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saveBox)).EndInit();
@@ -304,5 +317,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroDateTime deadlineBox;
         private System.Windows.Forms.PictureBox cancelBox;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
     }
 }
