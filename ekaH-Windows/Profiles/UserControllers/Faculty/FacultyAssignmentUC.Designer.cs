@@ -31,24 +31,26 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.assignmentRTB = new System.Windows.Forms.RichTextBox();
             this.fontPanel = new System.Windows.Forms.Panel();
+            this.colorButton = new System.Windows.Forms.Button();
+            this.underlineButton = new System.Windows.Forms.Button();
+            this.italicButton = new System.Windows.Forms.Button();
+            this.boldButton = new System.Windows.Forms.Button();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.fontBox = new System.Windows.Forms.PictureBox();
             this.saveBox = new System.Windows.Forms.PictureBox();
             this.editBox = new System.Windows.Forms.PictureBox();
-            this.boldButton = new System.Windows.Forms.Button();
-            this.italicButton = new System.Windows.Forms.Button();
-            this.underlineButton = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.colorButton = new System.Windows.Forms.Button();
             this.projectName = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.weightTextBox = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.deadlineBox = new MetroFramework.Controls.MetroDateTime();
+            this.cancelBox = new System.Windows.Forms.PictureBox();
             this.fontPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fontBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saveBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.editBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cancelBox)).BeginInit();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -86,6 +88,51 @@
             this.fontPanel.Size = new System.Drawing.Size(202, 46);
             this.fontPanel.TabIndex = 5;
             this.fontPanel.Visible = false;
+            // 
+            // colorButton
+            // 
+            this.colorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
+            this.colorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.colorButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorButton.Location = new System.Drawing.Point(146, 4);
+            this.colorButton.Name = "colorButton";
+            this.colorButton.Size = new System.Drawing.Size(40, 39);
+            this.colorButton.TabIndex = 0;
+            this.colorButton.UseVisualStyleBackColor = false;
+            this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
+            // 
+            // underlineButton
+            // 
+            this.underlineButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.underlineButton.Location = new System.Drawing.Point(97, 4);
+            this.underlineButton.Name = "underlineButton";
+            this.underlineButton.Size = new System.Drawing.Size(40, 40);
+            this.underlineButton.TabIndex = 0;
+            this.underlineButton.Text = "U";
+            this.underlineButton.UseVisualStyleBackColor = true;
+            this.underlineButton.Click += new System.EventHandler(this.underlineButton_Click);
+            // 
+            // italicButton
+            // 
+            this.italicButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.italicButton.Location = new System.Drawing.Point(50, 4);
+            this.italicButton.Name = "italicButton";
+            this.italicButton.Size = new System.Drawing.Size(40, 40);
+            this.italicButton.TabIndex = 0;
+            this.italicButton.Text = "I";
+            this.italicButton.UseVisualStyleBackColor = true;
+            this.italicButton.Click += new System.EventHandler(this.italicButton_Click);
+            // 
+            // boldButton
+            // 
+            this.boldButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.boldButton.Location = new System.Drawing.Point(4, 4);
+            this.boldButton.Name = "boldButton";
+            this.boldButton.Size = new System.Drawing.Size(40, 40);
+            this.boldButton.TabIndex = 0;
+            this.boldButton.Text = "B";
+            this.boldButton.UseVisualStyleBackColor = true;
+            this.boldButton.Click += new System.EventHandler(this.boldButton_Click);
             // 
             // fontBox
             // 
@@ -127,48 +174,6 @@
             this.editBox.TabIndex = 3;
             this.editBox.TabStop = false;
             this.editBox.Click += new System.EventHandler(this.editBox_Click);
-            // 
-            // boldButton
-            // 
-            this.boldButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.boldButton.Location = new System.Drawing.Point(4, 4);
-            this.boldButton.Name = "boldButton";
-            this.boldButton.Size = new System.Drawing.Size(40, 40);
-            this.boldButton.TabIndex = 0;
-            this.boldButton.Text = "B";
-            this.boldButton.UseVisualStyleBackColor = true;
-            // 
-            // italicButton
-            // 
-            this.italicButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.italicButton.Location = new System.Drawing.Point(50, 4);
-            this.italicButton.Name = "italicButton";
-            this.italicButton.Size = new System.Drawing.Size(40, 40);
-            this.italicButton.TabIndex = 0;
-            this.italicButton.Text = "I";
-            this.italicButton.UseVisualStyleBackColor = true;
-            // 
-            // underlineButton
-            // 
-            this.underlineButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.underlineButton.Location = new System.Drawing.Point(97, 4);
-            this.underlineButton.Name = "underlineButton";
-            this.underlineButton.Size = new System.Drawing.Size(40, 40);
-            this.underlineButton.TabIndex = 0;
-            this.underlineButton.Text = "U";
-            this.underlineButton.UseVisualStyleBackColor = true;
-            // 
-            // colorButton
-            // 
-            this.colorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(51)))), ((int)(((byte)(64)))));
-            this.colorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.colorButton.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.colorButton.Location = new System.Drawing.Point(146, 4);
-            this.colorButton.Name = "colorButton";
-            this.colorButton.Size = new System.Drawing.Size(40, 39);
-            this.colorButton.TabIndex = 0;
-            this.colorButton.UseVisualStyleBackColor = false;
-            this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // projectName
             // 
@@ -237,11 +242,25 @@
             this.deadlineBox.Size = new System.Drawing.Size(176, 29);
             this.deadlineBox.TabIndex = 9;
             // 
+            // cancelBox
+            // 
+            this.cancelBox.BackColor = System.Drawing.Color.Transparent;
+            this.cancelBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancelBox.Image = global::ekaH_Windows.Properties.Resources.cancelIcon;
+            this.cancelBox.Location = new System.Drawing.Point(814, 217);
+            this.cancelBox.Name = "cancelBox";
+            this.cancelBox.Size = new System.Drawing.Size(48, 48);
+            this.cancelBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.cancelBox.TabIndex = 10;
+            this.cancelBox.TabStop = false;
+            this.cancelBox.Click += new System.EventHandler(this.cancelBox_Click);
+            // 
             // FacultyAssignmentUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(234)))), ((int)(((byte)(200)))));
+            this.Controls.Add(this.cancelBox);
             this.Controls.Add(this.deadlineBox);
             this.Controls.Add(this.weightTextBox);
             this.Controls.Add(this.projectName);
@@ -259,6 +278,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.fontBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.saveBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.editBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cancelBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,5 +303,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField weightTextBox;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroDateTime deadlineBox;
+        private System.Windows.Forms.PictureBox cancelBox;
     }
 }

@@ -81,6 +81,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
             }
 
             updateView();
+            setFieldsEnabled(false);
         }
 
         private void updateView()
@@ -116,6 +117,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
             projectName.Enabled = given;
             weightTextBox.Enabled = given;
             deadlineBox.Enabled = given;
+            cancelBox.Visible = given;
         }
 
         private void saveBox_Click(object sender, EventArgs e)
@@ -244,7 +246,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
 
         private void setFont(Font font, Color fore)
         {
-            preferredFont = fontDialog1.Font;
+            preferredFont = font;
             assignmentRTB.SelectionFont = preferredFont;
 
             preferredForeColor = fore;
@@ -264,6 +266,34 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
             }
         }
 
-        
+        private void boldButton_Click(object sender, EventArgs e)
+        {
+            Font newFont = preferredFont.Bold ? new Font(preferredFont, FontStyle.Regular) :
+                new Font(preferredFont, FontStyle.Bold);
+            
+            setFont(newFont, preferredForeColor);
+        }
+
+        private void italicButton_Click(object sender, EventArgs e)
+        {
+            Font newFont = preferredFont.Italic ? new Font(preferredFont, FontStyle.Regular) :
+                new Font(preferredFont, FontStyle.Italic);
+
+            setFont(newFont, preferredForeColor);
+        }
+
+        private void underlineButton_Click(object sender, EventArgs e)
+        {
+            Font newFont = preferredFont.Underline ? new Font(preferredFont, FontStyle.Regular) :
+                new Font(preferredFont, FontStyle.Underline);
+
+            setFont(newFont, preferredForeColor);
+        }
+
+        private void cancelBox_Click(object sender, EventArgs e)
+        {
+            setFieldsEnabled(false);
+            updateView();
+        }
     }
 }
