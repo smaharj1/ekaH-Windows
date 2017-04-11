@@ -33,23 +33,7 @@ namespace ekaH_Windows.Profiles.Forms
         private void CourseDetail_Load(object sender, EventArgs e)
         {
             Text = course.CourseName;
-
-            if (isStudent)
-            {
-
-            }
-            else
-            {
-                if (ucFacAssignment == null)
-                {
-                    ucFacAssignment = new FacultyAssignmentUC();
-                    ucFacAssignment.Dock = DockStyle.Fill;
-
-                    courseDetailPanel.Controls.Add(ucFacAssignment);
-                }
-                courseDetailPanel.BringToFront();
-            }
-
+            
             // Gets all the projects in the course.
             List<Assignment> assignments = getAssignmentsByCourseID();
 
@@ -67,7 +51,18 @@ namespace ekaH_Windows.Profiles.Forms
             
             if (!isStudent)
             {
+                if (ucFacAssignment == null)
+                {
+                    ucFacAssignment = new FacultyAssignmentUC();
+                    ucFacAssignment.Dock = DockStyle.Fill;
+
+                    courseDetailPanel.Controls.Add(ucFacAssignment);
+                }
+
                 ucFacAssignment.open(clickedAssignment);
+                ucFacAssignment.BringToFront();
+                
+
             }
             else
             {
