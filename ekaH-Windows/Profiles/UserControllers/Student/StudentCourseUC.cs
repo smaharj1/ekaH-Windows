@@ -147,7 +147,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
             Course selectedCourse = (Course)itemSelected.Tag;
 
-            CourseDetail courseDetailForm = new CourseDetail(selectedCourse, true);
+            CourseDetail courseDetailForm = new CourseDetail(selectedCourse, true, ParentProfile.UserEmail);
             courseDetailForm.Show();
         }
     }

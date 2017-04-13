@@ -29,6 +29,7 @@ namespace ekaH_Windows.Model
         public Nullable<int> grade { get; set; }
         public byte[] submissionContent { get; set; }
         public Nullable<System.DateTime> submissionDateTime { get; set; }
+        public string submissionFileName { get; set; }
 
         //public virtual assignment assignment { get; set; }
         public virtual StudentInfo student_info { get; set; }

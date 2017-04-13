@@ -20,14 +20,18 @@ namespace ekaH_Windows.Profiles.Forms
     {
         private Course course { get; set; }
         private bool isStudent = false;
+        private string facEmail;
+        private string studentEmail;
 
         private FacultyAssignmentUC ucFacAssignment;
         private StudentAssignmentUC ucStdAssignment;
 
-        public CourseDetail(Course givenCourse, bool isStd)
+        public CourseDetail(Course givenCourse, bool isStd, string email = null)
         {
             course = givenCourse;
             isStudent = isStd;
+            if (isStudent) studentEmail = email;
+            facEmail = course.ProfessorID;
 
             InitializeComponent();
         }
@@ -72,7 +76,7 @@ namespace ekaH_Windows.Profiles.Forms
             {
                 if (ucStdAssignment == null)
                 {
-                    ucStdAssignment = new StudentAssignmentUC();
+                    ucStdAssignment = new StudentAssignmentUC(studentEmail);
                     ucStdAssignment.Dock = DockStyle.Fill;
 
                     courseDetailPanel.Controls.Add(ucStdAssignment);
