@@ -98,7 +98,7 @@
             // endTime
             // 
             this.endTime.Text = "End";
-            this.endTime.Width = 100;
+            this.endTime.Width = 108;
             // 
             // metroLabel1
             // 

@@ -47,6 +47,12 @@
             this.deadlineBox = new MetroFramework.Controls.MetroDateTime();
             this.cancelBox = new System.Windows.Forms.PictureBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.submissionsListView = new MetroFramework.Controls.MetroListView();
+            this.studentName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.submittedFile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.grade = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.submittedDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.openFile = new System.Windows.Forms.SaveFileDialog();
             this.fontPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fontBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saveBox)).BeginInit();
@@ -267,11 +273,51 @@
             this.metroLabel4.TabIndex = 11;
             this.metroLabel4.Text = "Submissions";
             // 
+            // submissionsListView
+            // 
+            this.submissionsListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.studentName,
+            this.submittedFile,
+            this.grade,
+            this.submittedDate});
+            this.submissionsListView.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.submissionsListView.FullRowSelect = true;
+            this.submissionsListView.GridLines = true;
+            this.submissionsListView.Location = new System.Drawing.Point(3, 493);
+            this.submissionsListView.Name = "submissionsListView";
+            this.submissionsListView.OwnerDraw = true;
+            this.submissionsListView.Size = new System.Drawing.Size(864, 254);
+            this.submissionsListView.TabIndex = 12;
+            this.submissionsListView.UseCompatibleStateImageBehavior = false;
+            this.submissionsListView.UseSelectable = true;
+            this.submissionsListView.View = System.Windows.Forms.View.Details;
+            // 
+            // studentName
+            // 
+            this.studentName.Text = "Student Name";
+            this.studentName.Width = 200;
+            // 
+            // submittedFile
+            // 
+            this.submittedFile.Text = "Submitted File";
+            this.submittedFile.Width = 200;
+            // 
+            // grade
+            // 
+            this.grade.Text = "Grade";
+            this.grade.Width = 88;
+            // 
+            // submittedDate
+            // 
+            this.submittedDate.Text = "Date of Submission";
+            this.submittedDate.Width = 200;
+            // 
             // FacultyAssignmentUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(234)))), ((int)(((byte)(200)))));
+            this.Controls.Add(this.submissionsListView);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.cancelBox);
             this.Controls.Add(this.deadlineBox);
@@ -318,5 +364,11 @@
         private MetroFramework.Controls.MetroDateTime deadlineBox;
         private System.Windows.Forms.PictureBox cancelBox;
         private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroListView submissionsListView;
+        private System.Windows.Forms.ColumnHeader studentName;
+        private System.Windows.Forms.ColumnHeader submittedFile;
+        private System.Windows.Forms.ColumnHeader grade;
+        private System.Windows.Forms.ColumnHeader submittedDate;
+        private System.Windows.Forms.SaveFileDialog openFile;
     }
 }

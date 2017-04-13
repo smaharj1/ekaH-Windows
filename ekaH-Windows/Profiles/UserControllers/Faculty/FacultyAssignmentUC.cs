@@ -56,7 +56,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
             currentAssgn.projectTitle = "";
             currentAssgn.content = "";
 
-            updateView();
+            updateAssgnView();
 
         }
 
@@ -80,11 +80,90 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
                 currentAssgn = assgn;
             }
 
-            updateView();
+            ContextMenu cMenu = new ContextMenu();
+            cMenu.MenuItems.Add("Open", openSubmission_onClick);
+            cMenu.MenuItems.Add("Grade Submission", gradeSubmission_onClick);
+            
+
+            submissionsListView.ContextMenu = cMenu;
+
+            updateAssgnView();
+            updateSubmissions();
+
             setFieldsEnabled(false);
         }
 
-        private void updateView()
+        private void openSubmission_onClick(object sender, EventArgs e)
+        {
+            ListViewItem item = submissionsListView.SelectedItems[0];
+
+            Submission selected = (Submission)item.Tag;
+            
+            string[] split = selected.submissionFileName.Split('.');
+            openFile.Filter = "Given format |*." + split[1];
+            openFile.Title = split[0];
+            
+            DialogResult result = openFile.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                string filepath = openFile.FileName;
+                File.WriteAllBytes(filepath, selected.submissionContent);
+            }
+        }
+
+        private void gradeSubmission_onClick(object sender, EventArgs e)
+        {
+        }
+
+        private void updateSubmissions()
+        {
+            submissionsListView.Items.Clear();
+            /// Gets all the submissions for the mentioned assignment
+            List<Submission> allSubs = getSubmissions();
+
+            if (allSubs != null)
+            {
+                foreach (Submission sub in allSubs)
+                {
+                    ListViewItem item = new ListViewItem(sub.student_info.FirstName + " " + sub.student_info.LastName);
+                    item.SubItems.Add(sub.submissionFileName);
+                    item.SubItems.Add(sub.grade == -1 ? "Not graded" : sub.grade+"");
+                    item.SubItems.Add(sub.submissionDateTime.ToString());
+
+                    item.Tag = sub;
+
+                    submissionsListView.Items.Add(item);
+                }
+            }
+        }
+
+        private List<Submission> getSubmissions()
+        {
+            HttpClient client = NetworkClient.getInstance().getHttpClient();
+
+            string uri = BaseConnection.submissions + "/" + BaseConnection.assignments + "/" + currentAssgn.id;
+
+            try
+            {
+                var response = client.GetAsync(uri).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    List<Submission> subs = response.Content.ReadAsAsync<List<Submission>>().Result;
+                    return subs;
+                }
+
+            }
+            catch(Exception)
+            {
+                Worker.printServerError(this);
+            }
+
+            return null;
+        }
+
+        private void updateAssgnView()
         {
             projectName.Text = currentAssgn.projectTitle;
             weightTextBox.Text = currentAssgn.weight.ToString();
@@ -293,7 +372,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
         private void cancelBox_Click(object sender, EventArgs e)
         {
             setFieldsEnabled(false);
-            updateView();
+            updateAssgnView();
         }
     }
 }

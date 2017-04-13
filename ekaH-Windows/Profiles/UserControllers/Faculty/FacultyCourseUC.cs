@@ -37,6 +37,7 @@ namespace ekaH_Windows.Profiles.UserControllers
         private void ViewCourseUC_Load(object sender, EventArgs e)
         {
             executeGetRequest();
+            
         }
 
         private void executeGetRequest()
