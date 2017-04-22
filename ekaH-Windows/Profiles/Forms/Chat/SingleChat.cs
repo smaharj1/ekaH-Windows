@@ -53,7 +53,7 @@ namespace ekaH_Windows.Profiles.Forms.Chat
             }
             else
             {
-                messageBox.Text = text;
+                messageBox.Text += text;
             }
         }
 
