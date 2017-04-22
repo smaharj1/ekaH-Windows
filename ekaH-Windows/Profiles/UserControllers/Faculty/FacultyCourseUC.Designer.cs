@@ -115,6 +115,7 @@
             this.addCourse.ActiveControl = null;
             this.addCourse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.addCourse.AutoSize = true;
+            this.addCourse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addCourse.Location = new System.Drawing.Point(321, 19);
             this.addCourse.Name = "addCourse";
             this.addCourse.Size = new System.Drawing.Size(113, 47);
@@ -129,6 +130,7 @@
             this.removeCourse.ActiveControl = null;
             this.removeCourse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.removeCourse.AutoSize = true;
+            this.removeCourse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.removeCourse.Location = new System.Drawing.Point(440, 19);
             this.removeCourse.Name = "removeCourse";
             this.removeCourse.Size = new System.Drawing.Size(132, 47);
@@ -143,6 +145,7 @@
             this.modifyCourse.ActiveControl = null;
             this.modifyCourse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.modifyCourse.AutoSize = true;
+            this.modifyCourse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.modifyCourse.Location = new System.Drawing.Point(578, 19);
             this.modifyCourse.Name = "modifyCourse";
             this.modifyCourse.Size = new System.Drawing.Size(114, 47);
@@ -157,6 +160,7 @@
             this.detailsTile.ActiveControl = null;
             this.detailsTile.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.detailsTile.AutoSize = true;
+            this.detailsTile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.detailsTile.Location = new System.Drawing.Point(698, 19);
             this.detailsTile.Name = "detailsTile";
             this.detailsTile.Size = new System.Drawing.Size(114, 47);

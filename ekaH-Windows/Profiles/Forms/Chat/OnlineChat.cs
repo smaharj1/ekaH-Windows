@@ -21,7 +21,10 @@ namespace ekaH_Windows.Profiles.Forms
         private Socket clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         byte[] globalBuffer = new byte[1024];
 
-        private string CurrentUser { get; set; }
+        private string CurrentUserEmail { get; set; }
+
+        delegate void SetCallback(string text);
+
 
         private List<string> allUsers;
         private Dictionary<string, SingleChat> conversations;
@@ -30,22 +33,20 @@ namespace ekaH_Windows.Profiles.Forms
         {
             InitializeComponent();
             allUsers = new List<string>();
-
         }
 
         public OnlineChat(string email)
         {
-            CurrentUser = email;
+            CurrentUserEmail = email;
             InitializeComponent();
 
             allUsers = new List<string>();
             conversations = new Dictionary<string, SingleChat>();
-
         }
 
         private void OnlineChat_Load(object sender, EventArgs e)
         {
-            //connectUser();
+            connectUser(CurrentUserEmail);
             //populate();
         }
 
@@ -86,13 +87,20 @@ namespace ekaH_Windows.Profiles.Forms
                 if (conversations.ContainsKey(email))
                 {
                     conversations[email].handleReceivedData(splitted[1]);
-                    conversations[email].handleReceivedData(splitted[1]);
-                    conversations[email].BringToFront();
+                    if (conversations[email].InvokeRequired)
+                    {
+                        Invoke(new SetCallback(BringConversationToFront), new object[] { email});
+                    }
+                    else
+                    {
+                        BringConversationToFront(email);
+                    }
                 }
                 else
                 {
-                    conversations[email] = new SingleChat(CurrentUser, email);
+                    conversations[email] = new SingleChat(CurrentUserEmail, email);
                     conversations[email].handleReceivedData(splitted[1]);
+                    conversations[email].assignClient(clientSocket);
                     conversations[email].ShowDialog();
                 }
 
@@ -102,13 +110,18 @@ namespace ekaH_Windows.Profiles.Forms
             clientSocket.BeginReceive(globalBuffer, 0, globalBuffer.Length, SocketFlags.None, new AsyncCallback(ReceiveData), clientSocket);
         }
 
+        private void BringConversationToFront(string email)
+        {
+            conversations[email].BringToFront();
+        }
+
         public void ListDoubleClicked(Object sender, EventArgs e)
         {
             string selected = userListView.SelectedItems[0].Text;
             
             if (!conversations.ContainsKey(selected))
             {
-                conversations[selected] = new SingleChat(CurrentUser, selected);
+                conversations[selected] = new SingleChat(CurrentUserEmail, selected);
                 conversations[selected].assignClient(clientSocket);
                 conversations[selected].Show();
             }
@@ -133,7 +146,7 @@ namespace ekaH_Windows.Profiles.Forms
 
                     foreach (string user in users)
                     {
-                        if (!String.Equals(user, CurrentUser))
+                        if (!String.Equals(user, CurrentUserEmail))
                         {
                             userListView.Items.Add(user);
                         }
@@ -143,18 +156,16 @@ namespace ekaH_Windows.Profiles.Forms
             }
         }
 
+        /*
         private void KeyPressed_Enter(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {
-                CurrentUser = clientBox.Text;
+                CurrentUserEmail = clientBox.Text;
                 connectUser(clientBox.Text);
             }
         }
-        
-
-
-
+        */
         private void LoopConnect()
         {
             int attempts = 0;

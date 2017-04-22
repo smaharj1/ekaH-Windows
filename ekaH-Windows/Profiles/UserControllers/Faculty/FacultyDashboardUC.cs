@@ -52,5 +52,11 @@ namespace ekaH_Windows.Profiles.UserControllers
 
             FacultyProfile.getInstance(emailID).getFacultyInfo();
         }
+
+        private void goOnlineTile_Click(object sender, EventArgs e)
+        {
+            OnlineChat chat = new OnlineChat(emailID);
+            chat.ShowDialog();
+        }
     }
 }

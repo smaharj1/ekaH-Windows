@@ -35,5 +35,11 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
             CourseAdd addCourse = new CourseAdd(parent.UserEmail);
             addCourse.ShowDialog();
         }
+
+        private void goOnlineTile_Click(object sender, EventArgs e)
+        {
+            OnlineChat chat = new OnlineChat(parent.UserEmail);
+            chat.ShowDialog();
+        }
     }
 }

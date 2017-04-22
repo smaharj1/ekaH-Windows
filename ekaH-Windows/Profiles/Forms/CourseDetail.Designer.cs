@@ -52,6 +52,7 @@
             // 
             this.addAssignment.ActiveControl = null;
             this.addAssignment.BackColor = System.Drawing.Color.White;
+            this.addAssignment.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addAssignment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(171)))), ((int)(((byte)(227)))));
             this.addAssignment.Location = new System.Drawing.Point(17, 561);
             this.addAssignment.Name = "addAssignment";

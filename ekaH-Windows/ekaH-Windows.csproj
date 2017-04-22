@@ -83,12 +83,6 @@
     <Compile Include="Model\Course.cs" />
     <Compile Include="Model\NetworkClient.cs" />
     <Compile Include="Model\Schedule.cs" />
-    <Compile Include="Model\test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Model\test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Model\Worker.cs" />
     <Compile Include="Profiles\Forms\AppointmentAction.cs">
       <SubType>Form</SubType>
@@ -355,6 +349,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\submitIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chat.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

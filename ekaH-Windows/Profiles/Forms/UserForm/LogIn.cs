@@ -11,8 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ekaH_Windows.Profiles;
-
-
+using MetroFramework;
 
 namespace ekaH_Windows
 {
@@ -42,7 +41,7 @@ namespace ekaH_Windows
             ClientUserLoginModel loginInfo = new ClientUserLoginModel();
             loginInfo.pswd = passwordText.Text;
             loginInfo.email = emailText.Text;
-            loginInfo.isStudent = this.isStudent;
+            loginInfo.member_type = isStudent ? (sbyte)1:(sbyte)0;
 
             HttpClient client = NetworkClient.getInstance().getHttpClient();
            
@@ -55,7 +54,7 @@ namespace ekaH_Windows
                 this.Hide();
 
 
-                if (loginInfo.isStudent)
+                if (isStudent)
                 {
                     StudentProfile studentProfile = StudentProfile.getInstance(loginInfo.email);
                     studentProfile.ShowDialog();
@@ -71,7 +70,7 @@ namespace ekaH_Windows
             }
             else
             {
-                MessageBox.Show(response.Content.ReadAsAsync<string>().Result);
+                MetroMessageBox.Show(this, "Cannot find the specified user", "Log in info incorrect", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 

@@ -8,7 +8,7 @@ namespace ekaH_Windows.Model
 {
     public class ClientUserLoginModel
     {
-        public Boolean isStudent { get; set; }
+        public sbyte member_type { get; set; }
         public string email { get; set; }
         public string pswd { get; set; }
     }

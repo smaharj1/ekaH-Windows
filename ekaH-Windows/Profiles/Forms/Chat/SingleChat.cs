@@ -18,40 +18,50 @@ namespace ekaH_Windows.Profiles.Forms.Chat
         private string Receiver { get; set; }
         private Socket ClientSocket { get; set; }
 
+        delegate void SetTextCallback(string text);
+
+
         public SingleChat(string user, string connectingUser)
         {
             Sender = user;
             Receiver = connectingUser;
             InitializeComponent();
 
-            this.Text = "You are chatting with " + Receiver;
+            Text = "You are chatting with " + Receiver;
         }
 
         // Prints out the received data to the window.
         public void handleReceivedData(string receivedString)
         {
             string[] user = Receiver.Split('@');
-            messageBox.Select(0, user[0].Length);
-            messageBox.SelectionFont = new Font("Segoe UI", 12, FontStyle.Bold);
-            messageBox.Text += user[0] + ": ";
+            //messageBox.Select(0, user[0].Length);
+            //messageBox.SelectionFont = new Font("Segoe UI", 12, FontStyle.Bold);
+            string temp = user[0] + " : " + receivedString + "\r\n";
 
-            messageBox.Text += receivedString + "\r\n";
+            SetText(temp);
+        }
+        
+        private void SetText(string text)
+        {
+            // InvokeRequired required compares the thread ID of the
+            // calling thread to the thread ID of the creating thread.
+            // If these threads are different, it returns true.
+            if (messageBox.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                Invoke(d, new object[] { text });
+            }
+            else
+            {
+                messageBox.Text = text;
+            }
         }
 
         private void sendButton_Click(object sender, EventArgs e)
         {
-
             handleSendText();
         }
-
-        private void messageBox_EnterClicked(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                handleSendText();
-            }
-        }
-
+        
         private void handleSendText()
         {
             string toSend = Receiver + OnlineChat.CONVO_LOGIC + messageTextBox.Text;
@@ -65,6 +75,9 @@ namespace ekaH_Windows.Profiles.Forms.Chat
             {
                 byte[] buff = Encoding.ASCII.GetBytes(toSend);
                 ClientSocket.Send(buff);
+
+                string temp = "You : " + messageTextBox.Text + "\r\n";
+                SetText(temp);
             }
         }
 

@@ -30,7 +30,7 @@
         {
             this.userListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clientBox = new System.Windows.Forms.TextBox();
+            this.clientBox = new MetroFramework.Controls.MetroTextBox();
             this.SuspendLayout();
             // 
             // userListView
@@ -55,11 +55,35 @@
             // 
             // clientBox
             // 
-            this.clientBox.Location = new System.Drawing.Point(24, 75);
+            // 
+            // 
+            // 
+            this.clientBox.CustomButton.Image = null;
+            this.clientBox.CustomButton.Location = new System.Drawing.Point(228, 1);
+            this.clientBox.CustomButton.Name = "";
+            this.clientBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.clientBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.clientBox.CustomButton.TabIndex = 1;
+            this.clientBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.clientBox.CustomButton.UseSelectable = true;
+            this.clientBox.CustomButton.Visible = false;
+            this.clientBox.Lines = new string[0];
+            this.clientBox.Location = new System.Drawing.Point(23, 79);
+            this.clientBox.MaxLength = 32767;
             this.clientBox.Name = "clientBox";
-            this.clientBox.Size = new System.Drawing.Size(224, 20);
+            this.clientBox.PasswordChar = '\0';
+            this.clientBox.PromptText = "Search";
+            this.clientBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.clientBox.SelectedText = "";
+            this.clientBox.SelectionLength = 0;
+            this.clientBox.SelectionStart = 0;
+            this.clientBox.ShortcutsEnabled = true;
+            this.clientBox.Size = new System.Drawing.Size(250, 23);
             this.clientBox.TabIndex = 2;
-            this.clientBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyPressed_Enter);
+            this.clientBox.UseSelectable = true;
+            this.clientBox.WaterMark = "Search";
+            this.clientBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.clientBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // OnlineChat
             // 
@@ -72,7 +96,6 @@
             this.Text = "People online right now...";
             this.Load += new System.EventHandler(this.OnlineChat_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -80,6 +103,6 @@
 
         private System.Windows.Forms.ListView userListView;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.TextBox clientBox;
+        private MetroFramework.Controls.MetroTextBox clientBox;
     }
 }

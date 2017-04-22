@@ -182,10 +182,6 @@ namespace ekaH_Windows.Profiles
             {
                 viewAppointments();
             }
-            else if (selectedTab == assignmentsTabPage)
-            {
-                // view Assignments
-            }
             else
             {
                 // This will open the dashboard by default
