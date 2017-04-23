@@ -20,6 +20,9 @@ namespace ekaH_Windows.Model
         public string CourseName { get; set; }
         public string CourseDescription { get; set; }
 
+        public virtual ICollection<Assignment> assignments { get; set; }
+        public virtual FacultyInfo professor_info { get; set; }
+
         public string[] convertToArray()
         {
             string[] tableReadable = new string[COLUMNS];
