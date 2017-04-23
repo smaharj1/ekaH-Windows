@@ -24,6 +24,8 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
 
         private List<Assignment> openAssignments;
         private Assignment currentAssgn;
+        private string Email;
+
         private Font preferredFont;
         private Color preferredForeColor;
 
@@ -33,8 +35,9 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
         private bool isNew = false;
 
 
-        public FacultyAssignmentUC()
+        public FacultyAssignmentUC(string em)
         {
+            Email = em;
             openAssignments = new List<Assignment>();
             InitializeComponent();
 
@@ -374,5 +377,13 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
             setFieldsEnabled(false);
             updateAssgnView();
         }
+
+        private void discussionTile_Click(object sender, EventArgs e)
+        {
+            DiscussionForm form = new DiscussionForm(currentAssgn, Email);
+            form.ShowDialog();
+        }
+
+        
     }
 }

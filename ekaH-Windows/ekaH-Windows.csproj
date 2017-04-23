@@ -81,6 +81,7 @@
     <Compile Include="Model\BaseConnection.cs" />
     <Compile Include="Model\ClientUserModel.cs" />
     <Compile Include="Model\Course.cs" />
+    <Compile Include="Model\Discussion.cs" />
     <Compile Include="Model\NetworkClient.cs" />
     <Compile Include="Model\Schedule.cs" />
     <Compile Include="Model\Worker.cs" />
@@ -107,6 +108,12 @@
     </Compile>
     <Compile Include="Profiles\Forms\CourseModification.Designer.cs">
       <DependentUpon>CourseModification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles\Forms\DiscussionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profiles\Forms\DiscussionForm.Designer.cs">
+      <DependentUpon>DiscussionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Profiles\Forms\Faculty\FacultyProfile.cs">
       <SubType>Form</SubType>
@@ -235,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\Forms\CourseModification.resx">
       <DependentUpon>CourseModification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\Forms\DiscussionForm.resx">
+      <DependentUpon>DiscussionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Profiles\Forms\Faculty\FacultyProfile.resx">
       <DependentUpon>FacultyProfile.cs</DependentUpon>

@@ -61,7 +61,7 @@ namespace ekaH_Windows.Profiles.Forms
             {
                 if (ucFacAssignment == null)
                 {
-                    ucFacAssignment = new FacultyAssignmentUC();
+                    ucFacAssignment = new FacultyAssignmentUC(facEmail);
                     ucFacAssignment.Dock = DockStyle.Fill;
 
                     courseDetailPanel.Controls.Add(ucFacAssignment);
@@ -148,7 +148,7 @@ namespace ekaH_Windows.Profiles.Forms
         {
             if (ucFacAssignment == null)
             {
-                ucFacAssignment = new FacultyAssignmentUC();
+                ucFacAssignment = new FacultyAssignmentUC(facEmail);
                 ucFacAssignment.Dock = DockStyle.Fill;
 
                 courseDetailPanel.Controls.Add(ucFacAssignment);

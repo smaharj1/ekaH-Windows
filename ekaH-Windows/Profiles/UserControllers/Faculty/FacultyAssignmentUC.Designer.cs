@@ -53,6 +53,8 @@
             this.grade = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.submittedDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.openFile = new System.Windows.Forms.SaveFileDialog();
+            this.discussionTile = new MetroFramework.Controls.MetroTile();
+            this.analysisTile = new MetroFramework.Controls.MetroTile();
             this.fontPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fontBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.saveBox)).BeginInit();
@@ -286,7 +288,7 @@
             this.submissionsListView.Location = new System.Drawing.Point(3, 493);
             this.submissionsListView.Name = "submissionsListView";
             this.submissionsListView.OwnerDraw = true;
-            this.submissionsListView.Size = new System.Drawing.Size(864, 254);
+            this.submissionsListView.Size = new System.Drawing.Size(864, 214);
             this.submissionsListView.TabIndex = 12;
             this.submissionsListView.UseCompatibleStateImageBehavior = false;
             this.submissionsListView.UseSelectable = true;
@@ -312,11 +314,40 @@
             this.submittedDate.Text = "Date of Submission";
             this.submittedDate.Width = 200;
             // 
+            // discussionTile
+            // 
+            this.discussionTile.ActiveControl = null;
+            this.discussionTile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.discussionTile.Location = new System.Drawing.Point(3, 710);
+            this.discussionTile.Name = "discussionTile";
+            this.discussionTile.Size = new System.Drawing.Size(192, 40);
+            this.discussionTile.TabIndex = 31;
+            this.discussionTile.Text = "Discussions";
+            this.discussionTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.discussionTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.discussionTile.UseSelectable = true;
+            this.discussionTile.Click += new System.EventHandler(this.discussionTile_Click);
+            // 
+            // analysisTile
+            // 
+            this.analysisTile.ActiveControl = null;
+            this.analysisTile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.analysisTile.Location = new System.Drawing.Point(201, 710);
+            this.analysisTile.Name = "analysisTile";
+            this.analysisTile.Size = new System.Drawing.Size(192, 40);
+            this.analysisTile.TabIndex = 31;
+            this.analysisTile.Text = "Student Chart";
+            this.analysisTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.analysisTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.analysisTile.UseSelectable = true;
+            // 
             // FacultyAssignmentUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(234)))), ((int)(((byte)(200)))));
+            this.Controls.Add(this.analysisTile);
+            this.Controls.Add(this.discussionTile);
             this.Controls.Add(this.submissionsListView);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.cancelBox);
@@ -370,5 +401,7 @@
         private System.Windows.Forms.ColumnHeader grade;
         private System.Windows.Forms.ColumnHeader submittedDate;
         private System.Windows.Forms.SaveFileDialog openFile;
+        private MetroFramework.Controls.MetroTile discussionTile;
+        private MetroFramework.Controls.MetroTile analysisTile;
     }
 }

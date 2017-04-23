@@ -37,6 +37,9 @@ namespace ekaH_Windows.Model
         public static string submissions = "submissions";
         public static string submitAction = "submit";
 
+        public static string discussion = "discussion";
+        public static string threadString = "thread";
+
 
     }
 }

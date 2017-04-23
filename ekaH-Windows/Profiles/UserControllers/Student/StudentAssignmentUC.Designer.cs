@@ -42,6 +42,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.gradeView = new System.Windows.Forms.Label();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.downloadSubmission = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.feedbackLabel = new MetroFramework.Controls.MetroLabel();
@@ -50,8 +51,8 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.fileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.downloadSubmission = new MetroFramework.Controls.MetroLabel();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.discussionTile = new MetroFramework.Controls.MetroTile();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.submissionIcon)).BeginInit();
             this.panel2.SuspendLayout();
@@ -218,6 +219,22 @@
             this.metroLabel7.UseCustomBackColor = true;
             this.metroLabel7.UseCustomForeColor = true;
             // 
+            // downloadSubmission
+            // 
+            this.downloadSubmission.AutoSize = true;
+            this.downloadSubmission.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.downloadSubmission.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.downloadSubmission.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.downloadSubmission.ForeColor = System.Drawing.Color.White;
+            this.downloadSubmission.Location = new System.Drawing.Point(0, 103);
+            this.downloadSubmission.Name = "downloadSubmission";
+            this.downloadSubmission.Size = new System.Drawing.Size(154, 25);
+            this.downloadSubmission.TabIndex = 0;
+            this.downloadSubmission.Text = "View Submission";
+            this.downloadSubmission.UseCustomBackColor = true;
+            this.downloadSubmission.UseCustomForeColor = true;
+            this.downloadSubmission.Click += new System.EventHandler(this.downloadSubmission_Click);
+            // 
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
@@ -317,26 +334,25 @@
             // 
             this.fileDialog.FileName = "openFileDialog1";
             // 
-            // downloadSubmission
+            // discussionTile
             // 
-            this.downloadSubmission.AutoSize = true;
-            this.downloadSubmission.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.downloadSubmission.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.downloadSubmission.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.downloadSubmission.ForeColor = System.Drawing.Color.White;
-            this.downloadSubmission.Location = new System.Drawing.Point(0, 103);
-            this.downloadSubmission.Name = "downloadSubmission";
-            this.downloadSubmission.Size = new System.Drawing.Size(154, 25);
-            this.downloadSubmission.TabIndex = 0;
-            this.downloadSubmission.Text = "View Submission";
-            this.downloadSubmission.UseCustomBackColor = true;
-            this.downloadSubmission.UseCustomForeColor = true;
-            this.downloadSubmission.Click += new System.EventHandler(this.downloadSubmission_Click);
+            this.discussionTile.ActiveControl = null;
+            this.discussionTile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.discussionTile.Location = new System.Drawing.Point(150, 710);
+            this.discussionTile.Name = "discussionTile";
+            this.discussionTile.Size = new System.Drawing.Size(192, 40);
+            this.discussionTile.TabIndex = 30;
+            this.discussionTile.Text = "Discussions";
+            this.discussionTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.discussionTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.discussionTile.UseSelectable = true;
+            this.discussionTile.Click += new System.EventHandler(this.discussionTile_Click);
             // 
             // StudentAssignmentUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.discussionTile);
             this.Controls.Add(this.materialDivider1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.submissionIcon);
@@ -388,5 +404,6 @@
         private System.Windows.Forms.OpenFileDialog fileDialog;
         private MetroFramework.Controls.MetroLabel downloadSubmission;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private MetroFramework.Controls.MetroTile discussionTile;
     }
 }

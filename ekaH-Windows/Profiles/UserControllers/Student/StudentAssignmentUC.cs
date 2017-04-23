@@ -12,6 +12,7 @@ using System.Net;
 using System.Net.Http;
 using System.IO;
 using MetroFramework;
+using ekaH_Windows.Profiles.Forms;
 
 namespace ekaH_Windows.Profiles.UserControllers.Student
 {
@@ -272,6 +273,12 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
                     File.WriteAllBytes(filepath, submitted.submissionContent);
                 }
             }
+        }
+
+        private void discussionTile_Click(object sender, EventArgs e)
+        {
+            DiscussionForm discForm = new DiscussionForm(currentAssgn ,studentEmail);
+            discForm.ShowDialog();
         }
     }
 }
