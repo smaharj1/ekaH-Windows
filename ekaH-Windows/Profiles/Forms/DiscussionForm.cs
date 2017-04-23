@@ -72,6 +72,7 @@ namespace ekaH_Windows.Profiles.Forms
             PutDiscussion(currentDisc);
 
             textBox.Text = "";
+
         }
 
         private Discussion GetDiscussionRequest(long id)
