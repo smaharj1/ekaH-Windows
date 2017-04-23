@@ -176,10 +176,15 @@ namespace ekaH_Windows.Profiles
             }
             else if (selectedTab == coursesTab)
             {
+                if (ucCourses != null)
+                {
+                    ucCourses.executeGetRequest();
+                }
                 viewCourses();
             }
             else if (selectedTab == appointmentTab)
             {
+                if (ucAppointments != null) ucAppointments.refreshController();
                 viewAppointments();
             }
             else

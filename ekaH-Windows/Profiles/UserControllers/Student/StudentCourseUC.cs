@@ -30,7 +30,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
             
         }
         
-        private void executeGetRequest()
+        public void executeGetRequest()
         {
             if (courses != null)
             {

@@ -44,6 +44,11 @@ namespace ekaH_Windows.Profiles.Forms.Student
                 {
                     this.Dispose();
                 }
+                else if (response.StatusCode == HttpStatusCode.Conflict)
+                {
+                    MetroMessageBox.Show(this, "You have already added this course.", 
+                        "Course already added!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
                 else
                 {
                     throw new Exception();
@@ -64,6 +69,7 @@ namespace ekaH_Windows.Profiles.Forms.Student
             newTile.Tag = course;
             newTile.Click += new EventHandler(courseTileClicked);
             newTile.Size = new Size(resultPanel.Width - 20, 80);
+            newTile.Cursor = Cursors.Hand;
 
             return newTile;
 
