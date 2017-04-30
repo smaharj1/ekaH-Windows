@@ -53,7 +53,7 @@ namespace ekaH_Windows.Profiles.Forms
 
         private void sendTile_Click(object sender, EventArgs e)
         {
-            string toAdd = textBox.Text;
+            string toAdd = textBox.Text + "\r\n";
             string requester = senderEmail.Split('@')[0];
 
             discussionRTF.SelectionStart = discussionRTF.TextLength;
