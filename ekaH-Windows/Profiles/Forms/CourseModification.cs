@@ -106,7 +106,7 @@ namespace ekaH_Windows.Profiles
                     parseDataFromFields(ref course);
 
                     // Make a REST call to modification.
-                    string requestURI = BaseConnection.coursesString  + "/" + id + "/";
+                    string requestURI = BaseConnection.g_coursesString  + "/" + id + "/";
 
                     var response = client.PutAsJsonAsync<Course>(requestURI, course).Result;
 
@@ -128,7 +128,7 @@ namespace ekaH_Windows.Profiles
                     course.ProfessorID = emailID;
                     parseDataFromFields(ref course);
 
-                    string requestURI = BaseConnection.coursesString  + "/";
+                    string requestURI = BaseConnection.g_coursesString  + "/";
 
                     var response = client.PostAsJsonAsync<Course>(requestURI, course).Result;
 

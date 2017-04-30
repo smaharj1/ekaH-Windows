@@ -216,7 +216,7 @@ namespace ekaH_Windows.Profiles.Forms
 
                 HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-                string requestURI = BaseConnection.facultyString + "/" + putFaculty.Email + "/";
+                string requestURI = BaseConnection.g_facultyString + "/" + putFaculty.Email + "/";
 
                 var response = client.PutAsJsonAsync<FacultyInfo>(requestURI, putFaculty).Result;
 
@@ -248,7 +248,7 @@ namespace ekaH_Windows.Profiles.Forms
 
                 HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-                string requestURI = BaseConnection.studentString + "/" + putStudent.Email + "/";
+                string requestURI = BaseConnection.g_studentString + "/" + putStudent.Email + "/";
 
                 var response = client.PutAsJsonAsync<StudentInfo>(requestURI, putStudent).Result;
 

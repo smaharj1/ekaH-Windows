@@ -101,7 +101,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.appointments + "/" + BaseConnection.schedule;
+            string uri = BaseConnection.g_appointments + "/" + BaseConnection.g_schedule;
 
             try
             {

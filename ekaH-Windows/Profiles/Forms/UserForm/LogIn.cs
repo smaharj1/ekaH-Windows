@@ -39,14 +39,14 @@ namespace ekaH_Windows
         private void executeLogin()
         {
             ClientUserLoginModel loginInfo = new ClientUserLoginModel();
-            loginInfo.pswd = passwordText.Text;
-            loginInfo.email = emailText.Text;
-            loginInfo.member_type = isStudent ? (sbyte)1:(sbyte)0;
+            loginInfo.Pswd = passwordText.Text;
+            loginInfo.Email = emailText.Text;
+            loginInfo.Member_type = isStudent ? (sbyte)1:(sbyte)0;
 
             HttpClient client = NetworkClient.getInstance().getHttpClient();
            
             // List data response. This is the blocking call.
-            HttpResponseMessage response = client.PostAsJsonAsync(BaseConnection.loginPostString, loginInfo).Result; 
+            HttpResponseMessage response = client.PostAsJsonAsync(BaseConnection.g_loginPostString, loginInfo).Result; 
 
             if (response.IsSuccessStatusCode)
             {
@@ -56,13 +56,13 @@ namespace ekaH_Windows
 
                 if (isStudent)
                 {
-                    StudentProfile studentProfile = StudentProfile.getInstance(loginInfo.email);
+                    StudentProfile studentProfile = StudentProfile.getInstance(loginInfo.Email);
                     studentProfile.ShowDialog();
                     
                 }
                 else
                 {
-                    FacultyProfile studentProfile = FacultyProfile.getInstance(loginInfo.email);
+                    FacultyProfile studentProfile = FacultyProfile.getInstance(loginInfo.Email);
                     studentProfile.ShowDialog();
                 }
                 this.Close();

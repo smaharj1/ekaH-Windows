@@ -33,7 +33,7 @@ namespace ekaH_Windows.Profiles.Forms.Student
             Course course = (Course)tile.Tag;
 
             HttpClient client = NetworkClient.getInstance().getHttpClient();
-            string requestURI = BaseConnection.studentString + "/" + emailID + "/" + BaseConnection.coursesString + "/" + course.CourseID;
+            string requestURI = BaseConnection.g_studentString + "/" + emailID + "/" + BaseConnection.g_coursesString + "/" + course.CourseID;
 
             // Student enrolls in the course selected.
             try
@@ -139,7 +139,7 @@ namespace ekaH_Windows.Profiles.Forms.Student
         private Course executeGetCourseWithID(string courseID)
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
-            string requestURI = BaseConnection.coursesString + "/" + courseID + "/" + BaseConnection.singleString;
+            string requestURI = BaseConnection.g_coursesString + "/" + courseID + "/" + BaseConnection.g_singleString;
 
             Course course = null;
             try
@@ -171,7 +171,7 @@ namespace ekaH_Windows.Profiles.Forms.Student
         private List<Course> executeGetCoursesWithEmail(string email)
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
-            string requestURI = BaseConnection.coursesString + "/" + email + "/" + BaseConnection.singularFaculty;
+            string requestURI = BaseConnection.g_coursesString + "/" + email + "/" + BaseConnection.g_singularFaculty;
 
             List<Course> list = null;
             try

@@ -51,7 +51,7 @@ namespace ekaH_Windows.Profiles.UserControllers
             // Make a rest call to get all the courses info
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string requestURI = BaseConnection.coursesString + "/" + this.emailID + "/" + BaseConnection.singularFaculty;
+            string requestURI = BaseConnection.g_coursesString + "/" + this.emailID + "/" + BaseConnection.g_singularFaculty;
 
             // List data response. This is the blocking call.
             var response = client.GetAsync(requestURI).Result;
@@ -62,7 +62,7 @@ namespace ekaH_Windows.Profiles.UserControllers
 
                 foreach (Course singleCourse in courses)
                 {
-                    ListViewItem item = new ListViewItem(singleCourse.convertToArray());
+                    ListViewItem item = new ListViewItem(singleCourse.ConvertToArray());
                     item.Tag = singleCourse;
                     courseListView.Items.Add(item);
                 }
@@ -102,7 +102,7 @@ namespace ekaH_Windows.Profiles.UserControllers
 
                 HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-                string requestURI = BaseConnection.coursesString + "/" + courseSelected.CourseID;
+                string requestURI = BaseConnection.g_coursesString + "/" + courseSelected.CourseID;
                 
                 try
                 {

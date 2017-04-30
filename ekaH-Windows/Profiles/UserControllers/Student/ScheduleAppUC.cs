@@ -82,7 +82,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.appointments + "/" + BaseConnection.app;
+            string uri = BaseConnection.g_appointments + "/" + BaseConnection.g_app;
 
             try
             {
@@ -126,7 +126,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.appointments + "/" + BaseConnection.schedules + "/" + text + "/";
+            string uri = BaseConnection.g_appointments + "/" + BaseConnection.g_schedules + "/" + text + "/";
 
             List<Appointment> availableDates = null;
             try
@@ -165,7 +165,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
             // Gets the faculty information here. 
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string requestURI = BaseConnection.appointments + "/" + BaseConnection.facSchedule + "/" + searchTerm+"/";
+            string requestURI = BaseConnection.g_appointments + "/" + BaseConnection.g_facSchedule + "/" + searchTerm+"/";
 
             Schedule resSchedule;
             try

@@ -59,7 +59,7 @@ namespace ekaH_Windows.Profiles
             // Gets the faculty information here. 
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string requestURI = BaseConnection.facultyString + "/" + userEmail + "/";
+            string requestURI = BaseConnection.g_facultyString + "/" + userEmail + "/";
 
             try
             {

@@ -100,7 +100,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.submissions + "/" + BaseConnection.submitAction + "/" +
+            string uri = BaseConnection.g_submissions + "/" + BaseConnection.g_submitAction + "/" +
                 currentAssgn.id + "/" + studentEmail + "/";
 
             try
@@ -195,7 +195,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.submissions + "/" + BaseConnection.submitAction + "/"+ submission.id;
+            string uri = BaseConnection.g_submissions + "/" + BaseConnection.g_submitAction + "/"+ submission.id;
 
             try
             {
@@ -229,7 +229,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.submissions + "/" + BaseConnection.submitAction + "/";
+            string uri = BaseConnection.g_submissions + "/" + BaseConnection.g_submitAction + "/";
 
             try
             {

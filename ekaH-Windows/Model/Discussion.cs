@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace ekaH_Windows.Model
 {
+    /// <summary>
+    /// It holds the data structure for discussion threads of the application.
+    /// </summary>
     public class Discussion
     {
-        public long id { get; set; }
-        public Nullable<long> assignmentID { get; set; }
-        public string content { get; set; }
+        public long Id { get; set; }
+        public Nullable<long> AssignmentID { get; set; }
+        public string Content { get; set; }
 
-        public virtual Assignment assignment { get; set; }
+        public virtual Assignment Assignment { get; set; }
     }
 }

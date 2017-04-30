@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ekaH_Windows.Model
 {
+    /// <summary>
+    /// This class holds the data structure for assignment model.
+    /// </summary>
     public class Assignment
     {
         public long id { get; set; }
@@ -21,6 +24,9 @@ namespace ekaH_Windows.Model
         public virtual Course course { get; set; }
     }
 
+    /// <summary>
+    /// This class holds the data structure for assignment submission model.
+    /// </summary>
     public class Submission
     {
         public long id { get; set; }
@@ -31,7 +37,6 @@ namespace ekaH_Windows.Model
         public Nullable<System.DateTime> submissionDateTime { get; set; }
         public string submissionFileName { get; set; }
 
-        //public virtual assignment assignment { get; set; }
         public virtual StudentInfo student_info { get; set; }
     }
 }

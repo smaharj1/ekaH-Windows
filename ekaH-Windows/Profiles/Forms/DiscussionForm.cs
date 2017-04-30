@@ -38,7 +38,7 @@ namespace ekaH_Windows.Profiles.Forms
 
             discussionRTF.Clear();
 
-            string decodedString = WebUtility.UrlDecode(currentDisc.content);
+            string decodedString = WebUtility.UrlDecode(currentDisc.Content);
 
             try
             {
@@ -67,7 +67,7 @@ namespace ekaH_Windows.Profiles.Forms
 
             string encoded = WebUtility.UrlEncode(discussionRTF.Rtf);
 
-            currentDisc.content = encoded;
+            currentDisc.Content = encoded;
 
             PutDiscussion(currentDisc);
 
@@ -78,7 +78,7 @@ namespace ekaH_Windows.Profiles.Forms
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.discussion + "/" + BaseConnection.threadString + "/" + id;
+            string uri = BaseConnection.g_discussion + "/" + BaseConnection.g_threadString + "/" + id;
 
             try
             {
@@ -94,8 +94,8 @@ namespace ekaH_Windows.Profiles.Forms
                 {
                     // Makes a post call to discussion here.
                     Discussion disc = new Discussion();
-                    disc.assignmentID = currentAssgn.id;
-                    disc.content = "";
+                    disc.AssignmentID = currentAssgn.id;
+                    disc.Content = "";
                     
                     if (PutDiscussion(disc))
                     {
@@ -119,7 +119,7 @@ namespace ekaH_Windows.Profiles.Forms
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.discussion + "/" + BaseConnection.threadString + "/" + disc.id;
+            string uri = BaseConnection.g_discussion + "/" + BaseConnection.g_threadString + "/" + disc.Id;
 
             try
             {

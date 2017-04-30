@@ -89,16 +89,16 @@ namespace ekaH_Windows
             {
                 // Makes a REST call here
                 ClientUserRegisterModel registerInfo = new ClientUserRegisterModel();
-                registerInfo.userEmail = emailText.Text;
-                registerInfo.pswd = password1.Text;
-                registerInfo.isStudent = isStudent;
-                registerInfo.extraInfo = extraInfoText.Text;
-                registerInfo.firstName = firstNameText.Text;
-                registerInfo.lastName = lastNameText.Text;
+                registerInfo.UserEmail = emailText.Text;
+                registerInfo.Pswd = password1.Text;
+                registerInfo.IsStudent = isStudent;
+                registerInfo.ExtraInfo = extraInfoText.Text;
+                registerInfo.FirstName = firstNameText.Text;
+                registerInfo.LastName = lastNameText.Text;
 
                 HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-                HttpResponseMessage responseReceived = client.PostAsJsonAsync(BaseConnection.registerPostString, registerInfo).Result;
+                HttpResponseMessage responseReceived = client.PostAsJsonAsync(BaseConnection.g_registerPostString, registerInfo).Result;
 
                 if (responseReceived.IsSuccessStatusCode)
                 {

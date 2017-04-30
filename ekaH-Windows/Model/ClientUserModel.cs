@@ -6,23 +6,32 @@ using System.Threading.Tasks;
 
 namespace ekaH_Windows.Model
 {
+    /// <summary>
+    /// This class represents the data structure for log in information required from the user.
+    /// </summary>
     public class ClientUserLoginModel
     {
-        public sbyte member_type { get; set; }
-        public string email { get; set; }
-        public string pswd { get; set; }
+        public sbyte Member_type { get; set; }
+        public string Email { get; set; }
+        public string Pswd { get; set; }
     }
 
+    /// <summary>
+    /// This class represents the data structure for sign up information required from the user.
+    /// </summary>
     public class ClientUserRegisterModel
     {
-        public Boolean isStudent { get; set; }
-        public string userEmail { get; set; }
-        public string pswd { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string extraInfo { get; set; }
+        public Boolean IsStudent { get; set; }
+        public string UserEmail { get; set; }
+        public string Pswd { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string ExtraInfo { get; set; }
     }
 
+    /// <summary>
+    /// This class represents the general information of the faculty members.
+    /// </summary>
     public class FacultyInfo
     {
         public string FirstName { get; set; }
@@ -40,6 +49,9 @@ namespace ekaH_Windows.Model
         public string Phone { get; set; }
     }
 
+    /// <summary>
+    /// This class represents the data structure for holding student's personal information.
+    /// </summary>
     public class StudentInfo
     {
         public string FirstName { get; set; }

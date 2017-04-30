@@ -76,7 +76,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Assignment.cs" />
     <Compile Include="Model\BaseConnection.cs" />
     <Compile Include="Model\ClientUserModel.cs" />

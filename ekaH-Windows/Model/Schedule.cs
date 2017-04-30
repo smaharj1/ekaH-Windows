@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ekaH_Windows.Model
 {
+    /// <summary>
+    /// This class represents the data structure of a typical schedule for classes or appointments.
+    /// </summary>
     public class Schedule
     {
         public string ProfessorID { get; set; }
@@ -14,6 +17,9 @@ namespace ekaH_Windows.Model
         public DayInfo[] Days { get; set; }
     }
 
+    /// <summary>
+    /// This class represents the full information of an appointment.
+    /// </summary>
     public class FullAppointmentInfo
     {
         public FacultyInfo Faculty { get; set; }
@@ -21,6 +27,9 @@ namespace ekaH_Windows.Model
         public Appointment Appointment { get; set; }
     }
 
+    /// <summary>
+    /// This class represents the data structure for single schedule information.
+    /// </summary>
     public class SingleSchedule
     {
         public int ScheduleID { get; set; }
@@ -29,9 +38,12 @@ namespace ekaH_Windows.Model
         public DateTime EndDTime { get; set; }
     }
 
+    /// <summary>
+    /// This class represents the data structure for appointments.
+    /// </summary>
     public class Appointment
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public int ScheduleID { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
@@ -39,11 +51,13 @@ namespace ekaH_Windows.Model
         public bool Confirmed { get; set; }
     }
 
+    /// <summary>
+    /// This class represents the data structure for time of office hours in a day.
+    /// </summary>
     public class DayInfo
     {
         public DayOfWeek Day { get; set; }
         public TimeSpan startTime { get; set; }
         public TimeSpan endTime { get; set; }
-
     }
 }

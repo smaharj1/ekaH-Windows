@@ -95,7 +95,7 @@ namespace ekaH_Windows.Profiles.Forms
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.assignments + "/" + BaseConnection.coursesString + "/" + course.CourseID;
+            string uri = BaseConnection.g_assignments + "/" + BaseConnection.g_coursesString + "/" + course.CourseID;
             List<Assignment> assignments = new List<Assignment>();
 
             try

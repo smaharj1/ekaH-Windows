@@ -133,12 +133,12 @@ namespace ekaH_Windows.Profiles.UserControllers
 
             if (isStudent)
             {
-                uri = BaseConnection.appointments + "/" + BaseConnection.studentString + "/" +
+                uri = BaseConnection.g_appointments + "/" + BaseConnection.g_studentString + "/" +
                     getEmail() + "/";
             }
             else
             {
-                uri = BaseConnection.appointments + "/" + BaseConnection.facultyString + "/" +
+                uri = BaseConnection.g_appointments + "/" + BaseConnection.g_facultyString + "/" +
                     getEmail() + "/";
             }
 
