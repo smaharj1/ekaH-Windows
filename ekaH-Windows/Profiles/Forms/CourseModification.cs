@@ -1,5 +1,6 @@
 ﻿using ekaH_Windows.Model;
 using ekaH_Windows.Profiles.UserControllers;
+using MetroFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,168 +14,215 @@ using System.Windows.Forms;
 
 namespace ekaH_Windows.Profiles
 {
+    /// <summary>
+    /// This class modifies/creates the course.
+    /// </summary>
     public partial class CourseModification : MetroFramework.Forms.MetroForm
     {
-        private Course course;
-        private string emailID;
-        private bool modify;
+        /// <summary>
+        /// It stores the course information in the course object.
+        /// </summary>
+        private Course m_course;
+
+        /// <summary>
+        /// It holds the email address of the modifier.
+        /// </summary>
+        private string m_emailID;
+
+        /// <summary>
+        /// It checks if this is modification request or not.
+        /// </summary>
+        private bool m_modify;
         
-        public CourseModification(Course course)
+        /// <summary>
+        /// This is a constructor that initializes the class variables and fills the data if course if provided.
+        /// </summary>
+        /// <param name="a_course">It holds the course object.</param>
+        public CourseModification(Course a_course)
         {
-            modify = true;
-            this.course = course;
+            m_modify = true;
+            this.m_course = a_course;
             InitializeComponent();
 
+            /// Changes the text on the screen
             this.Text = "Modify your course";
             modifyButton.Text = "Modify";
 
-            fillData();
+            FillData();
         }
 
-        public CourseModification(string email)
+        /// <summary>
+        /// This is a constructor for creating a new course.
+        /// </summary>
+        /// <param name="a_email">It is the email address of the faculty.</param>
+        public CourseModification(string a_email)
         {
-            modify = false;
-            emailID = email;
+            m_modify = false;
+            m_emailID = a_email;
             InitializeComponent();
-
             
-
+            /// Changes the text.
             this.Text = "Create your course";
             modifyButton.Text = "Create";
 
         }
 
-        private void fillData()
+        /// <summary>
+        /// This function fills the data in the input fields if it already consists those information of the course.
+        /// </summary>
+        private void FillData()
         {
-            if (course != null)
+            /// It changes the texts of input fields that asks the course information from the user.
+            if (m_course != null)
             {
-                courseNameText.Text = string.IsNullOrEmpty(course.CourseName) ? courseNameText.Text : course.CourseName ;
-                descriptionText.Text = string.IsNullOrEmpty(course.CourseDescription) ? descriptionText.Text : course.CourseDescription;
+                courseNameText.Text = string.IsNullOrEmpty(m_course.CourseName) ? courseNameText.Text : m_course.CourseName ;
+                descriptionText.Text = string.IsNullOrEmpty(m_course.CourseDescription) ? descriptionText.Text : m_course.CourseDescription;
 
-                yearText.Text = course.Year.ToString();
-                semesterText.Text = course.Semester == "F" ? "Fall" : "Spring";
+                yearText.Text = m_course.Year.ToString();
+                semesterText.Text = m_course.Semester == "F" ? "Fall" : "Spring";
 
-                daysText.Text = course.Days;
+                daysText.Text = m_course.Days;
                 
-                startTimeText.Value = new DateTime(2000, 1, 1, course.StartTime.Hours, course.StartTime.Minutes, 0);
-                endTimeText.Value = new DateTime(2000, 1, 1, course.EndTime.Hours, course.EndTime.Minutes, 0);
+                startTimeText.Value = new DateTime(2000, 1, 1, m_course.StartTime.Hours, m_course.StartTime.Minutes, 0);
+                endTimeText.Value = new DateTime(2000, 1, 1, m_course.EndTime.Hours, m_course.EndTime.Minutes, 0);
 
             }
         }
 
-        private void parseDataFromFields(ref Course course)
+        /// <summary>
+        /// This function parses the data from the input fields on the screen and stores it in course object.
+        /// </summary>
+        /// <param name="a_course">It holds the course object.</param>
+        private void ParseDataFromFields(ref Course a_course)
         {
-            course.CourseDescription = descriptionText.Text;
-            course.Year = int.Parse(yearText.Text);
-            course.CourseName = courseNameText.Text;
+            // Puts the desired values in the properties of Course object.
+            a_course.CourseDescription = descriptionText.Text;
+            a_course.Year = int.Parse(yearText.Text);
+            a_course.CourseName = courseNameText.Text;
 
+            // Semester values are converted into single characters.
             if (string.Equals(semesterText.Text, "fall", StringComparison.OrdinalIgnoreCase))
             {
-                course.Semester = "F";
+                a_course.Semester = "F";
             }
             else
             {
-                course.Semester = "S";
+                a_course.Semester = "S";
             }
             
-            course.Days = daysText.Text;
-            int hour = startTimeText.Value.Hour;
-            if (startTimeText.Value.ToString("tt") == "PM")
-            {
-                hour += 12;
-            }
+            a_course.Days = daysText.Text;
 
-            course.StartTime = new TimeSpan(startTimeText.Value.Hour, startTimeText.Value.Minute, 0);
+            /// Puts the time information to the object.
+            TimeSpan tempTime = startTimeText.Value.TimeOfDay;
+            
+            a_course.StartTime = new TimeSpan(tempTime.Hours, tempTime.Minutes, 0);
 
-            hour = endTimeText.Value.Hour;
-            if (endTimeText.Value.ToString("tt") == "PM")
-            {
-                hour += 12;
-            }
-            course.EndTime = new TimeSpan(endTimeText.Value.Hour, endTimeText.Value.Minute, 0);
+            tempTime = endTimeText.Value.TimeOfDay;
+
+            a_course.EndTime = new TimeSpan(tempTime.Hours, tempTime.Minutes, 0);
         }
 
-        private void modifyButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function modifies the course by modifying it in the server.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender object.</param>
+        /// <param name="a_event">It holds the event arguments.</param>
+        private void ModifyButton_Click(object a_sender, EventArgs a_event)
         {
+            // Verifies all the fields and then makes the call to the server.
             if (verifyFields())
             {
                 HttpClient client = NetworkClient.getInstance().getHttpClient();
                 
-                if (modify)
+                /// Modifies if modifying current course. Else, it sends the creation request to the server.
+                if (m_modify)
                 {
-                    string id = course.CourseID;
-                    parseDataFromFields(ref course);
+                    string id = m_course.CourseID;
+                    ParseDataFromFields(ref m_course);
 
-                    // Make a REST call to modification.
+                    /// Make a REST call to modification.
                     string requestURI = BaseConnection.g_coursesString  + "/" + id + "/";
 
-                    var response = client.PutAsJsonAsync<Course>(requestURI, course).Result;
+                    var response = client.PutAsJsonAsync<Course>(requestURI, m_course).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("The information has been modified.");
+                        MetroMessageBox.Show(this, "Successfully modified", "Modified", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                         
                     }
                     else
                     {
-                        MessageBox.Show("Something went blup in the server... Sorry!");
+                        Worker.printServerError(this);
                     }
                 }
                 else
                 {
                     // Make a REST call to creating the course.
-                    course = new Course();
-                    course.ProfessorID = emailID;
-                    parseDataFromFields(ref course);
+                    m_course = new Course();
+                    m_course.ProfessorID = m_emailID;
+
+                    // Parses the data from the fields.
+                    ParseDataFromFields(ref m_course);
 
                     string requestURI = BaseConnection.g_coursesString  + "/";
 
-                    var response = client.PostAsJsonAsync<Course>(requestURI, course).Result;
+                    var response = client.PostAsJsonAsync<Course>(requestURI, m_course).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("The course has been created");
+                        MetroMessageBox.Show(this, "Successfully created", "Created",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("Something went blup in the server... Sorry!");
+                        Worker.printServerError(this);
                     }
                 }
+            }
+            else
+            {
+                MetroMessageBox.Show(this, "Incorrect values in the fields", "Incorrect entry",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
 
+        /// <summary>
+        /// This function verifies all the input fields.
+        /// </summary>
+        /// <returns>Returns true if all the fields have required values.</returns>
         private bool verifyFields()
         {
+            /// Checks if the course name is correctly set.
             if (string.IsNullOrEmpty(courseNameText.Text) || string.IsNullOrWhiteSpace(courseNameText.Text))
             {
-                MessageBox.Show("Not all the fields are right. Please look at the values");
                 return false;
             }
 
+            /// Checks if the year is correctly set.
             if (string.IsNullOrEmpty(yearText.Text) || string.IsNullOrWhiteSpace(yearText.Text))
             {
-                MessageBox.Show("Please check your year value");
                 return false;
             }
 
+            /// Checks if the semester value is correctly set.
             if (!string.Equals(semesterText.Text, "fall", StringComparison.OrdinalIgnoreCase) && !string.Equals(semesterText.Text, "spring", StringComparison.OrdinalIgnoreCase))
             {
-                MessageBox.Show("Please check your semester value");
                 return false;
             }
 
+            /// Checks if the start time is correctly set.
             if (startTimeText.Value > endTimeText.Value)
             {
-                MessageBox.Show("Start time cannot be greateer than end time.");
                 return false;
             }
 
+            /// Checks if the days text is correctly set.
             if (daysText.Text.Length >7 || daysText.Text.Length < 1)
             {
-                MessageBox.Show("Please enter valid days");
                 return false;
             }
 

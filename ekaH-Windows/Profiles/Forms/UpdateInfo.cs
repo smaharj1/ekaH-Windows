@@ -14,46 +14,68 @@ using MetroFramework;
 
 namespace ekaH_Windows.Profiles.Forms
 {
+    /// <summary>
+    /// This class helps the user to update their profile.
+    /// </summary>
     public partial class UpdateInfo : MetroFramework.Forms.MetroForm
     {
-        private bool isStudent;
-        private Object userInfo;
+        /// <summary>
+        /// It holds if the student is logged in or professor.
+        /// </summary>
+        private bool m_isStudent;
 
+        /// <summary>
+        /// It holds the user's info object.
+        /// </summary>
+        private Object m_userInfo;
+
+        /// <summary>
+        /// It holds the readable index.
+        /// </summary>
         private int readableIndex;
 
-        // Name and address controllers are going to be same for students and faculty
+        /// <summary>
+        /// It holds the name controller.
+        /// </summary>
         private NameInfoController nameController;
+
+        /// <summary>
+        /// It holds the address controller.
+        /// </summary>
         private AddressInfoController addressController;
+
+        /// <summary>
+        /// It holds the extra information controller.
+        /// </summary>
         private ExtraInfoController extraInfoController;
-
-        //public static UpdateInfo Info;
-
-        private UpdateInfo()
+               
+        /// <summary>
+        /// This is a constructor that sets the student property and the information object.
+        /// </summary>
+        /// <param name="m_info"></param>
+        /// <param name="m_isStd"></param>
+        public UpdateInfo(Object m_info, bool m_isStd)
         {
-            InitializeComponent();
-        }
-
-        public UpdateInfo(Object info, bool isStd)
-        {
-            isStudent = isStd;
-            userInfo = info;
+            m_isStudent = m_isStd;
+            m_userInfo = m_info;
             
             InitializeComponent();
 
-            initiateControllers();
-            startInfoControl();
+            InitiateControllers();
+            StartInfoControl();
             submitButton.Visible = false;
-
         }
 
-
-      
-
-        private void initiateControllers()
+        /// <summary>
+        /// This function starts all the controller where the information are modified.
+        /// </summary>
+        private void InitiateControllers()
         {
-            if (!isStudent)
+            /// Handles the student and faculty differently since the information needed are different.
+            if (!m_isStudent)
             {
-                FacultyInfo faculty = (FacultyInfo) userInfo;
+                /// Starts the desired controllers and adds it to the panel.
+                FacultyInfo faculty = (FacultyInfo) m_userInfo;
 
                 if (nameController == null)
                 {
@@ -62,7 +84,7 @@ namespace ekaH_Windows.Profiles.Forms
 
                     updateInfoPanel.Controls.Add(nameController);
                 }
-
+                /// Starts the desired controllers and adds it to the panel.
                 if (addressController == null)
                 {
                     addressController = new AddressInfoController(faculty.StreetAdd1, faculty.StreetAdd2, faculty.City, faculty.State, faculty.Zip);
@@ -71,6 +93,7 @@ namespace ekaH_Windows.Profiles.Forms
                     updateInfoPanel.Controls.Add(addressController);
                 }
 
+                /// Starts the desired controllers and adds it to the panel.
                 if (extraInfoController == null)
                 {
                     extraInfoController = new ExtraInfoController(faculty.Education, faculty.University, faculty.Concentration, faculty.Department);
@@ -81,9 +104,9 @@ namespace ekaH_Windows.Profiles.Forms
             }
             else
             {
-                // Do the same thing for Student. Only difference is that the object we have would be studentinfo
-                StudentInfo student = (StudentInfo)userInfo;
+                StudentInfo student = (StudentInfo)m_userInfo;
 
+                /// Starts the desired controllers and adds it to the panel.
                 if (nameController == null)
                 {
                     nameController = new NameInfoController(student.FirstName, student.LastName, student.Phone);
@@ -92,6 +115,7 @@ namespace ekaH_Windows.Profiles.Forms
                     updateInfoPanel.Controls.Add(nameController);
                 }
 
+                /// Starts the desired controllers and adds it to the panel.
                 if (addressController == null)
                 {
                     addressController = new AddressInfoController(student.StreetAdd1, student.StreetAdd2, student.City, student.State, student.Zip);
@@ -100,6 +124,7 @@ namespace ekaH_Windows.Profiles.Forms
                     updateInfoPanel.Controls.Add(addressController);
                 }
 
+                /// Starts the desired controllers and adds it to the panel.
                 if (extraInfoController == null)
                 {
                     extraInfoController = new ExtraInfoController(student.Education, student.Concentration, student.Graduation);
@@ -110,13 +135,17 @@ namespace ekaH_Windows.Profiles.Forms
             }
         }
 
-        private void startInfoControl()
+        /// <summary>
+        /// This function starts the info controller.
+        /// </summary>
+        private void StartInfoControl()
         {
+            /// Sets up the UI for getting the information from the user.
             submitButton.Visible = false;
             infoLabel.Text = "Tell us a little bit about yourself";
             if (nameController == null || addressController == null || extraInfoController == null)
             {
-                initiateControllers();
+                InitiateControllers();
             }
 
             nameController.BringToFront();
@@ -126,26 +155,32 @@ namespace ekaH_Windows.Profiles.Forms
             trackBar.Value = readableIndex * 33;
         }
 
-        private void startAddressControl()
+        /// <summary>
+        /// This class starts the address controller.
+        /// </summary>
+        private void StartAddressControl()
         {
-            // Disable the view for submit button
+            // Disable the view for submit button.
             submitButton.Visible = false;
 
             infoLabel.Text = "So, where do you live?";
             if (nameController == null || addressController == null || extraInfoController == null)
             {
-                initiateControllers();
+                InitiateControllers();
             }
 
+            /// Brings the controlle to the front.
             addressController.BringToFront();
 
             readableIndex = 2;
 
-            //previousIcon.Visible = false;
             trackBar.Value = readableIndex * 33;
         }
 
-        private void startFinalControl()
+        /// <summary>
+        /// This function starts the final controller that takes in the extra information from the user.
+        /// </summary>
+        private void StartFinalControl()
         {
             // Enable submit button
             submitButton.Visible = true;
@@ -153,7 +188,7 @@ namespace ekaH_Windows.Profiles.Forms
             infoLabel.Text = "Tell us more about your background";
             if (nameController == null || addressController == null || extraInfoController == null)
             {
-                initiateControllers();
+                InitiateControllers();
             }
 
             extraInfoController.BringToFront();
@@ -164,42 +199,60 @@ namespace ekaH_Windows.Profiles.Forms
             trackBar.Value = 100;
         }
 
-        private void nextIcon_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function takes the user to next page to gather more information.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event arguments.</param>
+        private void NextIcon_Click(object a_sender, EventArgs a_event)
         {
             if (readableIndex == 1)
             {
-                startAddressControl();
+                StartAddressControl();
             }
             else if (readableIndex == 2)
             {
-                // Start the third index for more information here.
-                startFinalControl();
+                /// Start the third index for more information here.
+                StartFinalControl();
                 nextIcon.Visible = false;
             }
 
             previousIcon.Visible = true;
         }
 
-        private void previousIcon_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function goes to the previous page when previous button is clicked.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event arguments.</param>
+        private void PreviousIcon_Click(object a_sender, EventArgs a_event)
         {
+            /// Tracks the current index and reduces as necessary to desired page.
             if(readableIndex == 2)
             {
-                startInfoControl();
+                StartInfoControl();
             }
             else if (readableIndex == 3)
             {
-                startAddressControl();
+                StartAddressControl();
             }
 
             nextIcon.Visible = true;
         }
 
-        // Makes a PUT REST call here for updating the information provided.
-        private void submitButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Makes a PUT REST call here for updating the information provided.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event arguments</param>
+        private void submitButton_Click(object a_sender, EventArgs a_event)
         {
-            if (!isStudent)
+            /// Parses the information provided by the user to desired fields in FacultyInfo or StudentInfo object.
+            /// Then, it sends it to the server to store the modification.
+            if (!m_isStudent)
             {
-                FacultyInfo putFaculty = (FacultyInfo)userInfo;
+                /// Put the info into the object.
+                FacultyInfo putFaculty = (FacultyInfo)m_userInfo;
                 putFaculty.FirstName = nameController.FirstName;
                 putFaculty.LastName = nameController.LastName;
                 putFaculty.Phone = nameController.Phone;
@@ -218,6 +271,7 @@ namespace ekaH_Windows.Profiles.Forms
 
                 string requestURI = BaseConnection.g_facultyString + "/" + putFaculty.Email + "/";
 
+                /// Sends the request to the server to save the changes.
                 var response = client.PutAsJsonAsync<FacultyInfo>(requestURI, putFaculty).Result;
 
                 if (response.IsSuccessStatusCode)
@@ -227,13 +281,13 @@ namespace ekaH_Windows.Profiles.Forms
                 }
                 else
                 {
-                    MetroMessageBox.Show(this, "Hay wire in the server! Please try again after some time!", "Server Error!", MessageBoxButtons.OK, MessageBoxIcon.Question);
-
+                    Worker.printServerError(this);
                 }
             }
             else
             {
-                StudentInfo putStudent = (StudentInfo)userInfo;
+                /// Puts the info from input fields into StudentInfo object.
+                StudentInfo putStudent = (StudentInfo)m_userInfo;
                 putStudent.FirstName = nameController.FirstName;
                 putStudent.LastName = nameController.LastName;
                 putStudent.Phone = nameController.Phone;
@@ -250,6 +304,7 @@ namespace ekaH_Windows.Profiles.Forms
 
                 string requestURI = BaseConnection.g_studentString + "/" + putStudent.Email + "/";
 
+                /// Sends the update to the server.
                 var response = client.PutAsJsonAsync<StudentInfo>(requestURI, putStudent).Result;
 
                 if (response.IsSuccessStatusCode)
@@ -259,8 +314,7 @@ namespace ekaH_Windows.Profiles.Forms
                 }
                 else
                 {
-                    MetroMessageBox.Show(this, "Hay wire in the server! Please try again after some time!", "Server Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    Worker.printServerError(this);
                 }
             }
         }

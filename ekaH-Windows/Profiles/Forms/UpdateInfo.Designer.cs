@@ -101,7 +101,7 @@
             this.previousIcon.Size = new System.Drawing.Size(49, 50);
             this.previousIcon.TabIndex = 5;
             this.previousIcon.TabStop = false;
-            this.previousIcon.Click += new System.EventHandler(this.previousIcon_Click);
+            this.previousIcon.Click += new System.EventHandler(this.PreviousIcon_Click);
             // 
             // nextIcon
             // 
@@ -112,7 +112,7 @@
             this.nextIcon.Size = new System.Drawing.Size(51, 50);
             this.nextIcon.TabIndex = 4;
             this.nextIcon.TabStop = false;
-            this.nextIcon.Click += new System.EventHandler(this.nextIcon_Click);
+            this.nextIcon.Click += new System.EventHandler(this.NextIcon_Click);
             // 
             // UpdateInfo
             // 

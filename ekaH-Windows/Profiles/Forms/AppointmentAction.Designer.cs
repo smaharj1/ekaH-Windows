@@ -134,7 +134,7 @@
             this.approveTile.TabIndex = 1;
             this.approveTile.Text = "Approve";
             this.approveTile.UseSelectable = true;
-            this.approveTile.Click += new System.EventHandler(this.approveTile_Click);
+            this.approveTile.Click += new System.EventHandler(this.ApproveTile_Click);
             // 
             // deleteTile
             // 
@@ -146,7 +146,7 @@
             this.deleteTile.TabIndex = 1;
             this.deleteTile.Text = "Delete";
             this.deleteTile.UseSelectable = true;
-            this.deleteTile.Click += new System.EventHandler(this.deleteTile_Click);
+            this.deleteTile.Click += new System.EventHandler(this.DeleteTile_Click);
             // 
             // AppointmentAction
             // 

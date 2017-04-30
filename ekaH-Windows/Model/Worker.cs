@@ -16,10 +16,10 @@ namespace ekaH_Windows.Model
         /// <summary>
         /// This function prints the server's error message for the given window.
         /// </summary>
-        /// <param name="window">It holds the window in which the error occured.</param>
-        public static void printServerError(IWin32Window window)
+        /// <param name="a_window">It holds the window in which the error occured.</param>
+        public static void printServerError(IWin32Window a_window)
         {
-            MetroMessageBox.Show(window, "Server might be shut down right now!", "Server down!",
+            MetroMessageBox.Show(a_window, "Server might be shut down right now!", "Server down!",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }

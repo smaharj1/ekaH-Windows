@@ -91,7 +91,7 @@
             this.sendTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.sendTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.sendTile.UseSelectable = true;
-            this.sendTile.Click += new System.EventHandler(this.sendTile_Click);
+            this.sendTile.Click += new System.EventHandler(this.SendTile_Click);
             // 
             // DiscussionForm
             // 

@@ -84,7 +84,7 @@
             this.assignmentList.TileSize = new System.Drawing.Size(280, 54);
             this.assignmentList.UseCompatibleStateImageBehavior = false;
             this.assignmentList.View = System.Windows.Forms.View.Tile;
-            this.assignmentList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.assignmentList_Click);
+            this.assignmentList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AssignmentList_Click);
             this.assignmentList.MouseHover += new System.EventHandler(this.assignmentList_OnMouseHover);
             // 
             // metroLabel1

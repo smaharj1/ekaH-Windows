@@ -14,31 +14,56 @@ using System.Windows.Forms;
 
 namespace ekaH_Windows.Profiles.Forms
 {
+    /// <summary>
+    /// This class shows the discussion form for the particular assignment.
+    /// </summary>
     public partial class DiscussionForm : MetroFramework.Forms.MetroForm
     {
-        private string senderEmail;
-        private Assignment currentAssgn;
-        private Discussion currentDisc;
+        /// <summary>
+        /// It holds the email of the sender.
+        /// </summary>
+        private string m_senderEmail;
 
-        public DiscussionForm(Assignment assgn, string em)
+        /// <summary>
+        /// It holds the current assignment.
+        /// </summary>
+        private Assignment m_currentAssgn;
+
+        /// <summary>
+        /// It holds the current discussion thread.
+        /// </summary>
+        private Discussion m_currentDisc;
+
+        /// <summary>
+        /// This is a constructor that initiates the discussion form.
+        /// </summary>
+        /// <param name="a_assgn">It holds the current assignment.</param>
+        /// <param name="a_em">It holds the current user's email.</param>
+        public DiscussionForm(Assignment a_assgn, string a_em)
         {
-            currentAssgn = assgn;
-            senderEmail = em;
-
-            
+            m_currentAssgn = a_assgn;
+            m_senderEmail = a_em;
             
             InitializeComponent();
         }
 
-        private void DiscussionForm_Load(object sender, EventArgs e)
+        /// <summary>
+        /// This function gets the discussion if it already exists. If not, then it creates a new discussion
+        /// giving the user interactive experience.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event arguments.</param>
+        private void DiscussionForm_Load(object a_sender, EventArgs a_event)
         {
-            currentDisc = GetDiscussionRequest(currentAssgn.id);
+            /// Gets the discussion content for current assignment.
+            m_currentDisc = GetDiscussionRequest(m_currentAssgn.id);
 
-            if (currentDisc == null) Close();
+            if (m_currentDisc == null) Close();
 
             discussionRTF.Clear();
 
-            string decodedString = WebUtility.UrlDecode(currentDisc.Content);
+            /// Decodes the content received from the server and then puts it on the screen.
+            string decodedString = WebUtility.UrlDecode(m_currentDisc.Content);
 
             try
             {
@@ -51,11 +76,17 @@ namespace ekaH_Windows.Profiles.Forms
             }
         }
 
-        private void sendTile_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function encodes the user's content and then appends it to the discussion thread.
+        /// </summary>
+        /// <param name="a_sender">It is the sender.</param>
+        /// <param name="a_event">It is the event arguments.</param>
+        private void SendTile_Click(object a_sender, EventArgs a_event)
         {
             string toAdd = textBox.Text + "\r\n";
-            string requester = senderEmail.Split('@')[0];
+            string requester = m_senderEmail.Split('@')[0];
 
+            /// Displays the string according to the format.
             discussionRTF.SelectionStart = discussionRTF.TextLength;
             discussionRTF.SelectionLength = 0;
             discussionRTF.SelectionFont = new Font(discussionRTF.Font, FontStyle.Bold);
@@ -65,25 +96,33 @@ namespace ekaH_Windows.Profiles.Forms
             discussionRTF.SelectionFont = new Font(discussionRTF.Font, FontStyle.Regular);
             discussionRTF.AppendText(toAdd);
 
+            /// Encodes the string and puts it in the database.
             string encoded = WebUtility.UrlEncode(discussionRTF.Rtf);
 
-            currentDisc.Content = encoded;
+            m_currentDisc.Content = encoded;
 
-            PutDiscussion(currentDisc);
+            PutDiscussion(m_currentDisc);
 
             textBox.Text = "";
         }
 
-        private Discussion GetDiscussionRequest(long id)
+        /// <summary>
+        /// This function returns the discussion object with all the content.
+        /// </summary>
+        /// <param name="a_id">It holds the assignment id.</param>
+        /// <returns>Returns the discussion object that contains the thread's contents.</returns>
+        private Discussion GetDiscussionRequest(long a_id)
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.g_discussion + "/" + BaseConnection.g_threadString + "/" + id;
+            string uri = BaseConnection.g_discussion + "/" + BaseConnection.g_threadString + "/" + a_id;
 
             try
             {
                 var res = client.GetAsync(uri).Result;
 
+                /// Tries to get the discussion content and if it has never been set, it makes a new discussion thread
+                /// for the assignment.
                 if (res.IsSuccessStatusCode)
                 {
                     Discussion disc = res.Content.ReadAsAsync<Discussion>().Result;
@@ -92,14 +131,14 @@ namespace ekaH_Windows.Profiles.Forms
                 }
                 else if (res.StatusCode == HttpStatusCode.NotFound)
                 {
-                    // Makes a post call to discussion here.
+                    /// Creates a discussion thread since it did not already exist.
                     Discussion disc = new Discussion();
-                    disc.AssignmentID = currentAssgn.id;
+                    disc.AssignmentID = m_currentAssgn.id;
                     disc.Content = "";
                     
                     if (PutDiscussion(disc))
                     {
-                        return GetDiscussionRequest(currentAssgn.id);
+                        return GetDiscussionRequest(m_currentAssgn.id);
                     }
                 }
                 else
@@ -115,15 +154,22 @@ namespace ekaH_Windows.Profiles.Forms
             return null;
         }
 
-        private bool PutDiscussion(Discussion disc)
+        /// <summary>
+        /// This function puts the changes in the discussion thread to the server.
+        /// </summary>
+        /// <param name="a_disc">It holds the modified discussion thread.</param>
+        /// <returns>Returns true if it successfully made changes in the server.</returns>
+        private bool PutDiscussion(Discussion a_disc)
         {
+            // Gets the instance of the client.
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.g_discussion + "/" + BaseConnection.g_threadString + "/" + disc.Id;
+            string uri = BaseConnection.g_discussion + "/" + BaseConnection.g_threadString + "/" + a_disc.Id;
 
             try
             {
-                var res = client.PutAsJsonAsync<Discussion>(uri, disc).Result;
+                /// Puts the changed discussion thread to the server.
+                var res = client.PutAsJsonAsync<Discussion>(uri, a_disc).Result;
 
                 if (res.IsSuccessStatusCode)
                 {
@@ -136,6 +182,7 @@ namespace ekaH_Windows.Profiles.Forms
                 Worker.printServerError(this);
             }
 
+            /// Returns false if exceptions were found.
             return false;
         }
     }

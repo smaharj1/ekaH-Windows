@@ -302,7 +302,7 @@
             this.modifyButton.TabIndex = 19;
             this.modifyButton.Text = "Modify";
             this.modifyButton.UseSelectable = true;
-            this.modifyButton.Click += new System.EventHandler(this.modifyButton_Click);
+            this.modifyButton.Click += new System.EventHandler(this.ModifyButton_Click);
             // 
             // CourseModification
             // 
