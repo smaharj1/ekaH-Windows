@@ -174,7 +174,7 @@ namespace ekaH_Windows.Profiles.UserControllers
             }
             else
             {
-                return ((FacultyProfile)Parent).userEmail;
+                return ((FacultyProfile)Parent).m_userEmail;
             }
         }
     }

@@ -16,26 +16,42 @@ using System.Net;
 
 namespace ekaH_Windows.Profiles.Forms.Student
 {
+    /// <summary>
+    /// This class helps the students to add the course to their schedule.
+    /// </summary>
     public partial class CourseAdd : MetroFramework.Forms.MetroForm
     {
+        /// <summary>
+        /// It holds the email address of the student.
+        /// </summary>
         private string emailID;
 
-        public CourseAdd(string email)
+        /// <summary>
+        /// This is a constructor that initializes the email.
+        /// </summary>
+        /// <param name="a_email">It holds user's email.</param>
+        public CourseAdd(string a_email)
         {
-            emailID = email;
+            emailID = a_email;
             InitializeComponent();
-
         }
 
-        public void courseTileClicked(object sender, EventArgs e)
+        /// <summary>
+        /// This function is triggered if the available courses tiles are clicked. It enrolls
+        /// the students to the clicked tiles.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        public void CourseTileClicked(object a_sender, EventArgs a_event)
         {
-            MetroTile tile = (MetroTile)sender;
+            /// Gets the metro tile.
+            MetroTile tile = (MetroTile)a_sender;
             Course course = (Course)tile.Tag;
 
             HttpClient client = NetworkClient.getInstance().getHttpClient();
             string requestURI = BaseConnection.g_studentString + "/" + emailID + "/" + BaseConnection.g_coursesString + "/" + course.CourseID;
 
-            // Student enrolls in the course selected.
+            /// Student enrolls in the course selected.
             try
             {
                 var response = client.PostAsync(requestURI, null).Result;
@@ -56,46 +72,58 @@ namespace ekaH_Windows.Profiles.Forms.Student
             }
             catch (Exception)
             {
-                MetroMessageBox.Show(this, "Server went blerp!", "Server error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Worker.printServerError(this);
             }
         }
 
-        private MetroTile makeTile(Course course, int x, int y)
+        /// <summary>
+        /// This function makes a metro tile to display.
+        /// </summary>
+        /// <param name="a_course">It holds the course.</param>
+        /// <param name="a_xAxis">It holds the x-coordinate.</param>
+        /// <param name="a_yAxis">It holds the y-coordinate.</param>
+        /// <returns></returns>
+        private MetroTile MakeTile(Course a_course, int a_xAxis, int a_yAxis)
         {
+            /// Creates a new tile object and fills the properties.
             MetroTile newTile = new MetroTile();
-            string display = course.CourseName + "        " + course.Days + "        " + course.ProfessorID;
+            string display = a_course.CourseName + "        " + a_course.Days + "        " + a_course.ProfessorID;
             newTile.Text = display;
-            newTile.Location = new Point(x, y);
-            newTile.Tag = course;
-            newTile.Click += new EventHandler(courseTileClicked);
+            newTile.Location = new Point(a_xAxis, a_yAxis);
+            newTile.Tag = a_course;
+            newTile.Click += new EventHandler(CourseTileClicked);
             newTile.Size = new Size(resultPanel.Width - 20, 80);
             newTile.Cursor = Cursors.Hand;
 
             return newTile;
-
         }
 
-
+        
         private void courseIDText_KeyDown(object sender, KeyEventArgs e)
         {
-            //searchTextBox.Enabled = false;
         }
 
         private void searchTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            //courseIDText.Enabled = false;
         }
 
         // This is the search tile
-        private void metroTile1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function enrolls the student to the course selected.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        private void MetroTile1_Click(object a_sender, EventArgs a_event)
         {
+            /// It holds the list of courses available and then displays the list.
             List<Course> coursesReceived = new List<Course>();
             resultPanel.Controls.Clear();
             int x = 10, y = 10;
 
+            /// Gets all the courses for the mentioned professor.
             if (!string.IsNullOrEmpty(courseIDText.Text))
             {
-                Course course = executeGetCourseWithID(courseIDText.Text);
+                Course course = ExecuteGetCourseWithID(courseIDText.Text);
                 if (course != null)
                 {
                     coursesReceived.Add(course);
@@ -127,28 +155,35 @@ namespace ekaH_Windows.Profiles.Forms.Student
                 return;
             }
             
+            /// Make tiles and adds it to the display.
             foreach(var c in coursesReceived)
             {
                 Course cour = (Course)c;
-                MetroTile tile = makeTile(cour, x, y);
+                MetroTile tile = MakeTile(cour, x, y);
                 resultPanel.Controls.Add(tile);
                 y += 90;
             }
         }
 
-        private Course executeGetCourseWithID(string courseID)
+        /// <summary>
+        /// This function gets the courses according to the course ID.
+        /// </summary>
+        /// <param name="a_courseID">It holds the course ID.</param>
+        /// <returns>Returns the course received from the given course ID.</returns>
+        private Course ExecuteGetCourseWithID(string a_courseID)
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
-            string requestURI = BaseConnection.g_coursesString + "/" + courseID + "/" + BaseConnection.g_singleString;
+            string requestURI = BaseConnection.g_coursesString + "/" + a_courseID + "/" + BaseConnection.g_singleString;
 
             Course course = null;
             try
             {
-                // List data response. This is the blocking call.
+                /// List data response. This is the blocking call.
                 var response = client.GetAsync(requestURI).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
+                    /// Stores the course if successfully received.
                     course = response.Content.ReadAsAsync<Course>().Result;
                 }
                 else if (response.StatusCode == HttpStatusCode.NotFound)
@@ -162,21 +197,26 @@ namespace ekaH_Windows.Profiles.Forms.Student
             }
             catch (Exception)
             {
-                MetroMessageBox.Show(this, "Server went blerp!", "Server error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Worker.printServerError(this);
             }
 
             return course;
         }
 
-        private List<Course> executeGetCoursesWithEmail(string email)
+        /// <summary>
+        /// This function gets the courses with the provided email id.
+        /// </summary>
+        /// <param name="a_email">It holds the email address.</param>
+        /// <returns>Returns the list of courses according to the email.</returns>
+        private List<Course> executeGetCoursesWithEmail(string a_email)
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
-            string requestURI = BaseConnection.g_coursesString + "/" + email + "/" + BaseConnection.g_singularFaculty;
+            string requestURI = BaseConnection.g_coursesString + "/" + a_email + "/" + BaseConnection.g_singularFaculty;
 
             List<Course> list = null;
             try
             {
-                // List data response. This is the blocking call.
+                /// List data response. This is the blocking call.
                 var response = client.GetAsync(requestURI).Result;
 
                 if (response.IsSuccessStatusCode)
@@ -185,7 +225,7 @@ namespace ekaH_Windows.Profiles.Forms.Student
                 }
                 else if (response.StatusCode == HttpStatusCode.BadRequest)
                 {
-
+                    /// Do not do anything.
                 }
                 else 
                 {
@@ -194,7 +234,7 @@ namespace ekaH_Windows.Profiles.Forms.Student
             }
             catch (Exception)
             {
-                MetroMessageBox.Show(this, "Server went blerp!", "Server error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Worker.printServerError(this);
             }
 
             return list;

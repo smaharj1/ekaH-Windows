@@ -108,7 +108,7 @@
             this.searchTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.searchTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.searchTile.UseSelectable = true;
-            this.searchTile.Click += new System.EventHandler(this.metroTile1_Click);
+            this.searchTile.Click += new System.EventHandler(this.MetroTile1_Click);
             // 
             // resultPanel
             // 

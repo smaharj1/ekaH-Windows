@@ -47,10 +47,10 @@ namespace ekaH_Windows.Profiles.UserControllers
         {
             FacultyProfile profile = FacultyProfile.getInstance(emailID);
 
-            UpdateInfo update = new UpdateInfo(profile.Faculty, false);
+            UpdateInfo update = new UpdateInfo(profile.m_faculty, false);
             update.ShowDialog();
 
-            FacultyProfile.getInstance(emailID).getFacultyInfo();
+            FacultyProfile.getInstance(emailID).GetFacultyInfo();
         }
 
         private void goOnlineTile_Click(object sender, EventArgs e)

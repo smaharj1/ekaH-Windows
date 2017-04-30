@@ -88,7 +88,7 @@
             this.sendButton.TabIndex = 1001;
             this.sendButton.Text = "Send";
             this.sendButton.UseSelectable = true;
-            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
+            this.sendButton.Click += new System.EventHandler(this.SendButton_Click);
             // 
             // SingleChat
             // 

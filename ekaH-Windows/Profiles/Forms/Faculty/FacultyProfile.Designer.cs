@@ -199,7 +199,7 @@
             this.tabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl.TabIndex = 3;
             this.tabControl.UseSelectable = true;
-            this.tabControl.Click += new System.EventHandler(this.tabControl_Click);
+            this.tabControl.Click += new System.EventHandler(this.TabControl_Click);
             // 
             // dashboardTab
             // 
