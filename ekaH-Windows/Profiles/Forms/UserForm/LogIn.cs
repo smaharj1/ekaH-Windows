@@ -15,15 +15,23 @@ using MetroFramework;
 
 namespace ekaH_Windows
 {
+    /// <summary>
+    /// This class lets the log in functionalities to the user.
+    /// </summary>
     public partial class LogInWindow : MetroFramework.Forms.MetroForm
     {
-        private Boolean isStudent;
+        /// <summary>
+        /// It holds if the user is student or professor.
+        /// </summary>
+        private bool m_isStudent;
 
-
+        /// <summary>
+        /// This is a constructor. 
+        /// </summary>
         public LogInWindow()
         {
             InitializeComponent();
-            isStudent = true;
+            m_isStudent = true;
         }
 
         private void LogIn_Load(object sender, EventArgs e)
@@ -31,32 +39,31 @@ namespace ekaH_Windows
 
         }
 
-        
-
-        /**
-         * Handles the log in of the user.
-         * */
-        private void executeLogin()
+        /// <summary>
+        /// This function handles the log in functionality of the user.
+        /// </summary>
+        private void ExecuteLogin()
         {
+            /// Forms a model with the user provided information.
             ClientUserLoginModel loginInfo = new ClientUserLoginModel();
             loginInfo.Pswd = passwordText.Text;
             loginInfo.Email = emailText.Text;
-            loginInfo.Member_type = isStudent ? (sbyte)1:(sbyte)0;
+            loginInfo.Member_type = m_isStudent ? (sbyte)1:(sbyte)0;
 
             HttpClient client = NetworkClient.getInstance().getHttpClient();
            
-            // List data response. This is the blocking call.
+            /// List data response. This is the blocking call.
             HttpResponseMessage response = client.PostAsJsonAsync(BaseConnection.g_loginPostString, loginInfo).Result; 
 
             if (response.IsSuccessStatusCode)
             {
-                // Here, open the new relevant form according to student or professor.
+                /// Here, open the new relevant form according to student or professor.
                 this.Hide();
 
-
-                if (isStudent)
+                /// Opens the student/professor profile according to the information provided.
+                if (m_isStudent)
                 {
-                    StudentProfile studentProfile = StudentProfile.getInstance(loginInfo.Email);
+                    StudentProfile studentProfile = StudentProfile.GetInstance(loginInfo.Email);
                     studentProfile.ShowDialog();
                     
                 }
@@ -76,30 +83,49 @@ namespace ekaH_Windows
 
         }
         
-
-        private void facultyButtonClicked(object sender, EventArgs e)
+        /// <summary>
+        /// This function changes the m_isStudent variable when faculty button is clicked.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        private void FacultyButtonClicked(object a_sender, EventArgs a_event)
         {
-            isStudent = false;
+            /// Changes the student value to false.
+            m_isStudent = false;
             faculty.BackColor = Color.SkyBlue;
             student.BackColor = Color.FromArgb(224, 224, 224);
         }
 
-        private void student_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function changes the student variable to true.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        private void Student_Click(object a_sender, EventArgs a_event)
         {
-            isStudent = true;
+            m_isStudent = true;
             student.BackColor = Color.SkyBlue;
             faculty.BackColor = Color.FromArgb(224, 224, 224);
         }
 
-        private void signupLabel_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function executes signup logic when the button is clicked.
+        /// </summary>
+        /// <param name="a_sender"></param>
+        /// <param name="a_event"></param>
+        private void SignupLabel_Click(object a_sender, EventArgs a_event)
         {
-            executeSignup();
+            ExecuteSignup();
         }
 
-        private void executeSignup()
+        /// <summary>
+        /// This function performs sign up.
+        /// </summary>
+        private void ExecuteSignup()
         {
             this.Hide();
 
+            /// Opens up Sign up form.
             Signup register = new Signup();
             register.ShowDialog();
 
@@ -107,11 +133,13 @@ namespace ekaH_Windows
         }
 
         
-
-        private bool verifyLogin()
+        /// <summary>
+        /// This funciton verifies if the user information provided is correct.
+        /// </summary>
+        /// <returns>Returns true if all the information provided by the user is correct.</returns>
+        private bool VerifyLogin()
         {
-
-            // Verifies the log in info like formating and stuff before it executes the login.
+            /// Verifies the log in info like formating and stuff before it executes the login.
             try
             {
                 var addr = new System.Net.Mail.MailAddress(emailText.Text);
@@ -121,8 +149,6 @@ namespace ekaH_Windows
                     MessageBox.Show("Password field is empty please enter again. \n Please enter it again.");
                     return false;
                 }
-
-
             }
             catch (Exception)
             {
@@ -131,12 +157,16 @@ namespace ekaH_Windows
             }
 
             return true;
-
         }
 
-        private void loginButton_Click_1(object sender, EventArgs e)
+        /// <summary>
+        /// This function verifies the log in credentials and logs in the user.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the events.</param>
+        private void LoginButton_Click_1(object a_sender, EventArgs a_event)
         {
-            if (verifyLogin()) executeLogin();
+            if (VerifyLogin()) ExecuteLogin();
         }
     }
 }

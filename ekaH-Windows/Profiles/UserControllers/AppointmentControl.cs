@@ -170,7 +170,7 @@ namespace ekaH_Windows.Profiles.UserControllers
         {
             if (isStudent)
             {
-                return ((StudentProfile)Parent).UserEmail;
+                return ((StudentProfile)Parent).m_userEmail;
             }
             else
             {

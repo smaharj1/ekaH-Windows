@@ -12,35 +12,51 @@ using System.Windows.Forms;
 
 namespace ekaH_Windows
 {
+    /// <summary>
+    /// This class lets the users register to the application.
+    /// </summary>
     public partial class Signup : MetroFramework.Forms.MetroForm
     {
-        private Boolean isStudent;
+        /// <summary>
+        /// It holds if the user is student or professor.
+        /// </summary>
+        private bool isStudent { get; set; }
 
+        /// <summary>
+        /// This is a default constructor.
+        /// </summary>
         public Signup()
         {
             isStudent = true;
             InitializeComponent();
         }
 
-        private void signinLabel_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function returns to log in page when the button is clicked.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        private void SigninLabel_Click(object a_sender, EventArgs a_event)
         {
             this.Hide();
 
+            /// Opens the log in window and closes the signup window.
             LogInWindow loginWindow = new LogInWindow();
             loginWindow.ShowDialog();
 
             this.Close(); 
         }
 
-      
-
-        // Verifies that all the fields meet the requirement before sending the data to the server.
-        private bool verifyAllFields()
+        /// <summary>
+        /// This function verifies that all the fields meet the requirement before sending the data to the server.
+        /// </summary>
+        /// <returns>Returns true if all the fields have correct values.</returns>
+        private bool VerifyAllFields()
         {
             try
             {
+                /// Verifies the name fields and address fields.
                 var addr = new System.Net.Mail.MailAddress(emailText.Text);
-               
 
                 if (password1.Text != password2.Text)
                 {
@@ -63,8 +79,12 @@ namespace ekaH_Windows
             return true;
         }
 
-        // Changes the label text when when student tab is clicked so that graduation year is captured.
-        private void student_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function changes the label text when when student tab is clicked so that graduation year is captured.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the events.</param>
+        private void Student_Click(object a_sender, EventArgs a_event)
         {
             isStudent = true;
             student.BackColor = Color.SkyBlue;
@@ -73,8 +93,12 @@ namespace ekaH_Windows
             extraInfoText.Hint = "Graduation year";
         }
 
-        // Changes the label text when faculty tab is clicked so that department info is captured.
-        private void faculty_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function changes the label text when faculty tab is clicked so that department info is captured.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the events.</param>
+        private void Faculty_Click(object a_sender, EventArgs a_event)
         {
             isStudent = false;
             faculty.BackColor = Color.SkyBlue;
@@ -83,11 +107,16 @@ namespace ekaH_Windows
             extraInfoText.Hint = "Department";
         }
 
-        private void registerTile_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function registers the user when the tile is clicked.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the events.</param>
+        private void registerTile_Click(object a_sender, EventArgs a_event)
         {
-            if (verifyAllFields())
+            if (VerifyAllFields())
             {
-                // Makes a REST call here
+                /// Makes a REST call here
                 ClientUserRegisterModel registerInfo = new ClientUserRegisterModel();
                 registerInfo.UserEmail = emailText.Text;
                 registerInfo.Pswd = password1.Text;
@@ -100,12 +129,12 @@ namespace ekaH_Windows
 
                 HttpResponseMessage responseReceived = client.PostAsJsonAsync(BaseConnection.g_registerPostString, registerInfo).Result;
 
+                /// Checks if the server was able to register the user.
                 if (responseReceived.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Your account has been registered. Please log in.");
 
-                    // Opens the log in window here.
-
+                    /// Opens the log in window here.
                     this.Hide();
 
                     LogInWindow login = new LogInWindow();
@@ -115,7 +144,7 @@ namespace ekaH_Windows
                 }
                 else
                 {
-                    //MessageBox.Show(responseReceived.Content.ReadAsAsync<string>().Result);
+                    Worker.printServerError(this);
                 }
             }
         }

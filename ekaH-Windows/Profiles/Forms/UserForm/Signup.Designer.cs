@@ -63,7 +63,7 @@
             this.faculty.TabIndex = 3;
             this.faculty.Text = "Faculty";
             this.faculty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.faculty.Click += new System.EventHandler(this.faculty_Click);
+            this.faculty.Click += new System.EventHandler(this.Faculty_Click);
             // 
             // student
             // 
@@ -77,7 +77,7 @@
             this.student.TabIndex = 2;
             this.student.Text = "Student";
             this.student.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.student.Click += new System.EventHandler(this.student_Click);
+            this.student.Click += new System.EventHandler(this.Student_Click);
             // 
             // signinLabel
             // 
@@ -90,7 +90,7 @@
             this.signinLabel.Size = new System.Drawing.Size(246, 17);
             this.signinLabel.TabIndex = 13;
             this.signinLabel.Text = "Already have an account? Sign in.";
-            this.signinLabel.Click += new System.EventHandler(this.signinLabel_Click);
+            this.signinLabel.Click += new System.EventHandler(this.SigninLabel_Click);
             // 
             // emailText
             // 

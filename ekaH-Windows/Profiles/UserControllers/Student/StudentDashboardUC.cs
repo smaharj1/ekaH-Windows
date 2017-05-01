@@ -24,21 +24,21 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
         private void updateInfoTile_Click(object sender, EventArgs e)
         {
-            UpdateInfo update = new UpdateInfo(parent.CurrentStudent, true);
+            UpdateInfo update = new UpdateInfo(parent.m_currentStudent, true);
             update.ShowDialog();
 
-            parent.getStudentInfo();
+            parent.GetStudentInfo();
         }
 
         private void enrollCourseTile_Click(object sender, EventArgs e)
         {
-            CourseAdd addCourse = new CourseAdd(parent.UserEmail);
+            CourseAdd addCourse = new CourseAdd(parent.m_userEmail);
             addCourse.ShowDialog();
         }
 
         private void goOnlineTile_Click(object sender, EventArgs e)
         {
-            OnlineChat chat = new OnlineChat(parent.UserEmail);
+            OnlineChat chat = new OnlineChat(parent.m_userEmail);
             chat.ShowDialog();
         }
     }

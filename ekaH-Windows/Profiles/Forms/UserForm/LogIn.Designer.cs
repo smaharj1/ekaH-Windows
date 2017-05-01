@@ -50,7 +50,7 @@
             this.student.TabIndex = 2;
             this.student.Text = "Student";
             this.student.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.student.Click += new System.EventHandler(this.student_Click);
+            this.student.Click += new System.EventHandler(this.Student_Click);
             // 
             // panel1
             // 
@@ -73,7 +73,7 @@
             this.faculty.TabIndex = 3;
             this.faculty.Text = "Faculty";
             this.faculty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.faculty.Click += new System.EventHandler(this.facultyButtonClicked);
+            this.faculty.Click += new System.EventHandler(this.FacultyButtonClicked);
             // 
             // signupLabel
             // 
@@ -86,7 +86,7 @@
             this.signupLabel.Size = new System.Drawing.Size(161, 17);
             this.signupLabel.TabIndex = 7;
             this.signupLabel.Text = "No Account? Sign up.";
-            this.signupLabel.Click += new System.EventHandler(this.signupLabel_Click);
+            this.signupLabel.Click += new System.EventHandler(this.SignupLabel_Click);
             // 
             // emailText
             // 
@@ -131,7 +131,7 @@
             this.loginButton.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.loginButton.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.loginButton.UseSelectable = true;
-            this.loginButton.Click += new System.EventHandler(this.loginButton_Click_1);
+            this.loginButton.Click += new System.EventHandler(this.LoginButton_Click_1);
             // 
             // LogInWindow
             // 

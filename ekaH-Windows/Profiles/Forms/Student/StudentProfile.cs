@@ -12,185 +12,243 @@ using System.Windows.Forms;
 using MetroFramework;
 using ekaH_Windows.Profiles.UserControllers.Student;
 using ekaH_Windows.Profiles.UserControllers;
+using ekaH_Windows.Profiles.Forms;
 
 namespace ekaH_Windows.Profiles
 {
+    /// <summary>
+    /// This class views the form and its functionalities for student.
+    /// </summary>
     public partial class StudentProfile : MetroFramework.Forms.MetroForm
     {
-        public string UserEmail { get; set; }
-        public StudentInfo CurrentStudent;
-        public bool isStudent = true;
+        /// <summary>
+        /// It holds the user's email.
+        /// </summary>
+        public string m_userEmail { get; set; }
 
-        private StudentDashboardUC ucDashboard;
-        private StudentCourseUC ucCourses;
-        private AppointmentControl ucAppointments;
+        /// <summary>
+        /// It holds the student info of the current student.
+        /// </summary>
+        public StudentInfo m_currentStudent { get; set; }
 
+        /// <summary>
+        /// It holds the controller of dashboard.
+        /// </summary>
+        private StudentDashboardUC m_ucDashboard;
 
+        /// <summary>
+        /// It holds the controller of courses.
+        /// </summary>
+        private StudentCourseUC m_ucCourses;
+
+        /// <summary>
+        /// It holds the controller of appointments.
+        /// </summary>
+        private AppointmentControl m_ucAppointments;
+
+        /// <summary>
+        /// It holds the instance of StudentProfile in order to make it singleton class.
+        /// </summary>
         private static StudentProfile student;
 
-        private StudentProfile(string email)
+        /// <summary>
+        /// This is a constructor that initializes the email of the user.
+        /// </summary>
+        /// <param name="a_email">It holds the user's email address.</param>
+        private StudentProfile(string a_email)
         {
             InitializeComponent();
 
-            UserEmail = email;
-            initializeAllTabs();
+            m_userEmail = a_email;
 
+            /// Starts all the tabs.
+            InitializeAllTabs();
         }
 
-        public static StudentProfile getInstance(string email)
+        /// <summary>
+        /// This function gives the instance of this class making it the only
+        /// way to access it.
+        /// </summary>
+        /// <param name="a_email">It holds the email address.</param>
+        /// <returns></returns>
+        public static StudentProfile GetInstance(string a_email)
         {
+            // Creates a new instance if student is null.
             if (student == null)
             {
-                student = new StudentProfile(email);
+                student = new StudentProfile(a_email);
             }
 
             return student;
         }
 
-        
-
-        private void StudentProfile_Load(object sender, EventArgs e)
+        /// <summary>
+        /// This function gets the information of the student and initializes the 
+        /// dashboard as the first view.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        private void StudentProfile_Load(object a_sender, EventArgs a_event)
         {
-            getStudentInfo();
+            GetStudentInfo();
 
-            viewDashboard();
+            ViewDashboard();
         }
 
-        private void initializeAllTabs()
+        /// <summary>
+        /// This function initializes all the controllers namely
+        /// dashbaord, courses, and appointments.
+        /// </summary>
+        private void InitializeAllTabs()
         {
-            ucDashboard = new StudentDashboardUC(this);
-            ucDashboard.Dock = DockStyle.Fill;
+            m_ucDashboard = new StudentDashboardUC(this);
+            m_ucDashboard.Dock = DockStyle.Fill;
 
-            ucCourses = new StudentCourseUC(this);
-            ucCourses.Dock = DockStyle.Fill;
+            m_ucCourses = new StudentCourseUC(this);
+            m_ucCourses.Dock = DockStyle.Fill;
 
-            ucAppointments = new AppointmentControl(this, true);
-            ucAppointments.Dock = DockStyle.Fill;
+            m_ucAppointments = new AppointmentControl(this, true);
+            m_ucAppointments.Dock = DockStyle.Fill;
 
-            contentPanel.Controls.Add(ucDashboard);
-            contentPanel.Controls.Add(ucCourses);
-            contentPanel.Controls.Add(ucAppointments);
+            /// Adds all the initialized contollers to the panel.
+            contentPanel.Controls.Add(m_ucDashboard);
+            contentPanel.Controls.Add(m_ucCourses);
+            contentPanel.Controls.Add(m_ucAppointments);
             
         }
 
         // This returns the student's information from the server.
-        public void getStudentInfo()
+        /// <summary>
+        /// This function gets the account information of the user from the server.
+        /// </summary>
+        public void GetStudentInfo()
         {
             StudentInfo responseStudent;
 
-            // Gets the faculty information here. 
+            /// Gets the faculty information here. 
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string requestURI = BaseConnection.g_studentString + "/" + UserEmail + "/";
+            string requestURI = BaseConnection.g_studentString + "/" + m_userEmail + "/";
 
             try
             {
-                // List data response. This is the blocking call.
+                /// List data response. This is the blocking call.
                 var response = client.GetAsync(requestURI).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
                     responseStudent = response.Content.ReadAsAsync<StudentInfo>().Result;
 
-                    // Rewrite the information in the labels
+                    /// Rewrite the information in the labels
                     firstNameLabel.Text = responseStudent.FirstName;
                     lastNameLabel.Text = responseStudent.LastName;
                     educationLabel.Text = responseStudent.Education + " in " + responseStudent.Concentration;
-
-                    //Address responseStudent = responseStudent.Address;
 
                     addressLabel.Text = responseStudent.StreetAdd1 == "" ? "" : responseStudent.StreetAdd1 + "\n";
                     addressLabel.Text += responseStudent.StreetAdd2 == "" ? "" : responseStudent.StreetAdd2 + "\n";
                     addressLabel.Text += responseStudent.State == "" ? "" : responseStudent.State + ", ";
                     addressLabel.Text += responseStudent.Zip == "" ? "" : responseStudent.Zip + "\n";
 
-                    contactLabel.Text = UserEmail + " " + responseStudent.Phone;
+                    contactLabel.Text = m_userEmail + " " + responseStudent.Phone;
 
-                    CurrentStudent = responseStudent;
+                    m_currentStudent = responseStudent;
 
                 }
                 else
                 {
-                    MetroMessageBox.Show(this, "Could not get the student information because of server acting up :)",
-                        "Server down!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                    Worker.printServerError(this);
                 }
             }
             catch(Exception)
             {
-                MetroMessageBox.Show(this, "Server might be shut down right now!", "Server down!", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Worker.printServerError(this);
             }
         }
 
-        private void viewDashboard()
+        /// <summary>
+        /// This function views the dashboard of the student.
+        /// </summary>
+        private void ViewDashboard()
         {
-            if (ucDashboard == null)
+            if (m_ucDashboard == null)
             {
-                // DO NOT pass in the email. Since StudentProfile is static class, directly access it from children classes instead.
-                ucDashboard = new StudentDashboardUC(this);
-                ucDashboard.Dock = DockStyle.Fill;
+                /// Since StudentProfile is static class, directly access it from children classes instead.
+                m_ucDashboard = new StudentDashboardUC(this);
+                m_ucDashboard.Dock = DockStyle.Fill;
 
-                contentPanel.Controls.Add(ucDashboard);
+                contentPanel.Controls.Add(m_ucDashboard);
             }
 
-            ucDashboard.BringToFront();
+            m_ucDashboard.BringToFront();
         }
 
-        private void viewAppointments()
+        /// <summary>
+        /// This function views the appointment controller.
+        /// </summary>
+        private void ViewAppointments()
         {
-            if (ucAppointments == null)
+            if (m_ucAppointments == null)
             {
-                // DO NOT pass in the email. Since StudentProfile is static class, directly access it from children classes instead.
-                ucAppointments = new AppointmentControl(this, true);
-                ucAppointments.Dock = DockStyle.Fill;
+                // Since StudentProfile is static class, directly access it from children classes instead.
+                m_ucAppointments = new AppointmentControl(this, true);
+                m_ucAppointments.Dock = DockStyle.Fill;
 
-                contentPanel.Controls.Add(ucAppointments);
+                contentPanel.Controls.Add(m_ucAppointments);
             }
 
-            ucAppointments.BringToFront();
+            m_ucAppointments.BringToFront();
         }
 
-        private void viewCourses()
+        /// <summary>
+        /// This function views the courses controller.
+        /// </summary>
+        private void ViewCourses()
         {
-            if (ucCourses == null)
+            if (m_ucCourses == null)
             {
-                // DO NOT pass in the email. Since StudentProfile is static class, directly access it from children classes instead.
-                ucCourses = new StudentCourseUC(this);
-                ucCourses.Dock = DockStyle.Fill;
+                // Since StudentProfile is static class, directly access it from children classes instead.
+                m_ucCourses = new StudentCourseUC(this);
+                m_ucCourses.Dock = DockStyle.Fill;
 
-                contentPanel.Controls.Add(ucCourses);
+                contentPanel.Controls.Add(m_ucCourses);
             }
 
-            ucCourses.BringToFront();
+            m_ucCourses.BringToFront();
         }
 
         // Handles the tab control situation.
-        public void onClickTabControl(Object sender, EventArgs e)
+        /// <summary>
+        /// This function handles the selection of pages on click.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        public void onClickTabControl(Object a_sender, EventArgs a_event)
         {
             TabPage selectedTab = tabControl.SelectedTab;
 
+            /// Navigates to the selected tab according to the selection.
             if (selectedTab == onlineChatTab)
             {
-                // Handle the function for displaying chat
+                OnlineChat chat = new OnlineChat(m_userEmail);
+                chat.ShowDialog();
             }
             else if (selectedTab == coursesTab)
             {
-                if (ucCourses != null)
+                if (m_ucCourses != null)
                 {
-                    ucCourses.executeGetRequest();
+                    m_ucCourses.executeGetRequest();
                 }
-                viewCourses();
+                ViewCourses();
             }
             else if (selectedTab == appointmentTab)
             {
-                if (ucAppointments != null) ucAppointments.refreshController();
-                viewAppointments();
+                if (m_ucAppointments != null) m_ucAppointments.refreshController();
+                ViewAppointments();
             }
             else
             {
-                // This will open the dashboard by default
-                viewDashboard();
+                /// This will open the dashboard by default
+                ViewDashboard();
             }
         }
     }

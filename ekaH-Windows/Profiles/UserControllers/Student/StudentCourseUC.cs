@@ -41,7 +41,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
             // Make a rest call to get all the courses info
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string requestURI = BaseConnection.g_studentString + "/" + ParentProfile.UserEmail + "/" + BaseConnection.g_coursesString;
+            string requestURI = BaseConnection.g_studentString + "/" + ParentProfile.m_userEmail + "/" + BaseConnection.g_coursesString;
 
             // List data response. This is the blocking call.
             var response = client.GetAsync(requestURI).Result;
@@ -83,7 +83,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
         {
             // Open the new form to get the info of the course.
             // The info would be the courseID.
-            CourseAdd courseAdd = new CourseAdd(ParentProfile.UserEmail);
+            CourseAdd courseAdd = new CourseAdd(ParentProfile.m_userEmail);
             courseAdd.ShowDialog();
 
             executeGetRequest();
@@ -108,7 +108,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
                 HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-                string requestURI = BaseConnection.g_studentString + "/" + ParentProfile.UserEmail +"/"+ 
+                string requestURI = BaseConnection.g_studentString + "/" + ParentProfile.m_userEmail +"/"+ 
                     BaseConnection.g_coursesString +"/"+ courseSelected.CourseID;
 
                 try
@@ -147,7 +147,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
             Course selectedCourse = (Course)itemSelected.Tag;
 
-            CourseDetail courseDetailForm = new CourseDetail(selectedCourse, true, ParentProfile.UserEmail);
+            CourseDetail courseDetailForm = new CourseDetail(selectedCourse, true, ParentProfile.m_userEmail);
             courseDetailForm.Show();
         }
     }
