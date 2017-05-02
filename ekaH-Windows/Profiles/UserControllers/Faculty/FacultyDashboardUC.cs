@@ -11,51 +11,66 @@ using ekaH_Windows.Profiles.Forms;
 
 namespace ekaH_Windows.Profiles.UserControllers
 {
+    /// <summary>
+    /// This function handles the dashboard of faculty. It is different from student
+    /// dashboard.
+    /// </summary>
     public partial class FacultyDashboardUC : MetroFramework.Controls.MetroUserControl
     {
-        public string emailID;
+        /// <summary>
+        /// It holds the email address of faculty.
+        /// </summary>
+        public string m_emailID;
 
-        public FacultyDashboardUC()
-        {
-            InitializeComponent();
-
-            fillWelcome();
-        }
-
+        /// <summary>
+        /// This is a constructor that initializes the email.
+        /// </summary>
+        /// <param name="email"></param>
         public FacultyDashboardUC(string email)
         {
-            emailID = email;
+            m_emailID = email;
             InitializeComponent();
 
-            fillWelcome();
-        }
-
-        private void fillWelcome()
-        {
+            /// Display the welcome message.
             welcomeLabel.Text = "Your immediate options made easy! Please choose from the menu and go right into it.";
-            
         }
 
-        private void courseTile_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function handles modification of the course when the tile is clicked.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void CourseTile_Click(object a_sender, EventArgs a_event)
         {
-            CourseModification addCourse = new CourseModification(emailID);
+            CourseModification addCourse = new CourseModification(m_emailID);
             addCourse.ShowDialog();
-
         }
-        
-        private void updateInfoTile_Click(object sender, EventArgs e)
+
+        /// <summary>
+        /// This function handles updating the user info when update
+        /// button is pressed.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void UpdateInfoTile_Click(object a_sender, EventArgs a_event)
         {
-            FacultyProfile profile = FacultyProfile.getInstance(emailID);
+            /// Starts the new form to get the information.
+            FacultyProfile profile = FacultyProfile.getInstance(m_emailID);
 
             UpdateInfo update = new UpdateInfo(profile.m_faculty, false);
             update.ShowDialog();
 
-            FacultyProfile.getInstance(emailID).GetFacultyInfo();
+            FacultyProfile.getInstance(m_emailID).GetFacultyInfo();
         }
 
-        private void goOnlineTile_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function handles going online feature.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void GoOnlineTile_Click(object a_sender, EventArgs a_event)
         {
-            OnlineChat chat = new OnlineChat(emailID);
+            OnlineChat chat = new OnlineChat(m_emailID);
             chat.ShowDialog();
         }
     }

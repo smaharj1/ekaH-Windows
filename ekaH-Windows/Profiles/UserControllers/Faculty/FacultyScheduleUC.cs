@@ -41,7 +41,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
                 
                 schedule.StartDate = startDatePicker.Value;
                 schedule.EndDate = endDatePicker.Value;
-                schedule.ProfessorID = appControl.getEmail();
+                schedule.ProfessorID = appControl.GetEmail();
                 firstTime = false;
                 startDatePicker.Enabled = false;
                 endDatePicker.Enabled = false;

@@ -111,7 +111,7 @@ namespace ekaH_Windows.Profiles.Forms
                     courseDetailPanel.Controls.Add(m_ucFacAssignment);
                 }
 
-                m_ucFacAssignment.open(clickedAssignment);
+                m_ucFacAssignment.Open(clickedAssignment);
                 m_ucFacAssignment.BringToFront();
             }
             else
@@ -206,7 +206,7 @@ namespace ekaH_Windows.Profiles.Forms
                 courseDetailPanel.Controls.Add(m_ucFacAssignment);
             }
 
-            m_ucFacAssignment.makeNew(m_course, assignmentList.Items.Count+1);
+            m_ucFacAssignment.MakeNew(m_course, assignmentList.Items.Count+1);
             m_ucFacAssignment.BringToFront();
         }
     }

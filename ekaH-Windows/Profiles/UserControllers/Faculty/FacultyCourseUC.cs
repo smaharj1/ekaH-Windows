@@ -16,51 +16,66 @@ using ekaH_Windows.Profiles.Forms;
 
 namespace ekaH_Windows.Profiles.UserControllers
 {
+    /// <summary>
+    /// This controller provides all the necessary features for faculty to manipulate the course.
+    /// </summary>
     public partial class FacultyCourseUC : MetroFramework.Controls.MetroUserControl
     {
-        private string emailID;
-        private List<Course> courses;
+        /// <summary>
+        /// It holds the email address of faculty.
+        /// </summary>
+        private string m_emailID;
+
+        /// <summary>
+        /// It holds all the courses that faculty is teaching.
+        /// </summary>
+        private List<Course> m_courses;
         
-        public FacultyCourseUC()
+        /// <summary>
+        /// This is a constructor. It initializes the email of the professor.
+        /// </summary>
+        /// <param name="a_emailID">It holds the email address.</param>
+        public FacultyCourseUC(string a_emailID)
         {
+            this.m_emailID = a_emailID;
             InitializeComponent();
         }
-
-        public FacultyCourseUC(string emailID)
-        {
-            this.emailID = emailID;
-            InitializeComponent();
-            
-        }
         
-
-        private void ViewCourseUC_Load(object sender, EventArgs e)
+        /// <summary>
+        /// This function gets all the courses taught by the professor once the form loads.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void ViewCourseUC_Load(object a_sender, EventArgs a_event)
         {
-            executeGetRequest();
-            
+            ExecuteGetRequest();
         }
 
-        private void executeGetRequest()
+        /// <summary>
+        /// This function gets all the courses taught by the professor from the server.
+        /// </summary>
+        private void ExecuteGetRequest()
         {
-            if (courses != null)
+            /// Removes the current values in course list if existing.
+            if (m_courses != null)
             {
-                courses.Clear();
+                m_courses.Clear();
                 courseListView.Items.Clear();
             }
 
-            // Make a rest call to get all the courses info
+            /// Make a rest call to get all the courses info
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string requestURI = BaseConnection.g_coursesString + "/" + this.emailID + "/" + BaseConnection.g_singularFaculty;
+            string requestURI = BaseConnection.g_coursesString + "/" + this.m_emailID + "/" + BaseConnection.g_singularFaculty;
 
-            // List data response. This is the blocking call.
+            /// List data response. This is the blocking call.
             var response = client.GetAsync(requestURI).Result;
 
             if (response.IsSuccessStatusCode)
             {
-                courses = response.Content.ReadAsAsync<List<Course>>().Result;
+                m_courses = response.Content.ReadAsAsync<List<Course>>().Result;
 
-                foreach (Course singleCourse in courses)
+                foreach (Course singleCourse in m_courses)
                 {
                     ListViewItem item = new ListViewItem(singleCourse.ConvertToArray());
                     item.Tag = singleCourse;
@@ -70,20 +85,27 @@ namespace ekaH_Windows.Profiles.UserControllers
             }
             else
             {
-                MetroMessageBox.Show(this, "Could not get the courses information because of server acting up :)",
-                    "Server error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                Worker.printServerError(this);
             }
         }
 
-        public void onListItemClicked(object sender, EventArgs e)
+        /// <summary>
+        /// This function is triggered if the courses are clicked. 
+        /// It should not do anything.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        public void OnListItemClicked(object a_sender, EventArgs a_event)
         {
-            //ListViewItem itemSelected = courseListView.SelectedItems[0];
-            //MessageBox.Show(itemSelected.Text);
         }
 
         // It removes the selected course.
-        private void removeCourse_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function removes the selected course.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void RemoveCourse_Click(object a_sender, EventArgs a_event)
         {
             if (courseListView.SelectedItems.Count < 1)
             {
@@ -93,9 +115,10 @@ namespace ekaH_Windows.Profiles.UserControllers
                 return;
             }
 
+            /// Asks the user before deleting it.
             if (MetroMessageBox.Show(this, "Are you sure?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                // Only one itemSelected can be selected at a time.
+                /// Only one itemSelected can be selected at a time.
                 ListViewItem itemSelected = courseListView.SelectedItems[0];
 
                 Course courseSelected = (Course)itemSelected.Tag;
@@ -106,13 +129,13 @@ namespace ekaH_Windows.Profiles.UserControllers
                 
                 try
                 {
-                    
+                    /// Deletes the course from the server.
                     var response = client.DeleteAsync(requestURI).Result;
 
                     if (response.IsSuccessStatusCode)
                     {
-                        // This means that the data has been successfully deleted.
-                        deleteItemFromView(itemSelected);
+                        /// This means that the data has been successfully deleted.
+                        DeleteItemFromView(itemSelected);
                     }
                     else
                     {
@@ -121,27 +144,35 @@ namespace ekaH_Windows.Profiles.UserControllers
                 }
                 catch(Exception)
                 {
-                    MessageBox.Show("Server acted up.. ");
+                    Worker.printServerError(this);
                 }
             }
         }
 
-        private void deleteItemFromView(ListViewItem listItem)
+        /// <summary>
+        /// This function deletes the selected course from the view.
+        /// </summary>
+        /// <param name="a_listItem">It holds the item that is selected.</param>
+        private void DeleteItemFromView(ListViewItem a_listItem)
         {
-            courseListView.Items.Remove(listItem);
+            courseListView.Items.Remove(a_listItem);
         }
 
-        // Opens the new form to view the details of the course selected and handle the assignments feature.
-        public void viewDetails_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function opens the new form to view the details of the course selected and handle the assignments feature.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        public void ViewDetails_Click(object a_sender, EventArgs a_event)
         {
-            // Checks if the course is selected first.
+            /// Checks if the course is selected first.
             if (courseListView.SelectedItems.Count < 1)
             {
                 MetroMessageBox.Show(this, "Please select an item below and then click this button.", "Select Course first", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 return;
             }
 
-            // Only one itemSelected can be selected at a time.
+            /// Only one itemSelected can be selected at a time.
             ListViewItem itemSelected = courseListView.SelectedItems[0];
 
             Course selectedCourse = (Course)itemSelected.Tag;
@@ -150,8 +181,12 @@ namespace ekaH_Windows.Profiles.UserControllers
             courseDetailForm.Show();
         }
 
-        // Modifies the info once it is clicked. Only few of the details of the course can be modified.
-        private void modifyCourse_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function modifies the info once it is clicked. Only few of the details of the course can be modified.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void ModifyCourse_Click(object a_sender, EventArgs a_event)
         {
             if (courseListView.SelectedItems.Count < 1)
             {
@@ -160,7 +195,7 @@ namespace ekaH_Windows.Profiles.UserControllers
                 return;
             }
 
-            // Only one itemSelected can be selected at a time.
+            /// Only one itemSelected can be selected at a time.
             ListViewItem itemSelected = courseListView.SelectedItems[0];
 
             Course selectedCourse = (Course)itemSelected.Tag;
@@ -168,17 +203,21 @@ namespace ekaH_Windows.Profiles.UserControllers
             CourseModification modifyCourseForm = new CourseModification(selectedCourse);
             modifyCourseForm.ShowDialog();
 
-            executeGetRequest();
+            ExecuteGetRequest();
 
         }
 
-        // Adds a course to the system.
-        private void addCourse_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function adds the course to the system.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void AddCourse_Click(object a_sender, EventArgs a_event)
         {
-            CourseModification createCourse = new CourseModification(emailID);
+            CourseModification createCourse = new CourseModification(m_emailID);
             createCourse.ShowDialog();
 
-            executeGetRequest();
+            ExecuteGetRequest();
         }
     }
 }

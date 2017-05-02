@@ -242,7 +242,7 @@ namespace ekaH_Windows.Profiles
             }
             else if (selectedTab == appointmentTab)
             {
-                if (m_ucAppointments != null) m_ucAppointments.refreshController();
+                if (m_ucAppointments != null) m_ucAppointments.RefreshController();
                 ViewAppointments();
             }
             else

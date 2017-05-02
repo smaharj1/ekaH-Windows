@@ -69,7 +69,7 @@
             this.courseListView.UseCompatibleStateImageBehavior = false;
             this.courseListView.UseSelectable = true;
             this.courseListView.View = System.Windows.Forms.View.Details;
-            this.courseListView.ItemActivate += new System.EventHandler(this.onListItemClicked);
+            this.courseListView.ItemActivate += new System.EventHandler(this.OnListItemClicked);
             // 
             // colCourseName
             // 
@@ -123,7 +123,7 @@
             this.addCourse.Text = "Add a course";
             this.addCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.addCourse.UseSelectable = true;
-            this.addCourse.Click += new System.EventHandler(this.addCourse_Click);
+            this.addCourse.Click += new System.EventHandler(this.AddCourse_Click);
             // 
             // removeCourse
             // 
@@ -138,7 +138,7 @@
             this.removeCourse.Text = "Remove a course";
             this.removeCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.removeCourse.UseSelectable = true;
-            this.removeCourse.Click += new System.EventHandler(this.removeCourse_Click);
+            this.removeCourse.Click += new System.EventHandler(this.RemoveCourse_Click);
             // 
             // modifyCourse
             // 
@@ -153,7 +153,7 @@
             this.modifyCourse.Text = "Modify Course";
             this.modifyCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.modifyCourse.UseSelectable = true;
-            this.modifyCourse.Click += new System.EventHandler(this.modifyCourse_Click);
+            this.modifyCourse.Click += new System.EventHandler(this.ModifyCourse_Click);
             // 
             // detailsTile
             // 
@@ -168,7 +168,7 @@
             this.detailsTile.Text = "View Details";
             this.detailsTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.detailsTile.UseSelectable = true;
-            this.detailsTile.Click += new System.EventHandler(this.viewDetails_Click);
+            this.detailsTile.Click += new System.EventHandler(this.ViewDetails_Click);
             // 
             // FacultyCourseUC
             // 

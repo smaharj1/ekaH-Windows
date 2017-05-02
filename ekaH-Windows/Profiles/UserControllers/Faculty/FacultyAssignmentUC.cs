@@ -17,87 +17,148 @@ using ekaH_Windows.Profiles.Forms;
 
 namespace ekaH_Windows.Profiles.UserControllers.Faculty
 {
+    /// <summary>
+    /// This class handles the assignment giving features by the professor which includes 
+    /// editing the document and viewing the files.
+    /// </summary>
     public partial class FacultyAssignmentUC : MetroFramework.Controls.MetroUserControl
     {
-        private Color BUTTON_PRESSED = ColorTranslator.FromHtml("#E8B71A");
-        private Color BUTTON_RELEASED = ColorTranslator.FromHtml("#F7EAC8");
+        /// <summary>
+        /// It holds the color value when the button is pressed.
+        /// </summary>
+        private Color m_buttonPressed = ColorTranslator.FromHtml("#E8B71A");
 
-        private List<Assignment> openAssignments;
-        private Assignment currentAssgn;
-        private string Email;
+        /// <summary>
+        /// It holds the color value when the button is released.
+        /// </summary>
+        private Color m_buttonReleased = ColorTranslator.FromHtml("#F7EAC8");
 
-        private Font preferredFont;
-        private Color preferredForeColor;
+        /// <summary>
+        /// It holds all the loaded assignments. It is stored so that the app does not
+        /// have to call the server multiple times.
+        /// </summary>
+        private List<Assignment> m_openAssignments;
 
-        private Font defaultFont;
-        private Color defaultForeColor;
+        /// <summary>
+        /// It holds the currently open assignment.
+        /// </summary>
+        private Assignment m_currentAssgn;
 
-        private bool isNew = false;
+        /// <summary>
+        /// It holds the email of the user.
+        /// </summary>
+        private string m_email;
 
+        /// <summary>
+        /// It holds the preferred font that the user selects.
+        /// </summary>
+        private Font m_preferredFont;
 
-        public FacultyAssignmentUC(string em)
+        /// <summary>
+        /// It holds the preferred fore color of the text.
+        /// </summary>
+        private Color m_preferredForeColor;
+
+        /// <summary>
+        /// It holds the default font.
+        /// </summary>
+        private Font m_defaultFont;
+
+        /// <summary>
+        /// It holds the default fore color.
+        /// </summary>
+        private Color m_defaultForeColor;
+
+        /// <summary>
+        /// It indicates if the assignment is new or already existent.
+        /// </summary>
+        private bool m_isNew = false;
+
+        /// <summary>
+        /// It is a constructor which initializes the user's email.
+        /// </summary>
+        /// <param name="a_em">It holds the email of the professor.</param>
+        public FacultyAssignmentUC(string a_em)
         {
-            Email = em;
-            openAssignments = new List<Assignment>();
+            /// Sets the email and initializes all the class variables.
+            m_email = a_em;
+            m_openAssignments = new List<Assignment>();
             InitializeComponent();
 
-            preferredFont = assignmentRTB.Font;
-            preferredForeColor = Color.Black;
+            m_preferredFont = assignmentRTB.Font;
+            m_preferredForeColor = Color.Black;
 
-            defaultFont = assignmentRTB.Font;
-            defaultForeColor = Color.Black;
-        }
-
-        public void makeNew(Course course, int projectNum)
-        {
-            isNew = true;
-            currentAssgn = new Assignment();
-            currentAssgn.courseID = course.CourseID;
-            currentAssgn.deadline = DateTime.Today;
-            currentAssgn.weight = -1;
-            currentAssgn.projectNum = projectNum;
-            currentAssgn.projectTitle = "";
-            currentAssgn.content = "";
-
-            updateAssgnView();
-
+            m_defaultFont = assignmentRTB.Font;
+            m_defaultForeColor = Color.Black;
         }
 
         /// <summary>
-        /// Opens the assignment clicked by the professor and gives the details.
+        /// This function handles the UI values of various text boxes while making
+        /// a new assignment.
         /// </summary>
-        /// <param name="assgn"></param>
-        public void open(Assignment assgn)
+        /// <param name="a_course">It holds which course the assignment is for.</param>
+        /// <param name="a_projectNum">It holds the project's number.</param>
+        public void MakeNew(Course a_course, int a_projectNum)
         {
-            isNew = false;
+            m_isNew = true;
+
+            /// Makes a new assignment and sets the values according to the parameter.
+            m_currentAssgn = new Assignment();
+            m_currentAssgn.courseID = a_course.CourseID;
+            m_currentAssgn.deadline = DateTime.Today;
+            m_currentAssgn.weight = -1;
+            m_currentAssgn.projectNum = a_projectNum;
+            m_currentAssgn.projectTitle = "";
+            m_currentAssgn.content = "";
+
+            /// Updates the view.
+            UpdateAssgnView();
+        }
+
+        /// <summary>
+        /// This funciton opens the assignment clicked by the professor and gives the details.
+        /// </summary>
+        /// <param name="a_assgn">It holds the assignment that needs to be opened and displayed.</param>
+        public void Open(Assignment a_assgn)
+        {
+            m_isNew = false;
+
             /// Checks if the assignment was previously open to reduce the number of UC objects being formed.
-            if (openAssignments.Contains(assgn))
+            if (m_openAssignments.Contains(a_assgn))
             {
-                int index = openAssignments.IndexOf(assgn);
-                currentAssgn = openAssignments[index];
+                int index = m_openAssignments.IndexOf(a_assgn);
+                m_currentAssgn = m_openAssignments[index];
 
             }
             else
             {
-                openAssignments.Add(assgn);
-                currentAssgn = assgn;
+                m_openAssignments.Add(a_assgn);
+                m_currentAssgn = a_assgn;
             }
 
+            /// Displays the context menu for grading or opening the submitted solution for the 
+            /// project posted.
             ContextMenu cMenu = new ContextMenu();
-            cMenu.MenuItems.Add("Open", openSubmission_onClick);
-            cMenu.MenuItems.Add("Grade Submission", gradeSubmission_onClick);
-            
+            cMenu.MenuItems.Add("Open", OpenSubmission_onClick);
+            cMenu.MenuItems.Add("Grade Submission");
 
             submissionsListView.ContextMenu = cMenu;
 
-            updateAssgnView();
-            updateSubmissions();
+            UpdateAssgnView();
+            UpdateSubmissions();
 
-            setFieldsEnabled(false);
+            SetFieldsEnabled(false);
         }
 
-        private void openSubmission_onClick(object sender, EventArgs e)
+        /// <summary>
+        /// This function is triggered when open submission is clicked in the context
+        /// menu.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        private void OpenSubmission_onClick(object a_sender, EventArgs a_event)
         {
+            /// Grabs the item selected and opens a dialog to save the file locally.
             ListViewItem item = submissionsListView.SelectedItems[0];
 
             Submission selected = (Submission)item.Tag;
@@ -108,6 +169,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
             
             DialogResult result = openFile.ShowDialog();
 
+            /// Writes the file locally if the user hits ok.
             if (result == DialogResult.OK)
             {
                 string filepath = openFile.FileName;
@@ -115,20 +177,21 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
             }
         }
 
-        private void gradeSubmission_onClick(object sender, EventArgs e)
-        {
-        }
-
-        private void updateSubmissions()
+        /// <summary>
+        /// This function updates the UI for all the submissions done.
+        /// </summary>
+        private void UpdateSubmissions()
         {
             submissionsListView.Items.Clear();
+
             /// Gets all the submissions for the mentioned assignment
-            List<Submission> allSubs = getSubmissions();
+            List<Submission> allSubs = GetSubmissions();
 
             if (allSubs != null)
             {
                 foreach (Submission sub in allSubs)
                 {
+                    /// Adds the new submission by making it a list view item.
                     ListViewItem item = new ListViewItem(sub.student_info.FirstName + " " + sub.student_info.LastName);
                     item.SubItems.Add(sub.submissionFileName);
                     item.SubItems.Add(sub.grade == -1 ? "Not graded" : sub.grade+"");
@@ -141,14 +204,19 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
             }
         }
 
-        private List<Submission> getSubmissions()
+        /// <summary>
+        /// This function gets all the submissions for the given project.
+        /// </summary>
+        /// <returns>Returns the list of all the submissions made for the project.</returns>
+        private List<Submission> GetSubmissions()
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.g_submissions + "/" + BaseConnection.g_assignments + "/" + currentAssgn.id;
+            string uri = BaseConnection.g_submissions + "/" + BaseConnection.g_assignments + "/" + m_currentAssgn.id;
 
             try
             {
+                /// Gets the submissions from the server.
                 var response = client.GetAsync(uri).Result;
 
                 if (response.IsSuccessStatusCode)
@@ -166,59 +234,82 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
             return null;
         }
 
-        private void updateAssgnView()
+        /// <summary>
+        /// This function updates the assignment's view. It views the assignment with the format
+        /// that was provided by the professor. 
+        /// </summary>
+        private void UpdateAssgnView()
         {
-            projectName.Text = currentAssgn.projectTitle;
-            weightTextBox.Text = currentAssgn.weight.ToString();
-            deadlineBox.Value = currentAssgn.deadline;
+            projectName.Text = m_currentAssgn.projectTitle;
+            weightTextBox.Text = m_currentAssgn.weight.ToString();
+            deadlineBox.Value = m_currentAssgn.deadline;
             assignmentRTB.Clear();
 
-            string decodedString = WebUtility.UrlDecode(currentAssgn.content);
-            // For now, just do the content.
+            string decodedString = WebUtility.UrlDecode(m_currentAssgn.content);
+
+            /// Prints out the content by first decoding the rich text format.
             try
             {
                 assignmentRTB.Rtf = decodedString;
             }
             catch(Exception)
             {
-                assignmentRTB.Text = currentAssgn.content;
+                assignmentRTB.Text = m_currentAssgn.content;
             }
         }
 
-        private void editBox_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function enables the text box fields for edit when the button is pressed.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        private void EditBox_Click(object a_sender, EventArgs a_event)
         {
-            setFieldsEnabled(true);
+            SetFieldsEnabled(true);
         }
 
-        private void setFieldsEnabled(bool given)
+        /// <summary>
+        /// This function enables all the required fields for editing purposes.
+        /// </summary>
+        /// <param name="a_given">It is the given boolean for setting the visibilities 
+        /// and enabilities.</param>
+        private void SetFieldsEnabled(bool a_given)
         {
-            assignmentRTB.Enabled = given;
-            saveBox.Visible = given;
-            fontBox.Visible = given;
-            fontPanel.Visible = given;
-            projectName.Enabled = given;
-            weightTextBox.Enabled = given;
-            deadlineBox.Enabled = given;
-            cancelBox.Visible = given;
+            assignmentRTB.Enabled = a_given;
+            saveBox.Visible = a_given;
+            fontBox.Visible = a_given;
+            fontPanel.Visible = a_given;
+            projectName.Enabled = a_given;
+            weightTextBox.Enabled = a_given;
+            deadlineBox.Enabled = a_given;
+            cancelBox.Visible = a_given;
         }
 
-        private void saveBox_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function saves the edits/creations while writing the assignment. It
+        /// then sends the edit to the server.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        private void SaveBox_Click(object a_sender, EventArgs a_event)
         {
-            setFieldsEnabled(false);
+            SetFieldsEnabled(false);
 
-            // Make put call to the database.
+            /// Make put call to the database.
             string encodedString = WebUtility.UrlEncode(assignmentRTB.Rtf);
 
-            currentAssgn.content = encodedString;
+            m_currentAssgn.content = encodedString;
 
+            /// Assigns and validates all the values entered by the professor in the text
+            /// fields.
             DateTime givenDT = deadlineBox.Value;
             TimeSpan midnight = new TimeSpan(23, 59, 59);
             givenDT = givenDT.Date + midnight;
 
-            currentAssgn.deadline = givenDT;
+            m_currentAssgn.deadline = givenDT;
             try
             {
-                currentAssgn.weight = int.Parse(weightTextBox.Text);
+                m_currentAssgn.weight = int.Parse(weightTextBox.Text);
             }catch(Exception)
             {
                 MetroMessageBox.Show(this, "Enter a valid number for weight", "Invalid type!",
@@ -226,19 +317,24 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
                 return;
             }
 
-            currentAssgn.projectTitle = projectName.Text;
+            m_currentAssgn.projectTitle = projectName.Text;
 
-            if (isNew)
+            /// Makes a PUT or POST calls to the server according to the requested data.
+            if (m_isNew)
             {
-                postAssignmentToDB(currentAssgn);
+                PostAssignmentToDB(m_currentAssgn);
             }
             else
             {
-                putAssignmentToDB(currentAssgn);
+                PutAssignmentToDB(m_currentAssgn);
             }
         }
 
-        private void postAssignmentToDB(Assignment assgn)
+        /// <summary>
+        /// This function posts the newly filled values for the assignment.
+        /// </summary>
+        /// <param name="a_assgn">It holds the assignment that needs to be posted.</param>
+        private void PostAssignmentToDB(Assignment a_assgn)
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
@@ -246,7 +342,8 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
 
             try
             {
-                var response = client.PostAsJsonAsync(uri, assgn).Result;
+                /// Posts the request to the server.
+                var response = client.PostAsJsonAsync(uri, a_assgn).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -269,15 +366,20 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
             }
         }
 
-        private void putAssignmentToDB(Assignment assgn)
+        /// <summary>
+        /// This function puts the edit to the assignment to the server.
+        /// </summary>
+        /// <param name="a_assgn">It holds the assignment to be put.</param>
+        private void PutAssignmentToDB(Assignment a_assgn)
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.g_assignments + "/" + BaseConnection.g_coursesString + "/" + assgn.id;
+            string uri = BaseConnection.g_assignments + "/" + BaseConnection.g_coursesString + "/" + a_assgn.id;
 
             try
             {
-                var response = client.PutAsJsonAsync(uri, assgn).Result;
+                /// Makes a PUT request to the server.
+                var response = client.PutAsJsonAsync(uri, a_assgn).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -302,85 +404,135 @@ namespace ekaH_Windows.Profiles.UserControllers.Faculty
 
 
         /// <summary>
-        /// Shows the dialog to change the font.
+        /// This function shows the dialog to change the font.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pictureBox1_Click(object sender, EventArgs e)
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        private void PictureBox1_Click(object a_sender, EventArgs a_event)
         {
-            // Show the dialog.
+            /// Shows the dialog.
             DialogResult result = fontDialog1.ShowDialog();
-            // See if OK was pressed.
+
+            /// Sees if OK was pressed.
             if (result == DialogResult.OK)
             {
-                // Set the font
-                setFont(fontDialog1.Font, preferredForeColor);
+                /// Sets the font
+                SetFont(fontDialog1.Font, m_preferredForeColor);
             }
         }
 
-        private void fixFontUI(Font font, Color fore)
+        /// <summary>
+        /// This function fixes the font according to the choices provided by the user.
+        /// </summary>
+        /// <param name="a_font">It holds the font value.</param>
+        /// <param name="a_fore">It holds the fore color value.</param>
+        private void FixFontUI(Font a_font, Color a_fore)
         {
-            boldButton.BackColor = font.Bold ? BUTTON_PRESSED : BUTTON_RELEASED;
-            italicButton.BackColor = font.Italic ? BUTTON_PRESSED : BUTTON_RELEASED;
-            underlineButton.BackColor = font.Underline ? BUTTON_PRESSED : BUTTON_RELEASED;
-            colorButton.BackColor = fore;
+            /// Sets the forecolor and font properties for the given text.
+            boldButton.BackColor = a_font.Bold ? m_buttonPressed : m_buttonReleased;
+            italicButton.BackColor = a_font.Italic ? m_buttonPressed : m_buttonReleased;
+            underlineButton.BackColor = a_font.Underline ? m_buttonPressed : m_buttonReleased;
+            colorButton.BackColor = a_fore;
         }
 
-        private void setFont(Font font, Color fore)
+        /// <summary>
+        /// This function sets the font in the rich text box according to user's choice.
+        /// </summary>
+        /// <param name="a_font">It holds the font value.</param>
+        /// <param name="a_fore">It holds the fore color value.</param>
+        private void SetFont(Font a_font, Color a_fore)
         {
-            preferredFont = font;
-            assignmentRTB.SelectionFont = preferredFont;
+            m_preferredFont = a_font;
+            assignmentRTB.SelectionFont = m_preferredFont;
 
-            preferredForeColor = fore;
-            assignmentRTB.SelectionColor = fore;
+            m_preferredForeColor = a_fore;
+            assignmentRTB.SelectionColor = a_fore;
 
-            fixFontUI(preferredFont, preferredForeColor);
+            FixFontUI(m_preferredFont, m_preferredForeColor);
         }
 
-        private void colorButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function is triggered when color button is clicked.
+        /// It brings up the color changing dialog.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        private void ColorButton_Click(object a_sender, EventArgs a_event)
         {
             DialogResult result = colorDialog1.ShowDialog();
 
-            // See if OK was pressed.
+            /// See if OK was pressed.
             if (result == DialogResult.OK)
             {
-                setFont(preferredFont, colorDialog1.Color);
+                SetFont(m_preferredFont, colorDialog1.Color);
             }
         }
 
-        private void boldButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function is triggered if the bold button is clicked.
+        /// It then changes the font type as bold.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void BoldButton_Click(object a_sender, EventArgs a_event)
         {
-            Font newFont = preferredFont.Bold ? new Font(preferredFont, FontStyle.Regular) :
-                new Font(preferredFont, FontStyle.Bold);
+            Font newFont = m_preferredFont.Bold ? new Font(m_preferredFont, FontStyle.Regular) :
+                new Font(m_preferredFont, FontStyle.Bold);
             
-            setFont(newFont, preferredForeColor);
+            /// Sets the font to bold or vice versa.
+            SetFont(newFont, m_preferredForeColor);
         }
 
-        private void italicButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function is triggered if the user presses italic button 
+        /// making the text italic.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void ItalicButton_Click(object a_sender, EventArgs a_event)
         {
-            Font newFont = preferredFont.Italic ? new Font(preferredFont, FontStyle.Regular) :
-                new Font(preferredFont, FontStyle.Italic);
+            Font newFont = m_preferredFont.Italic ? new Font(m_preferredFont, FontStyle.Regular) :
+                new Font(m_preferredFont, FontStyle.Italic);
 
-            setFont(newFont, preferredForeColor);
+            SetFont(newFont, m_preferredForeColor);
         }
 
-        private void underlineButton_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function is triggered when underline button is clicked and makes text 
+        /// underline.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void UnderlineButton_Click(object a_sender, EventArgs a_event)
         {
-            Font newFont = preferredFont.Underline ? new Font(preferredFont, FontStyle.Regular) :
-                new Font(preferredFont, FontStyle.Underline);
+            Font newFont = m_preferredFont.Underline ? new Font(m_preferredFont, FontStyle.Regular) :
+                new Font(m_preferredFont, FontStyle.Underline);
 
-            setFont(newFont, preferredForeColor);
+            SetFont(newFont, m_preferredForeColor);
         }
 
-        private void cancelBox_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function is triggered when cancel button is clicked hence
+        /// canceling whatever edit was made.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void CancelBox_Click(object a_sender, EventArgs a_event)
         {
-            setFieldsEnabled(false);
-            updateAssgnView();
+            /// Disables all the fields from editing and updates the assignment view
+            /// with previous update.
+            SetFieldsEnabled(false);
+            UpdateAssgnView();
         }
 
-        private void discussionTile_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function opens the discusison for the assignment if it is clicked.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void DiscussionTile_Click(object a_sender, EventArgs a_event)
         {
-            DiscussionForm form = new DiscussionForm(currentAssgn, Email);
+            DiscussionForm form = new DiscussionForm(m_currentAssgn, m_email);
             form.ShowDialog();
         }
 

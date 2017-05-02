@@ -20,7 +20,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
         public ScheduleAppUC(Object parent)
         {
             appControl = (AppointmentControl)parent;
-            email = appControl.getEmail();
+            email = appControl.GetEmail();
 
             InitializeComponent();
         }
@@ -72,7 +72,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
                 if (performPostAppointment(appointment))
                 {
-                    appControl.refreshController();
+                    appControl.RefreshController();
                 }
             }
             

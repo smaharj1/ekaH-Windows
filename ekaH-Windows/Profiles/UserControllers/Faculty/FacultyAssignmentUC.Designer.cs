@@ -108,7 +108,7 @@
             this.colorButton.Size = new System.Drawing.Size(40, 39);
             this.colorButton.TabIndex = 0;
             this.colorButton.UseVisualStyleBackColor = false;
-            this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
+            this.colorButton.Click += new System.EventHandler(this.ColorButton_Click);
             // 
             // underlineButton
             // 
@@ -119,7 +119,7 @@
             this.underlineButton.TabIndex = 0;
             this.underlineButton.Text = "U";
             this.underlineButton.UseVisualStyleBackColor = true;
-            this.underlineButton.Click += new System.EventHandler(this.underlineButton_Click);
+            this.underlineButton.Click += new System.EventHandler(this.UnderlineButton_Click);
             // 
             // italicButton
             // 
@@ -130,7 +130,7 @@
             this.italicButton.TabIndex = 0;
             this.italicButton.Text = "I";
             this.italicButton.UseVisualStyleBackColor = true;
-            this.italicButton.Click += new System.EventHandler(this.italicButton_Click);
+            this.italicButton.Click += new System.EventHandler(this.ItalicButton_Click);
             // 
             // boldButton
             // 
@@ -141,7 +141,7 @@
             this.boldButton.TabIndex = 0;
             this.boldButton.Text = "B";
             this.boldButton.UseVisualStyleBackColor = true;
-            this.boldButton.Click += new System.EventHandler(this.boldButton_Click);
+            this.boldButton.Click += new System.EventHandler(this.BoldButton_Click);
             // 
             // fontBox
             // 
@@ -155,7 +155,7 @@
             this.fontBox.TabIndex = 6;
             this.fontBox.TabStop = false;
             this.fontBox.Visible = false;
-            this.fontBox.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.fontBox.Click += new System.EventHandler(this.PictureBox1_Click);
             // 
             // saveBox
             // 
@@ -169,7 +169,7 @@
             this.saveBox.TabIndex = 4;
             this.saveBox.TabStop = false;
             this.saveBox.Visible = false;
-            this.saveBox.Click += new System.EventHandler(this.saveBox_Click);
+            this.saveBox.Click += new System.EventHandler(this.SaveBox_Click);
             // 
             // editBox
             // 
@@ -182,7 +182,7 @@
             this.editBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.editBox.TabIndex = 3;
             this.editBox.TabStop = false;
-            this.editBox.Click += new System.EventHandler(this.editBox_Click);
+            this.editBox.Click += new System.EventHandler(this.EditBox_Click);
             // 
             // projectName
             // 
@@ -262,7 +262,7 @@
             this.cancelBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.cancelBox.TabIndex = 10;
             this.cancelBox.TabStop = false;
-            this.cancelBox.Click += new System.EventHandler(this.cancelBox_Click);
+            this.cancelBox.Click += new System.EventHandler(this.CancelBox_Click);
             // 
             // metroLabel4
             // 
@@ -326,7 +326,7 @@
             this.discussionTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.discussionTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.discussionTile.UseSelectable = true;
-            this.discussionTile.Click += new System.EventHandler(this.discussionTile_Click);
+            this.discussionTile.Click += new System.EventHandler(this.DiscussionTile_Click);
             // 
             // analysisTile
             // 
