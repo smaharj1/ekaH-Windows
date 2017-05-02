@@ -253,19 +253,19 @@ namespace ekaH_Windows.Profiles.Forms
             {
                 /// Put the info into the object.
                 FacultyInfo putFaculty = (FacultyInfo)m_userInfo;
-                putFaculty.FirstName = nameController.FirstName;
-                putFaculty.LastName = nameController.LastName;
-                putFaculty.Phone = nameController.Phone;
-                putFaculty.StreetAdd1 = addressController.Street1;
-                putFaculty.StreetAdd2 = addressController.Street2;
-                putFaculty.City = addressController.City;
-                putFaculty.State = addressController.State;
-                putFaculty.Zip = addressController.Zip;
+                putFaculty.FirstName = nameController.m_firstName;
+                putFaculty.LastName = nameController.m_lastName;
+                putFaculty.Phone = nameController.m_phone;
+                putFaculty.StreetAdd1 = addressController.m_street1;
+                putFaculty.StreetAdd2 = addressController.m_street2;
+                putFaculty.City = addressController.m_city;
+                putFaculty.State = addressController.m_state;
+                putFaculty.Zip = addressController.m_zip;
 
-                putFaculty.Education = extraInfoController.Degree;
-                putFaculty.University = extraInfoController.University;
-                putFaculty.Concentration = extraInfoController.Concentration;
-                putFaculty.Department = extraInfoController.ExtraInfo;
+                putFaculty.Education = extraInfoController.m_degree;
+                putFaculty.University = extraInfoController.m_university;
+                putFaculty.Concentration = extraInfoController.m_concentration;
+                putFaculty.Department = extraInfoController.m_extraInfo;
 
                 HttpClient client = NetworkClient.getInstance().getHttpClient();
 
@@ -288,17 +288,17 @@ namespace ekaH_Windows.Profiles.Forms
             {
                 /// Puts the info from input fields into StudentInfo object.
                 StudentInfo putStudent = (StudentInfo)m_userInfo;
-                putStudent.FirstName = nameController.FirstName;
-                putStudent.LastName = nameController.LastName;
-                putStudent.Phone = nameController.Phone;
-                putStudent.StreetAdd1 = addressController.Street1;
-                putStudent.StreetAdd2 = addressController.Street2;
-                putStudent.City = addressController.City;
-                putStudent.State = addressController.State;
-                putStudent.Zip = addressController.Zip;
-                putStudent.Education = extraInfoController.Degree;
-                putStudent.Concentration = extraInfoController.Concentration;
-                putStudent.Graduation= extraInfoController.ExtraInfo;
+                putStudent.FirstName = nameController.m_firstName;
+                putStudent.LastName = nameController.m_lastName;
+                putStudent.Phone = nameController.m_phone;
+                putStudent.StreetAdd1 = addressController.m_street1;
+                putStudent.StreetAdd2 = addressController.m_street2;
+                putStudent.City = addressController.m_city;
+                putStudent.State = addressController.m_state;
+                putStudent.Zip = addressController.m_zip;
+                putStudent.Education = extraInfoController.m_degree;
+                putStudent.Concentration = extraInfoController.m_concentration;
+                putStudent.Graduation= extraInfoController.m_extraInfo;
 
                 HttpClient client = NetworkClient.getInstance().getHttpClient();
 

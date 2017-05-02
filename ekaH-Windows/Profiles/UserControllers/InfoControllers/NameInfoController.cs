@@ -12,15 +12,18 @@ namespace ekaH_Windows.Profiles.UserControllers.InfoControllers
 {
     public partial class NameInfoController : MetroFramework.Controls.MetroUserControl
     {
-        public string FirstName
-        {
-            get
-            {
-                return firstNameText.Text;
-            }
+        /// <summary>
+        /// It holds the first name.
+        /// </summary>
+        public string m_firstName {
+            get { return firstNameText.Text; }
+
         }
 
-        public string LastName
+        /// <summary>
+        /// It holds the last name.
+        /// </summary>
+        public string m_lastName
         {
             get
             {
@@ -28,27 +31,27 @@ namespace ekaH_Windows.Profiles.UserControllers.InfoControllers
             }
         }
 
-        public string Phone
+        /// <summary>
+        /// It holds the phone number as string.
+        /// </summary>
+        public string m_phone
         {
-            get
-            {
-                return phoneText.Text;
-            }
+            get { return phoneText.Text; }
         }
 
-
-        public NameInfoController()
+        /// <summary>
+        /// This is a constructor that initializes the class variables.
+        /// </summary>
+        /// <param name="a_firstName">It holds the first name.</param>
+        /// <param name="a_lastName">It holds the last name.</param>
+        /// <param name="a_phone">It holds the phone number.</param>
+        public NameInfoController(string a_firstName, string a_lastName, string a_phone)
         {
             InitializeComponent();
-        }
 
-        public NameInfoController(string firstName, string lastName, string phone)
-        {
-            InitializeComponent();
-
-            firstNameText.Text = firstName;
-            lastNameText.Text = lastName;
-            phoneText.Text = phone;
+            firstNameText.Text = a_firstName;
+            lastNameText.Text = a_lastName;
+            phoneText.Text = a_phone;
         }
     }
 }

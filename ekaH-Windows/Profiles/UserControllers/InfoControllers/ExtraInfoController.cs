@@ -12,83 +12,68 @@ namespace ekaH_Windows.Profiles.UserControllers.InfoControllers
 {
     public partial class ExtraInfoController : MetroFramework.Controls.MetroUserControl
     {
-        public string Degree
+        /// <summary>
+        /// It holds the degree obtained.
+        /// </summary>
+        public string m_degree
         {
-            get
-            {
-                return degreeText.Text;
-            }
-
-            set
-            {
-                Degree = value;
-            }
+            get { return degreeText.Text; }
         }
 
-        public string University
+        /// <summary>
+        /// It holds the name of the university.
+        /// </summary>
+        public string m_university
         {
-            get
-            {
-                return universityText.Text;
-            }
-
-            set
-            {
-                University = value;
-            }
+            get { return universityText.Text; }
         }
 
-        public string Concentration
+        /// <summary>
+        /// It holds the concentration of major.
+        /// </summary>
+        public string m_concentration
         {
-            get
-            {
-                return concentrationText.Text;
-            }
-
-            set
-            {
-                Concentration = value;
-            }
+            get { return concentrationText.Text; }
         }
 
-        public string ExtraInfo
+        /// <summary>
+        /// It holds the extra information of the user.
+        /// </summary>
+        public string m_extraInfo
         {
-            get
-            {
-                return extraInfoText.Text;
-            }
-
-            set
-            {
-                ExtraInfo = value;
-            }
+            get { return extraInfoText.Text; }
         }
 
-
-        public ExtraInfoController()
+        /// <summary>
+        /// This is a constructor that initializes all of the values.
+        /// </summary>
+        /// <param name="a_degree">It holds the degree.</param>
+        /// <param name="a_unv">It holds the university attended.</param>
+        /// <param name="a_conc">It holds the concentration.</param>
+        /// <param name="a_extra">It holds the extra information.</param>
+        public ExtraInfoController(string a_degree, string a_unv, string a_conc, string a_extra)
         {
             InitializeComponent();
 
+            degreeText.Text = a_degree;
+            universityText.Text = a_unv;
+            concentrationText.Text = a_conc;
+            extraInfoText.Text = a_extra;
         }
 
-        public ExtraInfoController(string degree, string unv, string conc, string extra)
+        /// <summary>
+        /// This is a constructor that only satisfied certain parts of the values.
+        /// </summary>
+        /// <param name="a_degree">It holds the degree info.</param>
+        /// <param name="a_conc">It holds the concentration info.</param>
+        /// <param name="a_extra">It holds the extra info.</param>
+        public ExtraInfoController(string a_degree, string a_conc, string a_extra)
         {
             InitializeComponent();
 
-            degreeText.Text = degree;
-            universityText.Text = unv;
-            concentrationText.Text = conc;
-            extraInfoText.Text = extra;
-        }
-
-        public ExtraInfoController(string degree, string conc, string extra)
-        {
-            InitializeComponent();
-
-            degreeText.Text = degree;
-            //universityText.Text = unv;
-            concentrationText.Text = conc;
-            extraInfoText.Text = extra;
+            degreeText.Text = a_degree;
+            concentrationText.Text = a_conc;
+            extraInfoText.Text = a_extra;
         }
 
     }
