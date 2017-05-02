@@ -12,33 +12,58 @@ using ekaH_Windows.Profiles.Forms.Student;
 
 namespace ekaH_Windows.Profiles.UserControllers.Student
 {
+    /// <summary>
+    /// This class is a controller for student's dashboard.
+    /// </summary>
     public partial class StudentDashboardUC : MetroFramework.Controls.MetroUserControl
     {
-        private StudentProfile parent;
+        /// <summary>
+        /// It holds the parent's profile.
+        /// </summary>
+        private StudentProfile m_parent;
 
-        public StudentDashboardUC(StudentProfile profile)
+        /// <summary>
+        /// This is a constructor.
+        /// </summary>
+        /// <param name="a_profile">It holds the parent profile.</param>
+        public StudentDashboardUC(StudentProfile a_profile)
         {
             InitializeComponent();
-            parent = profile;
+            m_parent = a_profile;
         }
 
-        private void updateInfoTile_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function is triggered when update tile is clicked.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        private void UpdateInfoTile_Click(object a_sender, EventArgs a_event)
         {
-            UpdateInfo update = new UpdateInfo(parent.m_currentStudent, true);
+            UpdateInfo update = new UpdateInfo(m_parent.m_currentStudent, true);
             update.ShowDialog();
 
-            parent.GetStudentInfo();
+            m_parent.GetStudentInfo();
         }
 
-        private void enrollCourseTile_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function is triggered when enrolling in a course.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        private void EnrollCourseTile_Click(object a_sender, EventArgs a_event)
         {
-            CourseAdd addCourse = new CourseAdd(parent.m_userEmail);
+            CourseAdd addCourse = new CourseAdd(m_parent.m_userEmail);
             addCourse.ShowDialog();
         }
 
-        private void goOnlineTile_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function is triggered when going online.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event.</param>
+        private void GoOnlineTile_Click(object a_sender, EventArgs a_event)
         {
-            OnlineChat chat = new OnlineChat(parent.m_userEmail);
+            OnlineChat chat = new OnlineChat(m_parent.m_userEmail);
             chat.ShowDialog();
         }
     }

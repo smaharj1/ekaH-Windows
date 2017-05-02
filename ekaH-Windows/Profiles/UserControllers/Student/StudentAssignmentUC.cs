@@ -16,76 +16,115 @@ using ekaH_Windows.Profiles.Forms;
 
 namespace ekaH_Windows.Profiles.UserControllers.Student
 {
+    /// <summary>
+    /// This class allows the students to upload files for the given assignment.
+    /// </summary>
     public partial class StudentAssignmentUC : MetroFramework.Controls.MetroUserControl
     {
-        private List<Assignment> openAssignments;
-        private Assignment currentAssgn;
-        private bool currentAssgnSubmitted;
-        private string studentEmail;
+        /// <summary>
+        /// It holds all the assignments that are open currently.
+        /// </summary>
+        private List<Assignment> m_openAssignments;
 
-        private Submission submitted;
+        /// <summary>
+        /// It holds the current open assignment.
+        /// </summary>
+        private Assignment m_currentAssgn;
+
+        /// <summary>
+        /// It holds the submission of current assignment.
+        /// </summary>
+        private bool m_currentAssgnSubmitted;
+
+        /// <summary>
+        /// It holds student's email.
+        /// </summary>
+        private string m_studentEmail;
+
+        /// <summary>
+        /// It holds the file submitted by the user.
+        /// </summary>
+        private Submission m_submitted;
         
-        public StudentAssignmentUC(string stdEmail)
+        /// <summary>
+        /// This is a constructor that initializes the email.
+        /// </summary>
+        /// <param name="a_stdEmail">It holds the email of the student.</param>
+        public StudentAssignmentUC(string a_stdEmail)
         {
-            studentEmail = stdEmail;
-            openAssignments = new List<Assignment>();
+            m_studentEmail = a_stdEmail;
+            m_openAssignments = new List<Assignment>();
             InitializeComponent();
         }
 
-        public void open (Assignment assgn)
+        /// <summary>
+        /// This function opens an assignment.
+        /// </summary>
+        /// <param name="a_assgn">It holds the assignment that needs to be opened.</param>
+        public void Open (Assignment a_assgn)
         {
-            // Checks if the assignment was previously open to reduce the number of UC objects being formed.
-            if (openAssignments.Contains(assgn))
+            /// Checks if the assignment was previously open to reduce the number of UC objects being formed.
+            if (m_openAssignments.Contains(a_assgn))
             {
-                int index = openAssignments.IndexOf(assgn);
-                currentAssgn = openAssignments[index];
+                int index = m_openAssignments.IndexOf(a_assgn);
+                m_currentAssgn = m_openAssignments[index];
             }
             else
             {
-                openAssignments.Add(assgn);
-                currentAssgn = assgn;
+                m_openAssignments.Add(a_assgn);
+                m_currentAssgn = a_assgn;
             }
 
-            submitted = getSubmittedSolution();
+            m_submitted = GetSubmittedSolution();
 
-            updateTaskView();
-            updateSubmissionView();
+            /// Updates the view of the UI.
+            UpdateTaskView();
+            UpdateSubmissionView();
         }
 
-        private void updateTaskView()
+        /// <summary>
+        /// This funciton updates the rich text box by first decoding it.
+        /// </summary>
+        private void UpdateTaskView()
         {
-            projectName.Text = currentAssgn.projectTitle;
-            weightTextBox.Text = currentAssgn.weight >0 ?currentAssgn.weight.ToString() + "%" : "TBD";
-            deadlineBox.Value = currentAssgn.deadline;
+            projectName.Text = m_currentAssgn.projectTitle;
+            weightTextBox.Text = m_currentAssgn.weight >0 ?m_currentAssgn.weight.ToString() + "%" : "TBD";
+            deadlineBox.Value = m_currentAssgn.deadline;
             assignmentRTB.Clear();
 
-            string decodedString = WebUtility.UrlDecode(currentAssgn.content);
-            // For now, just do the content.
+            string decodedString = WebUtility.UrlDecode(m_currentAssgn.content);
+            
+            /// Decodes the rich text box content and puts it on the screen.
             try
             {
                 assignmentRTB.Rtf = decodedString;
             }
             catch (Exception)
             {
-                assignmentRTB.Text = currentAssgn.content;
+                assignmentRTB.Text = m_currentAssgn.content;
             }
         }
 
-        private void updateSubmissionView()
+        /// <summary>
+        /// This function updates the submission view and indicates if the user can
+        /// submit the assignment or not.
+        /// </summary>
+        private void UpdateSubmissionView()
         {
-            if (submitted != null)
+            if (m_submitted != null)
             {
-                currentAssgnSubmitted = true;
-                if (currentAssgn.deadline > DateTime.Today) statusLabel.Text = "Open";
+                /// Gives the detail on when the assignment was last submitted.
+                m_currentAssgnSubmitted = true;
+                if (m_currentAssgn.deadline > DateTime.Today) statusLabel.Text = "Open";
                 else statusLabel.Text = "Closed";
 
-                submittedLabel.Text = "Submitted it on " + submitted.submissionDateTime.ToString();
+                submittedLabel.Text = "Submitted it on " + m_submitted.submissionDateTime.ToString();
 
-                gradeView.Text = submitted.grade == -1 ? "TBD" : submitted.grade + "/100";      
+                gradeView.Text = m_submitted.grade == -1 ? "TBD" : m_submitted.grade + "/100";      
             }
             else
             {
-                currentAssgnSubmitted = false;
+                m_currentAssgnSubmitted = false;
                 statusLabel.Text = "Willie Wonka. Nothing submitted yet!";
                 gradeView.Text = "TBD";
                 submittedLabel.Text = "None";
@@ -93,20 +132,22 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
         }
 
         /// <summary>
-        /// Gets the solution provided by the user for the given assignment through assignment ID and student ID.
+        /// The function gets the solution provided by the user for the given assignment 
+        /// through assignment ID and student ID.
         /// </summary>
-        /// <returns></returns>
-        private Submission getSubmittedSolution()
+        /// <returns>Returns the submission made by the student.</returns>
+        private Submission GetSubmittedSolution()
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
             string uri = BaseConnection.g_submissions + "/" + BaseConnection.g_submitAction + "/" +
-                currentAssgn.id + "/" + studentEmail + "/";
+                m_currentAssgn.id + "/" + m_studentEmail + "/";
 
             try
             {
                 var response = client.GetAsync(uri).Result;
 
+                /// If response was successful, it returns the submitted file.
                 if (response.IsSuccessStatusCode)
                 {
                     List<Submission> submissions = response.Content.ReadAsAsync<List<Submission>>().Result;
@@ -139,13 +180,15 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
         }
 
         /// <summary>
-        /// Helps the user to upload the documents they want. It should be zip file if it is more than one file.
+        /// This function helps the user to upload the documents they want. 
+        /// It should be zip file if it is more than one file.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void submissionIcon_Click(object sender, EventArgs e)
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void SubmissionIcon_Click(object a_sender, EventArgs a_event)
         {
-            if (currentAssgn.deadline < DateTime.Today)
+            /// Checks if the deadline has already passed.
+            if (m_currentAssgn.deadline < DateTime.Today)
             {
                 MetroMessageBox.Show(this, "You cannot submit it anymore since the deadline has been passed.",
                         "Deadline passed", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -163,49 +206,54 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
             byte[] content = File.ReadAllBytes(filepath);
 
-            /// Checks if the assignment open is already submitted. If it is already submitted, it resubmits the solution.
-            if (currentAssgnSubmitted)
+            /// Checks if the assignment open is already submitted. If it is 
+            /// already submitted, it resubmits the solution.
+            if (m_currentAssgnSubmitted)
             {
-                submitted.grade = -1;
-                submitted.submissionDateTime = DateTime.Today;
-                submitted.submissionContent = content;
-                submitted.submissionFileName = fileDialog.SafeFileName;
+                m_submitted.grade = -1;
+                m_submitted.submissionDateTime = DateTime.Today;
+                m_submitted.submissionContent = content;
+                m_submitted.submissionFileName = fileDialog.SafeFileName;
 
-                if (putSubmission(submitted)) updateSubmissionView();
+                if (PutSubmission(m_submitted)) UpdateSubmissionView();
             }
             else
             {
                 Submission sub = new Submission();
 
-                sub.assignmentID = currentAssgn.id;
-                sub.studentID = studentEmail;
+                sub.assignmentID = m_currentAssgn.id;
+                sub.studentID = m_studentEmail;
                 sub.grade = -1;
                 sub.submissionContent = content;
                 sub.submissionDateTime = DateTime.Today;
                 sub.submissionFileName = fileDialog.SafeFileName;
 
                 /// Makes a POST call.
-                if (postSubmission(sub)) updateSubmissionView();
-                
-
+                if (PostSubmission(sub)) UpdateSubmissionView();
             }
         }
 
-        private bool putSubmission(Submission submission)
+        /// <summary>
+        /// This function modifies the already submitted assignment.
+        /// </summary>
+        /// <param name="a_submission">It holds the submission.</param>
+        /// <returns>Returns true if the submission was successfully modified.</returns>
+        private bool PutSubmission(Submission a_submission)
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.g_submissions + "/" + BaseConnection.g_submitAction + "/"+ submission.id;
+            string uri = BaseConnection.g_submissions + "/" + BaseConnection.g_submitAction + "/"+ a_submission.id;
 
             try
             {
-                var response = client.PutAsJsonAsync(uri, submission).Result;
+                var response = client.PutAsJsonAsync(uri, a_submission).Result;
 
+                /// Verifies if the server successfully modified the file.
                 if (response.IsSuccessStatusCode)
                 {
                     MetroMessageBox.Show(this, "Successfully submitted your solution for the assignment",
                         "Submitted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    submitted = submission;
+                    m_submitted = a_submission;
                     return true;
                 }
                 else if (response.StatusCode == HttpStatusCode.Forbidden)
@@ -222,10 +270,17 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
             {
                 Worker.printServerError(this);
             }
+
+            /// Returns false if modification unsuccessful.
             return false;
         }
 
-        private bool postSubmission(Submission submission)
+        /// <summary>
+        /// This function submits a new file to the server.
+        /// </summary>
+        /// <param name="a_submission">It holds the submission object.</param>
+        /// <returns>Returns true if submission was successful.</returns>
+        private bool PostSubmission(Submission a_submission)
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
@@ -233,13 +288,14 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
             try
             {
-                var response = client.PostAsJsonAsync(uri, submission).Result;
+                var response = client.PostAsJsonAsync(uri, a_submission).Result;
 
+                /// Checks if the submission was successful and returns true.
                 if (response.IsSuccessStatusCode)
                 {
                     MetroMessageBox.Show(this, "Successfully submitted your solution for the assignment",
                         "Submitted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    submitted = submission;
+                    m_submitted = a_submission;
                     return true;
                 }
                 else
@@ -251,17 +307,23 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
             {
                 Worker.printServerError(this);
             }
-            return false;
 
+            return false;
         }
 
-        private void downloadSubmission_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function is triggered if download button is clicked for the submission.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void DownloadSubmission_Click(object a_sender, EventArgs a_event)
         {
-            if (currentAssgnSubmitted)
+            if (m_currentAssgnSubmitted)
             {
-                if (submitted.submissionFileName != null)
+                /// Allows the student to download whatever they submitted.
+                if (m_submitted.submissionFileName != null)
                 {
-                    string[] split = submitted.submissionFileName.Split('.');
+                    string[] split = m_submitted.submissionFileName.Split('.');
                     saveFileDialog.Filter = "Given format |*." + split[1];
                     saveFileDialog.Title = split[0];
                 }
@@ -270,14 +332,19 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
                 if (result == DialogResult.OK)
                 {
                     string filepath = saveFileDialog.FileName;
-                    File.WriteAllBytes(filepath, submitted.submissionContent);
+                    File.WriteAllBytes(filepath, m_submitted.submissionContent);
                 }
             }
         }
 
-        private void discussionTile_Click(object sender, EventArgs e)
+        /// <summary>
+        /// This function opens the discusison form for the assignment.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void DiscussionTile_Click(object a_sender, EventArgs a_event)
         {
-            DiscussionForm discForm = new DiscussionForm(currentAssgn ,studentEmail);
+            DiscussionForm discForm = new DiscussionForm(m_currentAssgn ,m_studentEmail);
             discForm.ShowDialog();
         }
     }

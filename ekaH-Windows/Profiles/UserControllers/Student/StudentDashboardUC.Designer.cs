@@ -61,7 +61,7 @@
             this.enrollCourseTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.enrollCourseTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.enrollCourseTile.UseSelectable = true;
-            this.enrollCourseTile.Click += new System.EventHandler(this.enrollCourseTile_Click);
+            this.enrollCourseTile.Click += new System.EventHandler(this.EnrollCourseTile_Click);
             // 
             // updateInfoTile
             // 
@@ -75,7 +75,7 @@
             this.updateInfoTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.updateInfoTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.updateInfoTile.UseSelectable = true;
-            this.updateInfoTile.Click += new System.EventHandler(this.updateInfoTile_Click);
+            this.updateInfoTile.Click += new System.EventHandler(this.UpdateInfoTile_Click);
             // 
             // metroLabel1
             // 
@@ -115,7 +115,7 @@
             this.goOnlineTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.goOnlineTile.UseSelectable = true;
             this.goOnlineTile.UseTileImage = true;
-            this.goOnlineTile.Click += new System.EventHandler(this.goOnlineTile_Click);
+            this.goOnlineTile.Click += new System.EventHandler(this.GoOnlineTile_Click);
             // 
             // StudentDashboardUC
             // 

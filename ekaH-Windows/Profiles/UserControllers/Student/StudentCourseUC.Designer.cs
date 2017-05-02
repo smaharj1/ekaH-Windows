@@ -119,7 +119,7 @@
             this.addCourse.Text = "Add a course";
             this.addCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.addCourse.UseSelectable = true;
-            this.addCourse.Click += new System.EventHandler(this.addCourse_Click);
+            this.addCourse.Click += new System.EventHandler(this.AddCourse_Click);
             // 
             // dropCourse
             // 
@@ -132,7 +132,7 @@
             this.dropCourse.Text = "Drop a course";
             this.dropCourse.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.dropCourse.UseSelectable = true;
-            this.dropCourse.Click += new System.EventHandler(this.dropCourse_Click);
+            this.dropCourse.Click += new System.EventHandler(this.DropCourse_Click);
             // 
             // detailsTile
             // 
@@ -146,7 +146,7 @@
             this.detailsTile.Text = "View Details";
             this.detailsTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.detailsTile.UseSelectable = true;
-            this.detailsTile.Click += new System.EventHandler(this.detailsTile_Click);
+            this.detailsTile.Click += new System.EventHandler(this.DetailsTile_Click);
             // 
             // StudentCourseUC
             // 

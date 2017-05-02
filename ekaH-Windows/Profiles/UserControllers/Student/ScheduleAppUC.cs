@@ -11,16 +11,29 @@ using System.Net;
 
 namespace ekaH_Windows.Profiles.UserControllers.Student
 {
+    /// <summary>
+    /// This class is a controller for students to schedule appointment with their professor.
+    /// </summary>
     public partial class ScheduleAppUC : MetroUserControl
     {
-        private string email;
-        private AppointmentControl appControl;
+        /// <summary>
+        /// It holds the email of the student.
+        /// </summary>
+        private string m_email;
 
+        /// <summary>
+        /// It holds the appointment controller which is a parent of this controller.
+        /// </summary>
+        private AppointmentControl m_appControl;
 
-        public ScheduleAppUC(Object parent)
+        /// <summary>
+        /// It is a constructor which initializes the parent controller.
+        /// </summary>
+        /// <param name="a_parent">It is a parent controller.</param>
+        public ScheduleAppUC(Object a_parent)
         {
-            appControl = (AppointmentControl)parent;
-            email = appControl.GetEmail();
+            m_appControl = (AppointmentControl)a_parent;
+            m_email = m_appControl.GetEmail();
 
             InitializeComponent();
         }
@@ -30,55 +43,81 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
         }
 
-        public void searchBox_EnterPressed(object sender, KeyEventArgs e)
+        /// <summary>
+        /// This function is triggered when the enter is clicked in the search box.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        public void SearchBox_EnterPressed(object a_sender, KeyEventArgs a_event)
         {
-            if (e.KeyData == Keys.Enter)
+            /// If enter is pressed, it searches the available times for that professor.
+            if (a_event.KeyData == Keys.Enter)
             {
-                performGetSchedule(searchBox.Text);
+                PerformGetSchedule(searchBox.Text);
 
-                performGetAvailability(searchBox.Text);
+                PerformGetAvailability(searchBox.Text);
             }
         }
 
-        private MetroTile makeAppointmentTile(Appointment app, int x, int y)
+        /// <summary>
+        /// The function makes an appointment tile.
+        /// </summary>
+        /// <param name="a_app">It holds the appointment to make tile for.</param>
+        /// <param name="a_xCoord">It holds the x coordinate.</param>
+        /// <param name="a_yCoord">It holds the y coordinate.</param>
+        /// <returns>Returns the newly created tile.</returns>
+        private MetroTile MakeAppointmentTile(Appointment a_app, int a_xCoord, int a_yCoord)
         {
+            /// Builds a tile and puts the necessary texts.
             MetroTile newTile = new MetroTile();
-            DateTime date = app.StartTime;
+            DateTime date = a_app.StartTime;
             StringBuilder display = new StringBuilder();
             display.Append(date.ToString("MM/dd/yyyy hh:mm tt") + " - " );
-            display.Append(app.EndTime.ToString("hh:mm tt"));
+            display.Append(a_app.EndTime.ToString("hh:mm tt"));
 
             newTile.Text = display.ToString();
-            newTile.Location = new Point(x, y);
-            newTile.Tag = app;
-            newTile.Click += new EventHandler(scheduleAppointmentTileClicked);
+            newTile.Location = new Point(a_xCoord, a_yCoord);
+            newTile.Tag = a_app;
+            newTile.Click += new EventHandler(ScheduleAppointmentTileClicked);
             newTile.Size = new Size(resultPanel.Width - 40, 80);
             newTile.Cursor = Cursors.Hand;
 
+            /// Returns the newly created tile.
             return newTile;
-
         }
 
-        private void scheduleAppointmentTileClicked(Object sender, EventArgs e)
+        /// <summary>
+        /// This function is triggered when the available times tile is clicked to make an appointment.
+        /// </summary>
+        /// <param name="a_sender">It holds the sender.</param>
+        /// <param name="a_event">It holds the event args.</param>
+        private void ScheduleAppointmentTileClicked(Object a_sender, EventArgs a_event)
         {
+            
             DialogResult dialogResult = MetroMessageBox.Show(this, "Are you sure you want to schedule?", "Schedule?",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            /// Makes sure that user really wants to make an appointment and makes an appointment.
             if (dialogResult == DialogResult.Yes)
             {
-                MetroTile selectedTile = (MetroTile)sender;
+                MetroTile selectedTile = (MetroTile)a_sender;
                 Appointment appointment = (Appointment)selectedTile.Tag;
-                appointment.AttendeeID = email;
+                appointment.AttendeeID = m_email;
 
-                if (performPostAppointment(appointment))
+                /// If server receives the request successfully, then refreshes the controller.
+                if (PerformPostAppointment(appointment))
                 {
-                    appControl.RefreshController();
+                    m_appControl.RefreshController();
                 }
-            }
-            
+            } 
         }
 
-        private bool performPostAppointment(Appointment appointment)
+        /// <summary>
+        /// This function makes an appointment.
+        /// </summary>
+        /// <param name="a_appointment">It holds the appointment to be posted.</param>
+        /// <returns>Returns true if server successfully accepts the appointment request.</returns>
+        private bool PerformPostAppointment(Appointment a_appointment)
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
@@ -86,7 +125,8 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
             try
             {
-                var resp = client.PostAsJsonAsync(uri, appointment).Result;
+                /// Posts the assignment and checks if it was successful.
+                var resp = client.PostAsJsonAsync(uri, a_appointment).Result;
 
                 if (resp.StatusCode == HttpStatusCode.Conflict)
                 {
@@ -96,7 +136,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
                 else if (resp.IsSuccessStatusCode)
                 {
                     // Refresh the appointment control with the fresh data.
-                    refreshControl();
+                    RefreshControl();
 
                     MetroMessageBox.Show(this, "Successfully requested for appointment", "Success!"
                         , MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -111,10 +151,15 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
             {
                 Worker.printServerError(this);
             }
+
+            /// Returns false if posting was unsuccessful due to many reasons.
             return false;
         }
 
-        private void refreshControl()
+        /// <summary>
+        /// This function refreshes the controller.
+        /// </summary>
+        private void RefreshControl()
         {
             searchBox.Text = "";
             resultPanel.Controls.Clear();
@@ -122,15 +167,20 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
             resultPanel.Visible = false;
         }
 
-        private void performGetAvailability(string text)
+        /// <summary>
+        /// This function gets all the available times for the professor.
+        /// </summary>
+        /// <param name="a_text"></param>
+        private void PerformGetAvailability(string a_text)
         {
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string uri = BaseConnection.g_appointments + "/" + BaseConnection.g_schedules + "/" + text + "/";
+            string uri = BaseConnection.g_appointments + "/" + BaseConnection.g_schedules + "/" + a_text + "/";
 
             List<Appointment> availableDates = null;
             try
             {
+                /// Gets all the available dates divided into the chunks of half an hour.
                 var resp = client.GetAsync(uri).Result;
 
                 if (resp.IsSuccessStatusCode)
@@ -143,6 +193,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
                 Worker.printServerError(this);
             }
 
+            /// Builds the tiles dynamically if the dates are available.
             if (availableDates != null)
             {
                 int x = 10, y = 10;
@@ -152,7 +203,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
                 foreach(Appointment app in availableDates)
                 {
-                    MetroTile tile = makeAppointmentTile(app, x, y);
+                    MetroTile tile = MakeAppointmentTile(app, x, y);
                     resultPanel.Controls.Add(tile);
                     y += 90;
                 }
@@ -160,17 +211,22 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
         }
 
         // Gets the schedule for the next two weeks.
-        private void performGetSchedule(string searchTerm)
+        /// <summary>
+        /// This function gets the actual weekly schedul of the professor and displays it 
+        /// in user friendly manner.
+        /// </summary>
+        /// <param name="a_searchTerm"></param>
+        private void PerformGetSchedule(string a_searchTerm)
         {
-            // Gets the faculty information here. 
+            /// Gets the faculty information here. 
             HttpClient client = NetworkClient.getInstance().getHttpClient();
 
-            string requestURI = BaseConnection.g_appointments + "/" + BaseConnection.g_facSchedule + "/" + searchTerm+"/";
+            string requestURI = BaseConnection.g_appointments + "/" + BaseConnection.g_facSchedule + "/" + a_searchTerm+"/";
 
             Schedule resSchedule;
             try
             {
-                // List data response. This is the blocking call.
+                /// List data response. This is the blocking call.
                 var response = client.GetAsync(requestURI).Result;
 
                 if (response.IsSuccessStatusCode)
@@ -181,7 +237,7 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
 
                     daysTextBox.Text = "";
 
-
+                    /// Converts the data received into user friendly text.
                     foreach (DayInfo day in resSchedule.Days)
                     {
                         DateTime tempStart = DateTime.Today + day.startTime;
@@ -195,7 +251,6 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
                 else
                 {
                     Worker.printServerError(this);
-
                 }
             }
             catch (Exception)
@@ -203,7 +258,5 @@ namespace ekaH_Windows.Profiles.UserControllers.Student
                 Worker.printServerError(this);
             }
         }
-        
-
     }
 }

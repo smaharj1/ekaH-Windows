@@ -125,7 +125,7 @@ namespace ekaH_Windows.Profiles.Forms
                     courseDetailPanel.Controls.Add(m_ucStdAssignment);
                 }
 
-                m_ucStdAssignment.open(clickedAssignment);
+                m_ucStdAssignment.Open(clickedAssignment);
                 m_ucStdAssignment.BringToFront();
             }
         }

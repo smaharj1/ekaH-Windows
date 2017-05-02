@@ -130,7 +130,7 @@
             this.searchBox.WaterMark = "Professor\'s email";
             this.searchBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.searchBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.searchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchBox_EnterPressed);
+            this.searchBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchBox_EnterPressed);
             // 
             // metroLabel1
             // 

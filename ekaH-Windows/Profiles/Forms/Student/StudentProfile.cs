@@ -236,7 +236,7 @@ namespace ekaH_Windows.Profiles
             {
                 if (m_ucCourses != null)
                 {
-                    m_ucCourses.executeGetRequest();
+                    m_ucCourses.ExecuteGetRequest();
                 }
                 ViewCourses();
             }

@@ -166,7 +166,7 @@
             this.submissionIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.submissionIcon.TabIndex = 27;
             this.submissionIcon.TabStop = false;
-            this.submissionIcon.Click += new System.EventHandler(this.submissionIcon_Click);
+            this.submissionIcon.Click += new System.EventHandler(this.SubmissionIcon_Click);
             // 
             // panel2
             // 
@@ -233,7 +233,7 @@
             this.downloadSubmission.Text = "View Submission";
             this.downloadSubmission.UseCustomBackColor = true;
             this.downloadSubmission.UseCustomForeColor = true;
-            this.downloadSubmission.Click += new System.EventHandler(this.downloadSubmission_Click);
+            this.downloadSubmission.Click += new System.EventHandler(this.DownloadSubmission_Click);
             // 
             // metroLabel8
             // 
@@ -346,7 +346,7 @@
             this.discussionTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.discussionTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.discussionTile.UseSelectable = true;
-            this.discussionTile.Click += new System.EventHandler(this.discussionTile_Click);
+            this.discussionTile.Click += new System.EventHandler(this.DiscussionTile_Click);
             // 
             // StudentAssignmentUC
             // 
